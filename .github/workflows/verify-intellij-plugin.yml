@@ -11,6 +11,5 @@ jobs:
       - name: Gradle build and verify
         run: |
           chmod +x ./utils/intellij-plugin/gradlew
-          alias gradleww=./utils/intellij-plugin/gradlew
-          gradleww buildPlugin
-          gradleww verifyPlugin
+          ./utils/intellij-plugin/gradlew buildPlugin
+          ./utils/intellij-plugin/gradlew verifyPlugin

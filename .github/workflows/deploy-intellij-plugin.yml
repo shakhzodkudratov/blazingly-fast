@@ -11,18 +11,16 @@ jobs:
       - name: Gradle build
         run: |
           chmod +x ./utils/intellij-plugin/gradlew
-          alias gradleww=./utils/intellij-plugin/gradlew
-          gradleww buildPlugin
-          gradleww nodeSetup
-          gradleww yarn
-          gradleww yarn_build
+          ./utils/intellij-plugin/gradlew buildPlugin
+          ./utils/intellij-plugin/gradlew nodeSetup
+          ./utils/intellij-plugin/gradlew yarn
+          ./utils/intellij-plugin/gradlew yarn_build
       - name: Commit new release
         env:
           INTELLIJ_DEPLOY: ${{ secrets.INTELLIJ_DEPLOY }}
         run: |
-          alias gradleww=./utils/intellij-plugin/gradlew
-          VERSION=`gradlew yarn_bump`
-          gradleww publishPlugin
+          VERSION=`./utils/intellij-plugin/gradlew yarn_bump`
+          ./utils/intellij-plugin/gradlew publishPlugin
           git config --global user.name 'Shakhzod Kudratov'
           git config --global user.email 'shakhzodkudratov@gmail.com'
           git status
