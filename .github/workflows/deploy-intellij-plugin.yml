@@ -22,7 +22,7 @@ jobs:
           INTELLIJ_DEPLOY: ${{ secrets.INTELLIJ_DEPLOY }}
         run: |
           cd utils/intellij-plugin
-          VERSION=`./gradlew yarn_bump`
+          VERSION=`./gradlew yarn_bump | grep -E -oi 'v([0-9]|.)+'`
           ./gradlew publishPlugin
           cd ../../
           git config --global user.name 'Shakhzod Kudratov'
@@ -30,5 +30,6 @@ jobs:
           git status
           git add .
           git commit -m "releasing $VERSION"
-          git push
           git tag $VERSION
+          git push
+          git push origin $VERSION
