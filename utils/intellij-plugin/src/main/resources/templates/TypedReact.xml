@@ -162,4 +162,12 @@
             <option name="JS_STATEMENT" value="true" />
         </context>
     </template>
+    <template name="story" value="import type { Meta, StoryObj } from &quot;@storybook/react&quot;;&#10;&#10;// More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction&#10;const meta: Meta&lt;typeof $1$&gt; = {&#10;  title: &quot;Features/$1$&quot;,&#10;  component: $1$,&#10;  tags: [&quot;autodocs&quot;],&#10;  argTypes: {$2$},&#10;};&#10;&#10;export default meta;&#10;type Story = StoryObj&lt;typeof $1$&gt;;&#10;&#10;// More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args&#10;export const Default: Story = {&#10;  args: {$3$},&#10;};&#10;" description="Storybook story" toReformat="false" toShortenFQNames="true">
+        <variable name="1" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="2" expression="" defaultValue="" alwaysStopAt="true" />
+        <variable name="3" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="TS_TOP_LEVEL_STATEMENT" value="true" />
+        </context>
+    </template>
 </templateSet>
