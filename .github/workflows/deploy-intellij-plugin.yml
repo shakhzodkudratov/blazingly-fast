@@ -22,7 +22,8 @@ jobs:
           INTELLIJ_DEPLOY: ${{ secrets.INTELLIJ_DEPLOY }}
         run: |
           cd utils/intellij-plugin
-          VERSION=`./gradlew yarn_bump | grep -E -oi 'v([0-9]|.)+'`
+          VERSION=`./gradlew yarn_bump | grep -E -oi 'v([0-9]|.)+' | tail -1`
+          echo "New version: $VERSION"
           ./gradlew publishPlugin
           cd ../../
           git config --global user.name 'Shakhzod Kudratov'
