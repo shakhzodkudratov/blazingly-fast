@@ -10,17 +10,19 @@ jobs:
       - uses: actions/checkout@v2
       - name: Gradle build
         run: |
-          chmod +x ./utils/intellij-plugin/gradlew
-          ./utils/intellij-plugin/gradlew buildPlugin
-          ./utils/intellij-plugin/gradlew nodeSetup
-          ./utils/intellij-plugin/gradlew yarn
-          ./utils/intellij-plugin/gradlew yarn_build
+          cd utils/intellij-plugin
+          chmod +x ./gradlew
+          ./gradlew buildPlugin
+          ./gradlew nodeSetup
+          ./gradlew yarn
+          ./gradlew yarn_build
       - name: Commit new release
         env:
           INTELLIJ_DEPLOY: ${{ secrets.INTELLIJ_DEPLOY }}
         run: |
-          VERSION=`./utils/intellij-plugin/gradlew yarn_bump`
-          ./utils/intellij-plugin/gradlew publishPlugin
+          VERSION=`./gradlew yarn_bump`
+          ./gradlew publishPlugin
+          cd ../../
           git config --global user.name 'Shakhzod Kudratov'
           git config --global user.email 'shakhzodkudratov@gmail.com'
           git status
