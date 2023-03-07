@@ -35,6 +35,7 @@ Supported templates:
 - `interval`: _setInterval_
 - `usem`: _React.useMemo()_
 - `usec`: _React.useCallback()_
+- `story`: _Storybook story_
 
 
 ## Template code
@@ -377,6 +378,38 @@ Variables:
 |`RETURN`|`completeSmart()`||false|
 |`DEP`|`completeSmart()`||false|
 |`VAR`|`-`||false|
+
+### Storybook story
+
+Invoked via `story`.
+
+```
+import type { Meta, StoryObj } from "@storybook/react";
+
+// More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
+const meta: Meta<typeof $1$> = {
+  title: "Features/$1$",
+  component: $1$,
+  tags: ["autodocs"],
+  argTypes: {$2$},
+};
+
+export default meta;
+type Story = StoryObj<typeof $1$>;
+
+// More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
+export const Default: Story = {
+  args: {$3$},
+};
+
+```
+Variables:
+
+|Name|Expression|Default Value|Skip if defined|
+|----|----------|-------------|---------------|
+|`1`|`-`||false|
+|`2`|`-`||false|
+|`3`|`-`||false|
 
 
 ## Contributions
