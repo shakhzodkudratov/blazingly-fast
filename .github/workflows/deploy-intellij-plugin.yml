@@ -20,6 +20,7 @@ jobs:
         env:
           INTELLIJ_DEPLOY: ${{ secrets.INTELLIJ_DEPLOY }}
         run: |
+          cd utils/intellij-plugin
           VERSION=`./gradlew yarn_bump`
           ./gradlew publishPlugin
           cd ../../
@@ -27,6 +28,6 @@ jobs:
           git config --global user.email 'shakhzodkudratov@gmail.com'
           git status
           git add .
-          git commit -m "Releasing"
+          git commit -m "releasing $VERSION"
           git push
-        #git tag $VERSION
+          git tag $VERSION
