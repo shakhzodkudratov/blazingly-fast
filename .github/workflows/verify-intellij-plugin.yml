@@ -10,6 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Gradle build and verify
         run: |
-          chmod +x ./gradlew
-          ./gradlew buildPlugin
-          ./gradlew verifyPlugin
+          chmod +x ./utils/intellij-plugin/gradlew
+          alias gradleww=./utils/intellij-plugin/gradlew
+          gradleww buildPlugin
+          gradleww verifyPlugin
