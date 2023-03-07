@@ -1,6 +1,6 @@
 <idea-plugin>
   <id>me.shakhzod.intellij.snippets.blazinglyfast</id>
-  <name>Live Templates for blazingly fast development experience</name>
+  <name>Blazingly Fast Live Templates</name>
   <!-- The <version> of this plugin is set by patchPluginXml.version in build.gradle -->
   <vendor email="shakhzodkudratov@gmail.com" url="https://github.com/shakhzodkudratov/blazingly-fast">Shakhzod Kudratov</vendor>
 
