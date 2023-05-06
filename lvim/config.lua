@@ -10,9 +10,9 @@ vim.opt.relativenumber = true
 -- general
 lvim.log.level = "info"
 lvim.format_on_save = {
-  enabled = true,
-  -- pattern = "*.lua",
-  timeout = 1000,
+	enabled = true,
+	-- pattern = "*.lua",
+	timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -27,7 +27,18 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR->", "Projects" }
+lvim.builtin.which_key.mappings["G"] = {
+	name = "Games",
+	S = {
+		"<cmd>:ShenzhenSolitaireNewGame<cr>",
+		"Shenzhen Solitaire 🀙🀐🀇",
+	},
+	M = {
+		"<cmd>:Nvimesweeper<cr>",
+		"Minesweeper",
+	},
+}
 
 -- -- Change theme settings
 lvim.colorscheme = "gruvbox"
@@ -74,46 +85,48 @@ lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "rege
 -- end
 
 -- linters, formatters and code actions <https://www.lunarvim.org/docs/configuration/language-features/linting-and-formatting>
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  { command = "stylua" },
-  {
-    command = "prettier",
-    extra_args = { "--print-width", "100" },
-    filetypes = { "typescript", "typescriptreact" },
-  },
-}
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "flake8", filetypes = { "python" } },
-  {
-    command = "shellcheck",
-    args = { "--severity", "warning" },
-  },
-}
-local code_actions = require "lvim.lsp.null-ls.code_actions"
-code_actions.setup {
-  {
-    exe = "eslint",
-    filetypes = { "typescript", "typescriptreact" },
-  },
-}
-require("lvim.lsp.manager").setup "tailwindcss"
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{ command = "stylua" },
+	{
+		command = "prettier",
+		extra_args = { "--print-width", "100" },
+		filetypes = { "typescript", "typescriptreact" },
+	},
+})
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+	{ command = "flake8", filetypes = { "python" } },
+	{
+		command = "shellcheck",
+		args = { "--severity", "warning" },
+	},
+})
+local code_actions = require("lvim.lsp.null-ls.code_actions")
+code_actions.setup({
+	{
+		exe = "eslint",
+		filetypes = { "typescript", "typescriptreact" },
+	},
+})
+require("lvim.lsp.manager").setup("tailwindcss")
 
 -- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
 lvim.plugins = {
-  --     {
-  --       "folke/trouble.nvim",
-  --       cmd = "TroubleToggle",
-  --     },
-  { "ellisonleao/gruvbox.nvim", priority = 1000 },
+	--     {
+	--       "folke/trouble.nvim",
+	--       cmd = "TroubleToggle",
+	--     },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000 },
+	{ "rktjmp/shenzhen-solitaire.nvim" },
+	{ "seandewar/nvimesweeper" },
 }
 
 -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    -- let treesitter use bash highlight for zsh files as well
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
+	pattern = "zsh",
+	callback = function()
+		-- let treesitter use bash highlight for zsh files as well
+		require("nvim-treesitter.highlight").attach(0, "bash")
+	end,
 })
