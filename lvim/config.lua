@@ -30,7 +30,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- -- Change theme settings
--- lvim.colorscheme = "lunar"
+lvim.colorscheme = "gruvbox"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -43,10 +43,10 @@ lvim.builtin.treesitter.auto_install = true
 
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 
--- -- always installed on startup, useful for parsers without a strict filetype
--- lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
+-- always installed on startup, useful for parsers without a strict filetype
+lvim.builtin.treesitter.ensure_installed = { "comment", "markdown_inline", "regex" }
 
--- -- generic LSP settings <https://www.lunarvim.org/docs/configuration/language-features/language-servers>
+-- generic LSP settings <https://www.lunarvim.org/docs/configuration/language-features/language-servers>
 
 -- --- disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
@@ -73,45 +73,46 @@ lvim.builtin.treesitter.auto_install = true
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- -- linters, formatters and code actions <https://www.lunarvim.org/docs/configuration/language-features/linting-and-formatting>
--- local formatters = require "lvim.lsp.null-ls.formatters"
--- formatters.setup {
---   { command = "stylua" },
---   {
---     command = "prettier",
---     extra_args = { "--print-width", "100" },
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     command = "shellcheck",
---     args = { "--severity", "warning" },
---   },
--- }
--- local code_actions = require "lvim.lsp.null-ls.code_actions"
--- code_actions.setup {
---   {
---     exe = "eslint",
---     filetypes = { "typescript", "typescriptreact" },
---   },
--- }
+-- linters, formatters and code actions <https://www.lunarvim.org/docs/configuration/language-features/linting-and-formatting>
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "stylua" },
+  {
+    command = "prettier",
+    extra_args = { "--print-width", "100" },
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "flake8", filetypes = { "python" } },
+  {
+    command = "shellcheck",
+    args = { "--severity", "warning" },
+  },
+}
+local code_actions = require "lvim.lsp.null-ls.code_actions"
+code_actions.setup {
+  {
+    exe = "eslint",
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
 
--- -- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
--- lvim.plugins = {
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+-- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
+lvim.plugins = {
+  --     {
+  --       "folke/trouble.nvim",
+  --       cmd = "TroubleToggle",
+  --     },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 },
+}
 
--- -- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
+-- Autocommands (`:help autocmd`) <https://neovim.io/doc/user/autocmd.html>
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "zsh",
+  callback = function()
+    -- let treesitter use bash highlight for zsh files as well
+    require("nvim-treesitter.highlight").attach(0, "bash")
+  end,
+})
