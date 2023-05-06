@@ -11,7 +11,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "info"
 lvim.format_on_save = {
   enabled = true,
-  pattern = "*.lua",
+  -- pattern = "*.lua",
   timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -98,6 +98,7 @@ code_actions.setup {
     filetypes = { "typescript", "typescriptreact" },
   },
 }
+require("lvim.lsp.manager").setup "tailwindcss"
 
 -- Additional Plugins <https://www.lunarvim.org/docs/configuration/plugins/user-plugins>
 lvim.plugins = {
