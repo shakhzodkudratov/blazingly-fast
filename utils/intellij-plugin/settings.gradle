@@ -1,2 +1,0 @@
-rootProject.name = 'blazingly_fast_livetemplates'
-include("scripts")
