@@ -20,3 +20,21 @@ lvim.keys.visual_block_mode["<A-k>"] = false
 lvim.keys.visual_block_mode["J"] = false
 lvim.keys.visual_block_mode["K"] = false
 
+lvim.builtin.nvimtree.update_cwd = true
+lvim.builtin.project.active = false
+
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  {
+    command = "prettier",
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
+
+
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
+}
+
+require("lvim.lsp.manager").setup "tailwindcss"
