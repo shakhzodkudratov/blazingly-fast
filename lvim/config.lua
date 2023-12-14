@@ -22,6 +22,7 @@ lvim.keys.visual_block_mode["K"] = false
 
 lvim.builtin.nvimtree.update_cwd = true
 lvim.builtin.project.active = false
+lvim.builtin.treesitter.autotag.enable = true
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -37,4 +38,15 @@ linters.setup {
   { command = "eslint", filetypes = { "typescript", "typescriptreact" } }
 }
 
-require("lvim.lsp.manager").setup "tailwindcss"
+require("lvim.lsp.manager").setup("tailwindcss", {
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+        },
+      },
+    },
+  },
+})
