@@ -36,7 +36,9 @@
 
   in {
     inherit lib;
-   
+    
+    overlays = import ./overlays.nix { inherit inputs; };
+    
     nixosConfigurations = {
       "workpc" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
