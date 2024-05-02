@@ -11,40 +11,62 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    flake-utils
-  } @ inputs: let
-    inherit (self) outputs;
-    
-    lib = nixpkgs.lib // home-manager.lib;
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , home-manager
+    , flake-utils
+    , ...
+    } @ inputs:
+    let
+      inherit (self) outputs;
 
-    systems = [
-      "x86_64-linux"
-    ];
+      lib = nixpkgs.lib // home-manager.lib;
 
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs systems (system:
-      import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
+      systems = [
+        "x86_64-linux"
+      ];
 
-  in {
-    inherit lib;
-    
-    overlays = import ./overlays.nix { inherit inputs; };
-    
-    nixosConfigurations = {
-      "workpc" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [ ./workpc/configuration.nix ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        });
+
+    in
+    {
+      inherit lib;
+
+      overlays = import ./overlays.nix { inherit inputs; };
+
+      nixosConfigurations = {
+        "workpc" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./workpc/configuration.nix ];
+        };
       };
-    };
 
-  };
+      homeManagerModules = import ./home-manager;
+      homeConfigurations = {
+        "shakhzod@workpc" = home-manager.lib.homeManagerConfiguraiton {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./workpc/home.nix
+          ];
+        };
+      };
+
+      fonts.packages = with nixpkgs; [
+        (nerdfonts.override {
+          fonts = [ "JetBrainsMono" ];
+        })
+      ];
+
+    };
 }
