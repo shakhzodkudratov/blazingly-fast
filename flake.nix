@@ -2,7 +2,8 @@
   description = "My blazingly fast nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-2311.url = "github:nixos/nixpkgs?ref=nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -14,6 +15,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-2311
     , nixpkgs-unstable
     , home-manager
     , flake-utils

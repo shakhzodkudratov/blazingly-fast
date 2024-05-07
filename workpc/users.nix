@@ -3,30 +3,38 @@
     shakhzod = {
       isNormalUser = true;
       extraGroups = [ "wheel" "docker" ];
-      packages = (with pkgs; [
+      packages = (with pkgs.n2311; [
         firefox
         thunderbird
         tree
         git
         steam
-        jetbrains.webstorm
-        jetbrains.pycharm-professional
-        jetbrains.goland
-        jetbrains.rust-rover
-        jetbrains.clion
-        jetbrains.idea-ultimate
-        jetbrains.datagrip
-        jetbrains.phpstorm
+        jetbrains-toolbox
         telegram-desktop
         nil
         nixpkgs-fmt
         _1password-gui
         termius
         spotify
+        rustup
+        nodejs_21
+        nodePackages.pnpm
+        python3
+        virtualenv
+        bruno
+        anki-bin
+        ocaml
+        dune_3
+        ocamlPackages.findlib
+        ocamlPackages.re
+        htop
+        inetutils
       ])
       ++ (with pkgs.unstable; [
         vscode
         zed-editor
+        discord
+        postman
       ]);
     };
   };

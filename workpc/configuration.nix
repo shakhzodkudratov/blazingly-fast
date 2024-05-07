@@ -14,7 +14,7 @@
     };
 
     overlays = [
-      outputs.overlays.unstable-packages
+      outputs.overlays.nix-channels
     ];
   };
 
@@ -63,10 +63,16 @@
   services = {
     xserver = {
       enable = true;
-      displayManager.sddm.enable = true;
-      desktopManager.plasma5.enable = true;
+      # desktopManager.plasma5.enable = true;
       videoDrivers = [ "nvidia" ];
     };
+
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
+
+    # https://github.com/Mic92/envfs
+    envfs.enable = true;
   };
 
   sound.enable = true;
@@ -93,6 +99,7 @@
       vim
       wget
       curl
+      envfs
     ];
   };
 

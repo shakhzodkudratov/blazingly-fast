@@ -12,7 +12,7 @@
     shellAliases = { };
 
     initExtra = ''
-      # export PATH=
+      export PATH=$PATH:/home/shakhzod/.local/share/JetBrains/Toolbox/scripts
     '';
   };
 }
