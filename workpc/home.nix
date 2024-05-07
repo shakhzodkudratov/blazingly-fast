@@ -3,7 +3,7 @@
 
   nixpkgs = {
     overlays = [
-      outputs.overlays.unstable-packages
+      outputs.overlays.nix-channels
     ];
 
     config = {
