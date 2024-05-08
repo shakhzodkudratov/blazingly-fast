@@ -23,7 +23,7 @@
   '';
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod;
 
     loader = {
       systemd-boot.enable = true;
@@ -60,16 +60,41 @@
     # useXkbConfig = true; # use xkb.options in tty.
   };
 
+  fonts =
+    {
+      fontDir.enable = true;
+      enableDefaultPackages = true;
+      packages = with pkgs; [
+        ubuntu_font_family
+        noto-fonts
+        noto-fonts-emoji
+        noto-fonts-cjk
+        jetbrains-mono
+        (nerdfonts.override {
+          fonts = [ "JetBrainsMono" ];
+        })
+      ];
+
+      fontconfig = {
+        defaultFonts = {
+          # serif = [ "Ubuntu" ];
+          # sansSerif = [ "Ubuntu" ];
+          monospace = [ "JetBrainsMono" ];
+        };
+      };
+    };
+
   services = {
     xserver = {
       enable = true;
-      # desktopManager.plasma5.enable = true;
+      desktopManager.plasma5.enable = true;
+      displayManager.sddm.enable = true;
       videoDrivers = [ "nvidia" ];
     };
 
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true;
-    desktopManager.plasma6.enable = true;
+    # displayManager.sddm.enable = true;
+    # displayManager.sddm.wayland.enable = true;
+    # desktopManager.plasma6.enable = true;
 
     # https://github.com/Mic92/envfs
     envfs.enable = true;

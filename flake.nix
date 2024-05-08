@@ -2,7 +2,7 @@
   description = "My blazingly fast nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
     nixpkgs-2311.url = "github:nixos/nixpkgs?ref=nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -63,12 +63,5 @@
           ];
         };
       };
-
-      fonts.packages = with nixpkgs; [
-        (nerdfonts.override {
-          fonts = [ "JetBrainsMono" ];
-        })
-      ];
-
     };
 }
