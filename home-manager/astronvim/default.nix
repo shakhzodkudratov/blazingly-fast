@@ -1,16 +1,13 @@
 { inputs
 , pkgs
+, config
 , ...
 }: {
   imports = [ ];
 
   xdg.configFile = {
     # astronvim's config
-    "nvim".source = inputs.astronvim;
-
-    # my custom astronvim config, astronvim will load it after base config
-    # https://github.com/AstroNvim/AstroNvim/blob/v3.32.0/lua/astronvim/bootstrap.lua#L15-L16
-    "astronvim/lua/user".source = ./user;
+    "nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/shakhzod/blazingly-fast/home-manager/astronvim/user";
   };
 
   nixpkgs.config = {
@@ -135,16 +132,7 @@
           #-- Optional Requirements:
           gdu # disk usage analyzer, required by AstroNvim
           ripgrep # fast search tool, required by AstroNvim's '<leader>fw'(<leader> is space key)
-        ]
-        ++ (
-          if pkgs.stdenv.isDarwin
-          then [ ]
-          else [
-            #-- verilog / systemverilog
-            verible
-            gdb
-          ]
-        );
+        ];
     };
   };
 }
