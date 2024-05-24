@@ -5,7 +5,22 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
-  { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.gruvbox-baby" },
-  -- import/override with your plugins folder
+  { import = "astrocommunity.pack.rust" },
+  -- shell
+  { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.bash" },
+  -- conf
+  { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.toml" },
+  -- js
+  { import = "astrocommunity.pack.typescript-all-in-one" },
+  { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.prisma" },
+  { import = "astrocommunity.pack.vue" },
 }
