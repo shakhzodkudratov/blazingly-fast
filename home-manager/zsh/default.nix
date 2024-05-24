@@ -12,10 +12,14 @@
     shellAliases = { };
 
     initExtra = ''
+      export BLAZINGLY_FAST="/home/shakhzod/blazingly-fast"
       export PATH=$PATH:/home/shakhzod/.local/share/JetBrains/Toolbox/scripts
-      alias nvimconf="nvim /home/shakhzod/blazingly-fast/home-manager/astronvim/user"
-      alias nixconf="nvim /home/shakhzod/blazingly-fast"
-      alias nixrebuild="git -C /home/shakhzod/blazingly-fast add . && sudo nixos-rebuild switch --flake /home/shakhzod/blazingly-fast/#workpc && git -C /home/shakhzod/blazingly-fast commit -m 'automatically created by nixrebuild' && git -C /home/shakhzod/blazingly-fast push"
+      alias avim="NVIM_APPNAME=astronvim nvim"
+      alias zshrc="avim $BLAZINGLY_FAST/home-manager/zsh/default.nix"
+      alias avimconf="avim $BLAZINGLY_FAST/home-manager/astronvim/user"
+      alias nixconf="avim $BLAZINGLY_FAST"
+      alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST#workpc"
+      alias nixupdate="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
     '';
   };
 }

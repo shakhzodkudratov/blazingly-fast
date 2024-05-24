@@ -7,7 +7,7 @@
 
   xdg.configFile = {
     # astronvim's config
-    "nvim".source = config.lib.file.mkOutOfStoreSymlink "/home/shakhzod/blazingly-fast/home-manager/astronvim/user";
+    "astronvim".source = config.lib.file.mkOutOfStoreSymlink "/home/shakhzod/blazingly-fast/home-manager/astronvim/user";
   };
 
   nixpkgs.config = {
