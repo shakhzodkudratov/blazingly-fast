@@ -87,14 +87,14 @@
   services = {
     xserver = {
       enable = true;
-      desktopManager.plasma5.enable = true;
-      displayManager.sddm.enable = true;
+      # desktopManager.plasma5.enable = true;
+      # displayManager.sddm.enable = true;
       videoDrivers = [ "nvidia" ];
     };
 
-    # displayManager.sddm.enable = true;
-    # displayManager.sddm.wayland.enable = true;
-    # desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+    desktopManager.plasma6.enable = true;
 
     # https://github.com/Mic92/envfs
     envfs.enable = true;
@@ -117,6 +117,13 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
@@ -134,5 +141,5 @@
     enableSSHSupport = true;
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

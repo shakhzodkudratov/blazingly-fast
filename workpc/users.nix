@@ -3,8 +3,9 @@
     shakhzod = {
       isNormalUser = true;
       extraGroups = [ "wheel" "docker" ];
-      packages = (with pkgs.n2311; [
+      packages = (with pkgs; [
         firefox
+        google-chrome
         thunderbird
         tree
         git
@@ -16,9 +17,6 @@
         _1password-gui
         termius
         spotify
-        rustup
-        nodejs_21
-        nodePackages.pnpm
         python3
         virtualenv
         bruno
@@ -29,6 +27,17 @@
         ocamlPackages.re
         htop
         inetutils
+        element-desktop
+        libsForQt5.kleopatra
+        llvmPackages.llvm
+        llvmPackages.clang
+        cmake
+        rustup
+        onlyoffice-bin_latest
+      ])
+      ++ (with pkgs.n2311; [
+        nodejs_21
+        nodePackages.pnpm
       ])
       ++ (with pkgs.unstable; [
         vscode
