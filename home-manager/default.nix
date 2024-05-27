@@ -7,8 +7,5 @@
   git = import ./git;
   alacritty = import ./alacritty;
   tmux = import ./tmux;
-  java = import ./java;
-  opam = import ./opam;
-  direnv = import ./direnv;
   astronvim = import ./astronvim;
 }

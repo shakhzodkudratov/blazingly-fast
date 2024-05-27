@@ -20,11 +20,6 @@
         python3
         virtualenv
         bruno
-        anki-bin
-        ocaml
-        dune_3
-        ocamlPackages.findlib
-        ocamlPackages.re
         htop
         inetutils
         element-desktop
@@ -32,7 +27,6 @@
         llvmPackages.llvm
         llvmPackages.clang
         cmake
-        rustup
         onlyoffice-bin_latest
       ])
       ++ (with pkgs.n2311; [
