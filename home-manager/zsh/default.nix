@@ -20,9 +20,9 @@
       alias nixconf="avim $BLAZINGLY_FAST"
       alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST#workpc"
       alias nixupdate="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
-      alias nix-shell="nix-shell --run zsh"
-      if [[ -f shell.nix ]]; then
-        nix-shell --run zsh
+      alias nix-shell="INNIXSHELL=true nix-shell --run zsh"
+      if [ -z $INNIXSHELL ] && [ -f shell.nix ]; then
+        INNIXSHELL=true nix-shell --run zsh
       fi
     '';
   };
