@@ -13,7 +13,7 @@
 
     initExtra = ''
       export BLAZINGLY_FAST="/home/shakhzod/blazingly-fast"
-      export PATH=$PATH:/home/shakhzod/.local/share/JetBrains/Toolbox/scripts
+      export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/.cargo/bin
       alias avim="NVIM_APPNAME=astronvim nvim"
       alias zshrc="avim $BLAZINGLY_FAST/home-manager/zsh/default.nix"
       alias avimconf="avim $BLAZINGLY_FAST/home-manager/astronvim/user"
