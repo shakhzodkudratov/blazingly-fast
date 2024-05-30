@@ -12,6 +12,7 @@
         steam
         jetbrains-toolbox
         telegram-desktop
+        webkitgtk_6_0
         nil
         nixpkgs-fmt
         _1password-gui
