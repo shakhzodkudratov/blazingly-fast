@@ -29,6 +29,7 @@
         llvmPackages.clang
         cmake
         onlyoffice-bin_latest
+        obs-studio
       ])
       ++ (with pkgs.n2311; [
         nodejs_21

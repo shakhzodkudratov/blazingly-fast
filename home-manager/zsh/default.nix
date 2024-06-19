@@ -21,6 +21,7 @@
       alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST#workpc"
       alias nixupdate="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
       alias nix-shell="INNIXSHELL=true nix-shell --run zsh"
+      alias nixupgrade="sudo nix-channel --update"
       if [ -z $INNIXSHELL ] && [ -f shell.nix ]; then
         INNIXSHELL=true nix-shell --run zsh
       fi
