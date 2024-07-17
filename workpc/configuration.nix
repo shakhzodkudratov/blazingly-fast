@@ -37,15 +37,6 @@
       driSupport = true;
       driSupport32Bit = true;
     };
-
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
   };
 
   networking.hostName = "workpc";
@@ -87,9 +78,6 @@
   services = {
     xserver = {
       enable = true;
-      # desktopManager.plasma5.enable = true;
-      # displayManager.sddm.enable = true;
-      videoDrivers = [ "nvidia" ];
     };
 
     displayManager.sddm.enable = true;
@@ -106,7 +94,6 @@
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
-    enableNvidia = true;
     rootless = {
       enable = true;
       setSocketVariable = true;
