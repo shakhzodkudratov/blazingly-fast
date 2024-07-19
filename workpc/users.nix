@@ -30,6 +30,7 @@
         cmake
         onlyoffice-bin_latest
         obs-studio
+        zulip
       ])
       ++ (with pkgs.n2311; [
         nodejs_21

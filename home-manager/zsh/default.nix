@@ -18,7 +18,7 @@
       alias zshrc="avim $BLAZINGLY_FAST/home-manager/zsh/default.nix"
       alias avimconf="avim $BLAZINGLY_FAST/home-manager/astronvim/user"
       alias nixconf="avim $BLAZINGLY_FAST"
-      alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST#workpc"
+      alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST"
       alias nixupdate="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
       alias nix-shell="INNIXSHELL=true nix-shell --run zsh"
       alias nixupgrade="sudo nix flake update $BLAZINGLY_FAST && nixrebuild"
