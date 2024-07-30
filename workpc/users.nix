@@ -31,6 +31,8 @@
         onlyoffice-bin_latest
         obs-studio
         zulip
+        prismlauncher
+        texturepacker
       ])
       ++ (with pkgs.n2311; [
         nodejs_21

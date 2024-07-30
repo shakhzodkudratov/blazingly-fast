@@ -25,6 +25,7 @@
       if [ -z $INNIXSHELL ] && [ -f shell.nix ]; then
         INNIXSHELL=true nix-shell --run zsh
       fi
+      export NIXPKGS_ALLOW_UNFREE=1
     '';
   };
 }
