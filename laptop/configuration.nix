@@ -47,7 +47,7 @@
     };
   };
 
-  networking.hostName = "workpc";
+  networking.hostName = "laptop";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Tashkent";

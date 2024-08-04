@@ -1,0 +1,41 @@
+{ pkgs }: (with pkgs; [
+    firefox
+    google-chrome
+    thunderbird
+    tree
+    git
+    steam
+    jetbrains-toolbox
+    telegram-desktop
+    webkitgtk_6_0
+    nil
+    nixpkgs-fmt
+    _1password-gui
+    termius
+    spotify
+    python3
+    virtualenv
+    bruno
+    htop
+    inetutils
+    element-desktop
+    libsForQt5.kleopatra
+    llvmPackages.llvm
+    llvmPackages.clang
+    cmake
+    onlyoffice-bin_latest
+    obs-studio
+    zulip
+    prismlauncher
+    texturepacker
+    heroic
+    obsidian
+]) ++ (with pkgs.n2311; [
+    nodejs_21
+    nodePackages.pnpm
+]) ++ (with pkgs.unstable; [
+    vscode
+    zed-editor
+    discord
+    postman
+])
