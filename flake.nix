@@ -41,23 +41,13 @@
           inherit system;
           config.allowUnfree = true;
         });
-
     in
     {
       inherit lib;
 
       overlays = import ./overlays.nix { inherit inputs; };
 
-      nixosConfigurations = {
-        "workpc" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./workpc/configuration.nix ];
-        };
-        "laptop" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./laptop/configuration.nix ];
-        };
-      };
+      nixosConfigurations = import ./machines { inherit nixpkgs inputs outputs; };
 
       homeManagerModules = import ./home-manager;
       homeConfigurations = {

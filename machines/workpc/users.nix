@@ -1,5 +1,5 @@
 { pkgs, inputs, outputs, ... }: let
-    globalPackages = import ../global/packages.nix { inherit pkgs; };
+    globalPackages = import ../../global/packages.nix { inherit pkgs; };
 in {
   users.users = {
     shakhzod = {
@@ -12,6 +12,6 @@ in {
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
-    users = { shakhzod = import ./home.nix; };
+    users = { shakhzod = import ../../global/home.nix; };
   };
 }
