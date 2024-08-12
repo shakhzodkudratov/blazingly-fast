@@ -20,8 +20,9 @@
   spotify
   obsidian
   onlyoffice-bin_latest
-  #   kerio-control-vpnclient
+  kerio-control-vpnclient
   obs-studio
+  vlc
 
   python3
   jetbrains-toolbox
