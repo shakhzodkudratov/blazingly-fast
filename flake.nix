@@ -14,6 +14,11 @@
       url = "github:AstroNvim/AstroNvim/v4.7.7";
       flake = false;
     };
+    kerio-control-vpnclient = {
+      url = "github:shakhzodkudratov/kerio-control-vpnclient-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      flake = true;
+    };
   };
 
   outputs =

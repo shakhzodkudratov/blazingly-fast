@@ -15,6 +15,7 @@
 
     overlays = [
       outputs.overlays.nix-channels
+      outputs.overlays.extra-packages
     ];
   };
 

@@ -15,6 +15,7 @@
 
     overlays = [
       outputs.overlays.nix-channels
+      outputs.overlays.extra-packages
     ];
   };
 
@@ -39,11 +40,11 @@
     };
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-	modesetting.enable = true;
-	powerManagement.enable = false;
-	powerManagement.finegrained = false;
-	open = false;
-	nvidiaSettings = true;
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
     };
   };
 
@@ -86,7 +87,7 @@
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
+      videoDrivers = [ "nvidia" ];
     };
 
     displayManager.sddm.enable = true;

@@ -9,4 +9,10 @@
       config.allowUnfree = true;
     };
   };
+  extra-packages = final: _prev: {
+    kerio-control-vpnclient = import inputs.kerio-control-vpnclient {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
 }
