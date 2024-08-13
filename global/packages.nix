@@ -20,7 +20,7 @@
   spotify
   obsidian
   onlyoffice-bin_latest
-  kerio-control-vpnclient
+
   obs-studio
   vlc
 
@@ -51,6 +51,7 @@
   cmake
 ]) ++ (with pkgs.unstable; [
   zed-editor
+  vscode
   discord
   postman
 ])
