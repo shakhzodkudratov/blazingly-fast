@@ -19,6 +19,7 @@
 
   spotify
   obsidian
+  anytype
   onlyoffice-bin_latest
 
   obs-studio
@@ -38,10 +39,6 @@
   termius
   bruno
 
-  nodejs_22
-  nodePackages.pnpm
-  nodePackages.yarn
-
   virtualenv
   htop
   inetutils
@@ -54,4 +51,8 @@
   vscode
   discord
   postman
+  
+  nodejs_22
+  pnpm
+  yarn
 ])
