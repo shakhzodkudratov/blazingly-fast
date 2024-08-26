@@ -19,6 +19,7 @@
       alias avimconf="avim $BLAZINGLY_FAST/home-manager/astronvim/user"
       alias nixconf="avim $BLAZINGLY_FAST"
       alias nixrebuild="git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure"
+      alias nixpull="git -C $BLAZINGLY_FAST pull"
       alias nixpush="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
       alias nixupgrade="sudo nix flake update $BLAZINGLY_FAST && nixrebuild"
       alias nix-shell="INNIXSHELL=true nix-shell --run zsh"
