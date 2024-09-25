@@ -62,6 +62,10 @@
       open = false;
       nvidiaSettings = true;
     };
+    bluetooth = {
+	enable = true;
+	powerOnBoot = true;
+    };
   };
 
   networking.hostName = "laptop";
