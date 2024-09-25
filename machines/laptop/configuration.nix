@@ -24,7 +24,7 @@
   '';
 
   boot = {
-    # kernelPackages = pkgs.linuxPackages_xanmod;
+    # kernelPackages = pkgs.linuxPackages_6_10;
     kernelPatches = [
       {
         name = "fix-1";
@@ -111,6 +111,7 @@
     desktopManager.plasma6.enable = true;
     # https://github.com/Mic92/envfs
     envfs.enable = true;
+    blueman.enable = true;
   };
 
   virtualisation.docker = {
