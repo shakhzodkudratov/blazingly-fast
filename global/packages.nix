@@ -12,6 +12,7 @@
 
   tree
   git
+  zoxide
 
   steam
   heroic

@@ -27,6 +27,7 @@
         INNIXSHELL=true nix-shell --run zsh
       fi
       export NIXPKGS_ALLOW_UNFREE=1
+      eval "$(zoxide init zsh)"
     '';
   };
 }
