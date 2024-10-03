@@ -38,6 +38,10 @@
       driSupport = true;
       driSupport32Bit = true;
     };
+    bluetooth = {
+	    enable = true;
+	    powerOnBoot = true;
+    };
   };
 
   networking.hostName = "workpc";
@@ -87,6 +91,7 @@
 
     # https://github.com/Mic92/envfs
     envfs.enable = true;
+    blueman.enable = true;
   };
 
   sound.enable = true;

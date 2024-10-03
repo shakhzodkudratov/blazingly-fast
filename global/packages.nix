@@ -6,6 +6,7 @@
 
   firefox
   google-chrome
+  ladybird
 
   thunderbird
   libsForQt5.kleopatra

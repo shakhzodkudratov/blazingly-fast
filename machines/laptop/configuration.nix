@@ -63,8 +63,8 @@
       nvidiaSettings = true;
     };
     bluetooth = {
-	enable = true;
-	powerOnBoot = true;
+	    enable = true;
+	    powerOnBoot = true;
     };
   };
 
