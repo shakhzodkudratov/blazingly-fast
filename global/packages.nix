@@ -29,6 +29,8 @@
   lorien
   guvcview
   v4l-utils
+  gphoto2
+  ffmpeg
 
   python3
   jetbrains-toolbox
