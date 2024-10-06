@@ -28,6 +28,7 @@
   vlc
   lorien
   guvcview
+  v4l-utils
 
   python3
   jetbrains-toolbox
