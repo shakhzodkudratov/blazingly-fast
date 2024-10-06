@@ -26,6 +26,8 @@
 
   obs-studio
   vlc
+  lorien
+  guvcview
 
   python3
   jetbrains-toolbox

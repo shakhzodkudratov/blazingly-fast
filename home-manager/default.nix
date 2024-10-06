@@ -8,5 +8,5 @@
   alacritty = import ./alacritty;
   tmux = import ./tmux;
   astronvim = import ./astronvim;
-  # zellij = import ./zellij;
+  zellij = import ./zellij;
 }
