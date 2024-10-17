@@ -7,6 +7,7 @@
   firefox
   google-chrome
   ladybird
+  floorp
 
   thunderbird
   libsForQt5.kleopatra
@@ -24,7 +25,13 @@
   anytype
   onlyoffice-bin_latest
 
-  obs-studio
+  # obs-studio
+  (wrapOBS {
+    plugins = with obs-studio-plugins; [
+      droidcam-obs
+    ];
+  })
+  droidcam
   vlc
   lorien
   guvcview
