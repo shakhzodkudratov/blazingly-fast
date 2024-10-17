@@ -25,5 +25,12 @@
     "enabled": false,
     "button": false
   },
-  "auto_update": false
+  "auto_update": false,
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  }
 }
