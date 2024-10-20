@@ -42,6 +42,7 @@
   python3
   jetbrains-toolbox
   texturepacker
+  android-studio
 
   telegram-desktop
   element-desktop
