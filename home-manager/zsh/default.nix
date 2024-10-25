@@ -14,6 +14,7 @@
     initExtra = ''
       export BLAZINGLY_FAST="/home/shakhzod/blazingly-fast"
       export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/.cargo/bin
+
       alias avim="NVIM_APPNAME=astronvim nvim"
       alias zshrc="avim $BLAZINGLY_FAST/home-manager/zsh/default.nix"
       alias avimconf="avim $BLAZINGLY_FAST/home-manager/astronvim/user"
@@ -27,6 +28,9 @@
         INNIXSHELL=true nix-shell --run zsh
       fi
       export NIXPKGS_ALLOW_UNFREE=1
+
+      alias eimzobin="nix-shell -p jdk8 --run \"nohup java -jar $HOME/E-IMZO.jar &>/dev/null &\""
+
       eval "$(zoxide init zsh)"
     '';
   };
