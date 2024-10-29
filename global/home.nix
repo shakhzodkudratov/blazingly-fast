@@ -19,5 +19,8 @@
     enableNixpkgsReleaseCheck = false;
   };
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    direnv.enable = true;
+  };
 }

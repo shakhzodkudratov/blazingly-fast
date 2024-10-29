@@ -23,10 +23,7 @@
       alias nixpull="git -C $BLAZINGLY_FAST pull"
       alias nixpush="git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push"
       alias nixupgrade="sudo nix flake update $BLAZINGLY_FAST && nixrebuild"
-      alias nix-shell="INNIXSHELL=true nix-shell --run zsh"
-      if [ -z $INNIXSHELL ] && [ -f shell.nix ]; then
-        INNIXSHELL=true nix-shell --run zsh
-      fi
+      alias nix-shell="nix-shell --run zsh"
       export NIXPKGS_ALLOW_UNFREE=1
 
       alias eimzobin="nix-shell -p jdk8 --run \"nohup java -jar $HOME/E-IMZO.jar &>/dev/null &\""
