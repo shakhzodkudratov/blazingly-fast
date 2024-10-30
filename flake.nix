@@ -14,11 +14,6 @@
       url = "github:AstroNvim/AstroNvim/v4.7.7";
       flake = false;
     };
-    kerio-control-vpnclient = {
-      url = "github:shakhzodkudratov/kerio-control-vpnclient-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      flake = true;
-    };
   };
 
   outputs =
@@ -32,39 +27,13 @@
     } @ inputs:
     let
       inherit (self) outputs;
-
       lib = nixpkgs.lib // home-manager.lib;
-
-      systems = [
-        "x86_64-linux"
-      ];
-
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-      pkgsFor = lib.genAttrs systems (system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        });
     in
     {
       inherit lib;
-
-      overlays = import ./overlays.nix { inherit inputs; };
-
+      overlays = import ./common/overlays.nix { inherit inputs; };
+      configurationModules = import ./common/configuration-modules;
+      homeManagerModules = import ./common/home-manager;
       nixosConfigurations = import ./machines { inherit nixpkgs inputs outputs; };
-
-      homeManagerModules = import ./home-manager;
-      homeConfigurations = {
-        "shakhzod@workpc" = home-manager.lib.homeManagerConfiguraiton {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./global/home.nix
-          ];
-        };
-      };
     };
 }

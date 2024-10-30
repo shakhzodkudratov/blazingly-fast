@@ -1,15 +1,4 @@
-{ inputs
-, pkgs
-, config
-, ...
-}: {
-  imports = [ ];
-
-  xdg.configFile = {
-    # astronvim's config
-    "astronvim".source = config.lib.file.mkOutOfStoreSymlink "/home/shakhzod/blazingly-fast/home-manager/astronvim/user";
-  };
-
+{ pkgs, ... }: {
   nixpkgs.config = {
     programs.npm.npmrc = ''
       prefix = ''${HOME}/.npm-global

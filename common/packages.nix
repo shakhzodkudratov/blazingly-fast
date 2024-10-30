@@ -1,3 +1,5 @@
+# imported in @/common/configuration.nix
+
 { pkgs }:
 (with pkgs; [
   nil
@@ -14,7 +16,15 @@
 
   tree
   git
-  zoxide
+
+  # btop
+  bat
+  # eza
+  # procs
+  # ripgrep
+  # fd
+  # gping
+  # hyperfine
 
   steam
   heroic
@@ -25,7 +35,6 @@
   anytype
   onlyoffice-bin_latest
 
-  # obs-studio
   (wrapOBS {
     plugins = with obs-studio-plugins; [
       droidcam-obs
@@ -66,7 +75,7 @@
   vscode
   discord
   postman
-  
+
   nodejs_22
   pnpm
   yarn

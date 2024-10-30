@@ -1,4 +1,5 @@
-{ inputs, lib, pkgs, config, outputs, packages, ... }: {
+{ outputs, ... }: {
+  # this imports all home-manager modules from @/common/home-manager
   imports = (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
