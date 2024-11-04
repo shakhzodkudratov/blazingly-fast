@@ -5,4 +5,5 @@
   nixpkgs = import ./nixpkgs;
   sound = import ./sound;
   fonts = import ./fonts;
+  keyboard-layouts = import ./keyboard-layouts;
 }
