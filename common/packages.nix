@@ -8,7 +8,7 @@
 
   firefox
   google-chrome
-  ladybird
+  # ladybird
   floorp
 
   thunderbird
