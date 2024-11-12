@@ -55,6 +55,7 @@
     desktopManager.plasma6.enable = true;
 
     blueman.enable = true;
+    teamviewer.enable = true;
   };
 
   system.stateVersion = "24.05";
