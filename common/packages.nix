@@ -66,6 +66,7 @@
   virtualenv
   htop
   inetutils
+  teamviewer
 
   llvmPackages.llvm
   llvmPackages.clang
