@@ -6,7 +6,7 @@ let
     # made with rust from orzklv/nix
     # top = "btop";
     # htop = "btop";
-    cat = "bat";
+    # cat = "bat";
     # ls = "eza";
     # sl = "eza";
     # ps = "procs";

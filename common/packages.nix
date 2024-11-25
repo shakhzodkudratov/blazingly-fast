@@ -17,14 +17,14 @@
   tree
   git
 
-  # btop
+  btop
   bat
-  # eza
-  # procs
-  # ripgrep
-  # fd
-  # gping
-  # hyperfine
+  eza
+  procs
+  ripgrep
+  fd
+  gping
+  hyperfine
 
   steam
   heroic
