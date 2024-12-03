@@ -23,10 +23,9 @@
   };
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
@@ -58,5 +57,5 @@
     teamviewer.enable = true;
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

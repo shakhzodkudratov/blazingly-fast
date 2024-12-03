@@ -7,7 +7,7 @@
         ubuntu_font_family
         noto-fonts
         noto-fonts-emoji
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         jetbrains-mono
         (nerdfonts.override {
           fonts = [ "JetBrainsMono" ];

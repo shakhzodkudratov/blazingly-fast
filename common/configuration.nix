@@ -1,4 +1,4 @@
-{ pkgs, inputs, outputs, ... }:
+{ pkgs, outputs, ... }:
 let
   globalPackages = import ./packages.nix { inherit pkgs; };
 in
