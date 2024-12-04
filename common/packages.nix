@@ -26,10 +26,6 @@
   gping
   hyperfine
 
-  steam
-  heroic
-  prismlauncher
-
   spotify
   obsidian
   anytype
