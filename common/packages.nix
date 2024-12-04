@@ -5,6 +5,7 @@
   nil
   nixd
   nixpkgs-fmt
+  cargo
 
   firefox
   google-chrome
@@ -25,6 +26,7 @@
   fd
   gping
   hyperfine
+  unzip
 
   spotify
   obsidian

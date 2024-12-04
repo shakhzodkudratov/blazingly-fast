@@ -15,5 +15,12 @@
       ".idea"
       "node_modules"
     ];
+
+    extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
+      pull.rebase = "true";
+    };
   };
 }

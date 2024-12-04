@@ -14,7 +14,8 @@
     shellAliases = { };
 
     initExtra = ''
-      export BLAZINGLY_FAST="/home/shakhzod/blazingly-fast"
+      export BLAZINGLY_FAST="$HOME/blazingly-fast"
+      export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
       export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/.cargo/bin
       export NIXPKGS_ALLOW_UNFREE=1
       eval "$(zoxide init zsh)"
