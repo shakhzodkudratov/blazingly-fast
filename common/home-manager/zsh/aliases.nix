@@ -38,7 +38,8 @@ let
     nixcleanup = "nix store gc && nix collect-garbage -d";
     nix-shell = "nix-shell --run zsh";
     nix-develop = "nix develop -c \"$SHELL\"";
-    nix-shell-workspace = "nix-shell $NIX_SHELL_WORKSPACE";
+
+    nix-shell-go = "nix-shell $NIX_SHELL_WORKSPACE/golang/latest/shell.nix";
   };
 in
 {
