@@ -1,8 +1,4 @@
-{ pkgs, outputs, ... }:
-let
-  globalPackages = import ./packages.nix { inherit pkgs; };
-in
-{
+{ pkgs, outputs, ... }: {
   # this imports all configuration modules modules from @/common/configuration-modules
   imports = (builtins.attrValues outputs.configurationModules);
 
@@ -10,7 +6,6 @@ in
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = globalPackages;
   };
 
   # EXTRA

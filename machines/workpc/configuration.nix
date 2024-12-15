@@ -1,4 +1,7 @@
 { config, lib, pkgs, inputs, outputs, ... }:
+let
+  globalPackages = import ../../common/packages.nix { inherit pkgs; };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,6 +9,8 @@
     ../../common/configuration.nix
     ../../users/shakhzod/configuration.nix
   ];
+
+  environment.systemPackages = globalPackages;
 
   boot = {
     loader = {

@@ -45,6 +45,7 @@
   v4l-utils
   gphoto2
   ffmpeg
+  filelight
 
   python3
   jetbrains-toolbox

@@ -1,4 +1,7 @@
 { config, lib, pkgs, inputs, outputs, ... }:
+let
+  globalPackages = import ../../common/packages.nix { inherit pkgs; };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,15 +15,16 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
+    supportedFilesystems = [ "ntfs" ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
     kernelModules = [ "v4l2loopback" ];
-    extraModprobeConfig = ''
-      options v4l2loopback devices=3 video_nr=7,8,9 card_label="OBSCam,ScreenCam,DiscordCam" exclusive_caps=1,1,1
-    '';
   };
+
+  environment.systemPackages = globalPackages ++ (with pkgs; [
+    steam
+  ]);
 
   hardware = {
     graphics = {
