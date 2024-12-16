@@ -36,8 +36,8 @@ let
     nixpush = "git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push";
     nixupgrade = "nix flake update --flake=$BLAZINGLY_FAST/flake.nix && nixrebuild";
     nixcleanup = "nix-env --delete-generations +2 && nix store gc && nix-channel --update && nix-env -u --always && nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration switch";
-    nix-shell = "nix-shell --run zsh";
-    nix-develop = "nix develop -c \"$SHELL\"";
+    # nix-shell = "nix-shell --run zsh";
+    # nix-develop = "nix develop -c \"$SHELL\"";
 
     nix-shell-go = "nix-shell $NIX_SHELL_WORKSPACE/golang/latest/shell.nix";
   };
