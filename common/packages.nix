@@ -10,7 +10,6 @@
   firefox
   google-chrome
   # ladybird
-  floorp
 
   thunderbird
   libsForQt5.kleopatra
@@ -80,6 +79,8 @@
   nodejs_22
   pnpm
   yarn
+
+  floorp
 ]) ++ [
     (builtins.getFlake "github:shakhzodme/pcmd-nix/main").packages.${builtins.currentSystem}.default
 ]
