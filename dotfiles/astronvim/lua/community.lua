@@ -7,7 +7,7 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.colorscheme.gruvbox-baby" },
   { import = "astrocommunity.pack.rust" },
-  -- { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.go" },
   -- shell
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.docker" },
@@ -18,6 +18,7 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.utility.lua-json5" },
   -- js
   { import = "astrocommunity.pack.typescript-all-in-one" },
   { import = "astrocommunity.pack.tailwindcss" },
