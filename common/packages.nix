@@ -26,6 +26,7 @@
   gping
   hyperfine
   unzip
+  lnav
 
   spotify
   obsidian
