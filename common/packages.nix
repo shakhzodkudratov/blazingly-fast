@@ -27,6 +27,7 @@
   hyperfine
   unzip
   lnav
+  keymapp
 
   spotify
   obsidian
