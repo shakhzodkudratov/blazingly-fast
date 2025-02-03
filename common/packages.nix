@@ -63,6 +63,7 @@
   termius
   bruno
   transmission_4
+  transmission_4-qt
 
   virtualenv
   htop
