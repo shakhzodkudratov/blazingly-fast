@@ -25,4 +25,5 @@ return {
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.prisma" },
   { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.pack.python" },
 }
