@@ -8,6 +8,8 @@ return {
   { import = "astrocommunity.colorscheme.gruvbox-baby" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.haskell" },
   -- shell
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.docker" },
