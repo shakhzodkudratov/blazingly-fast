@@ -51,7 +51,6 @@
   python3
   jetbrains-toolbox
   texturepacker
-  android-studio
 
   telegram-desktop
   element-desktop
@@ -79,8 +78,8 @@
   discord
   postman
 
-  nodejs_22
-  pnpm
+  nodejs_23
+  pnpm_10
   yarn
 
   floorp
