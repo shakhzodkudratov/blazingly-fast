@@ -13,6 +13,8 @@
       url = "github:AstroNvim/AstroNvim/v4.28.1";
       flake = false;
     };
+    e-imzo.url = "github:xinux-org/e-imzo";
+    kerio.url = "github:xinux-org/kerio";
   };
 
   outputs =
