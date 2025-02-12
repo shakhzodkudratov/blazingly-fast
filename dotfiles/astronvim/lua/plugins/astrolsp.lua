@@ -10,16 +10,16 @@ return {
   opts = {
     -- Configuration table of features provided by AstroLSP
     features = {
-      autoformat = true, -- enable or disable auto formatting on start
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      autoformat = true,      -- enable or disable auto formatting on start
+      codelens = true,        -- enable/disable codelens refresh on start
+      inlay_hints = false,    -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -44,6 +44,17 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+
+      -- https://github.com/AstroNvim/astrocommunity/blob/main/lua/astrocommunity/pack/go/init.lua
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              ST1003 = false,
+            },
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
@@ -96,9 +107,9 @@ return {
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
-    on_attach = function(client, bufnr)
-      -- this would disable semanticTokensProvider for all clients
-      -- client.server_capabilities.semanticTokensProvider = nil
-    end,
+    -- on_attach = function(client, bufnr)
+    --   -- this would disable semanticTokensProvider for all clients
+    --   -- client.server_capabilities.semanticTokensProvider = nil
+    -- end,
   },
 }

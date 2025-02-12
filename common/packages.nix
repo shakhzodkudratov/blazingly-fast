@@ -16,6 +16,8 @@
 
   tree
   git
+  unzip
+  unrar
 
   btop
   bat
