@@ -1,8 +1,8 @@
 # imported in @/flake.nix
 { nixpkgs, inputs, outputs }: {
-  "workpc" = nixpkgs.lib.nixosSystem {
+  "dreampad" = nixpkgs.lib.nixosSystem {
     specialArgs = { inherit inputs outputs; };
-    modules = [ ./workpc/configuration.nix ];
+    modules = [ ./dreampad/configuration.nix ];
   };
 
   "laptop" = nixpkgs.lib.nixosSystem {

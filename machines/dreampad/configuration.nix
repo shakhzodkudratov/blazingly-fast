@@ -26,7 +26,7 @@ in
     };
   };
 
-  networking.hostName = "workpc";
+  networking.hostName = "dreampad";
 
   services = {
     xserver = {

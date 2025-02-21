@@ -86,6 +86,4 @@
 
   floorp
 ]) ++ [
-    (builtins.getFlake "github:shakhzodme/pcmd-nix/main").packages.${builtins.currentSystem}.default
-    (builtins.getFlake "github:shakhzodkudratov/kerio-control-vpnclient-nix/main").packages.${builtins.currentSystem}.default
 ]
