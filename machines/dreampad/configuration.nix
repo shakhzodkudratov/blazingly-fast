@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, outputs, ... }:
+{ pkgs, inputs, ... }:
 let
   globalPackages = import ../../common/packages.nix { inherit pkgs; };
 in
@@ -10,14 +10,26 @@ in
     ../../users/shakhzod/configuration.nix
   ];
 
-  environment.systemPackages = globalPackages;
+  environment.systemPackages = globalPackages ++ [
+    pkgs.clinfo
+  ];
 
   boot = {
+    kernelParams = [ "radeon.cik_support=0" "amdgpu.cik_support=1" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    initrd.kernelModules = [ "amdgpu" ];
   };
+
+  hardware.opengl.extraPackages = with pkgs; [
+    rocmPackages.clr.icd
+  ];
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
 
   hardware = {
     bluetooth = {
@@ -31,6 +43,7 @@ in
   services = {
     xserver = {
       enable = true;
+      videoDrivers = [ "amdgpu" ];
     };
 
     displayManager.sddm.enable = true;

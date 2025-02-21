@@ -14,7 +14,7 @@
   networking.networkmanager.enable = true;
   # programs.mtr.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
   # virtualisation.virtualbox.host.enableExtensionPack = true;
 
   # https://github.com/Mic92/envfs
