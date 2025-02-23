@@ -49,6 +49,7 @@
   gphoto2
   ffmpeg
   filelight
+  cachix
 
   python3
   jetbrains-toolbox
@@ -74,16 +75,19 @@
   llvmPackages.llvm
   llvmPackages.clang
   cmake
+
+  # kicad
 ]) ++ (with pkgs.unstable; [
   zed-editor
   vscode
   discord
   postman
 
-  nodejs_23
+  nodejs_22
   pnpm_10
   yarn
 
   floorp
-]) ++ [
-]
+
+  # e-imzo
+])

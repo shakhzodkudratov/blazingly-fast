@@ -1,12 +1,10 @@
 # imported in @/flake.nix
-{ nixpkgs, inputs, outputs }: {
+{ nixpkgs, inputs, outputs, kmonad }: {
   "dreampad" = nixpkgs.lib.nixosSystem {
     specialArgs = { inherit inputs outputs; };
-    modules = [ ./dreampad/configuration.nix ];
-  };
-
-  "laptop" = nixpkgs.lib.nixosSystem {
-    specialArgs = { inherit inputs outputs; };
-    modules = [ ./laptop/configuration.nix ];
+    modules = [
+      ./dreampad/configuration.nix
+      kmonad.nixosModules.default
+    ];
   };
 }

@@ -30,5 +30,5 @@ family = "JetBrainsMono NF"
 style = "Regular"
 
 [window.dimensions]
-columns = 140
-lines = 30
+columns = 130
+lines = 32

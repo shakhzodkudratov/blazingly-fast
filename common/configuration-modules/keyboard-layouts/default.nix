@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ./kanata.nix
+    # ./kanata.nix
   ];
 
   i18n.inputMethod.enabled = null;

@@ -13,14 +13,21 @@
       url = "github:AstroNvim/AstroNvim/v4.28.1";
       flake = false;
     };
-    e-imzo.url = "github:xinux-org/e-imzo";
-    kerio.url = "github:xinux-org/kerio";
+    xmonad-contexts = {
+      url = "github:Procrat/xmonad-contexts";
+      flake = false;
+    };
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     { self
     , nixpkgs
     , home-manager
+    , kmonad
     , ...
     } @ inputs:
     let
@@ -32,6 +39,6 @@
       overlays = import ./common/overlays.nix { inherit inputs; };
       configurationModules = import ./common/configuration-modules;
       homeManagerModules = import ./common/home-manager;
-      nixosConfigurations = import ./machines { inherit nixpkgs inputs outputs; };
+      nixosConfigurations = import ./machines { inherit nixpkgs inputs outputs kmonad; };
     };
 }

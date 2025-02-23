@@ -7,5 +7,6 @@
   fonts = import ./fonts;
   keyboard-layouts = import ./keyboard-layouts;
   # e-imzo = import ./e-imzo;
-  # kerio = import ./kerio;
+  cachix = import ./cachix;
+  xmonad = import ./xmonad;
 }

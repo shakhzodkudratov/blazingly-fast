@@ -5,7 +5,7 @@ let
     # top = "btop";
     # htop = "btop";
     # cat = "bat";
-    # ls = "eza";
+    ls = "eza";
     # sl = "eza";
     # ps = "procs";
     # grep = "rg";
@@ -20,9 +20,8 @@ let
     avim = "NVIM_APPNAME=astronvim nvim";
 
     # configs
-    zshrc = "avim $BLAZINGLY_FAST/home-manager/zsh/default.nix";
-    avimconf = "avim $BLAZINGLY_FAST/home-manager/astronvim/user";
-    nixconf = "avim $BLAZINGLY_FAST";
+    nixconf = "avim $BLAZINGLY_FAST -c \"cd $BLAZINGLY_FAST\"";
+    dotconf = "avim $BLAZINGLY_FAST/dotfiles -c \"cd $BLAZINGLY_FAST/dotfiles\"";
 
     # nix related
     nixrebuild = "git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure";

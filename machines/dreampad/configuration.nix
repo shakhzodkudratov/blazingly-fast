@@ -7,6 +7,7 @@ in
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
     ../../common/configuration.nix
+    ../../common/configuration-modules/kmonad/default.nix
     ../../users/shakhzod/configuration.nix
   ];
 
