@@ -8,6 +8,5 @@
   topgrade = import ./topgrade;
   git = import ./git;
   alacritty = import ./alacritty;
-  tmux = import ./tmux;
   zellij = import ./zellij;
 }
