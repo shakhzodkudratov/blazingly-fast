@@ -6,21 +6,23 @@ let
   header = {
     type = "text";
 
-    # Use color defined by catppuccin
     opts = {
       hl = "AlphaHeader";
       position = "center";
     };
 
-    # Generated from https://www.asciiart.eu/text-to-ascii-art
-    # Font used: Graffiti
     val = [
-      "  ________  ____   ____.___   _____   "
-      " /  _____/  \\   \\ /   /|   | /     \\  "
-      "/   \\  ___   \\   Y   / |   |/  \\ /  \\ "
-      "\\    \\_\\  \\   \\     /  |   /    Y    \\"
-      " \\______  / /\\ \\___/   |___\\____|__  /"
-      "        \\/  \\/                     \\/ "
+      " █████  ███████ ████████ ██████   ██████"
+      "██   ██ ██         ██    ██   ██ ██    ██"
+      "███████ ███████    ██    ██████  ██    ██"
+      "██   ██      ██    ██    ██   ██ ██    ██"
+      "██   ██ ███████    ██    ██   ██  ██████"
+      " "
+      "    ███    ██ ██    ██ ██ ███    ███"
+      "    ████   ██ ██    ██ ██ ████  ████"
+      "    ██ ██  ██ ██    ██ ██ ██ ████ ██"
+      "    ██  ██ ██  ██  ██  ██ ██  ██  ██"
+      "    ██   ████   ████   ██ ██      ██"
     ];
   };
 
@@ -47,7 +49,6 @@ let
     # https://github.com/goolord/alpha-nvim/blob/main/lua/alpha/fortune.lua
     val.__raw = "require('alpha.fortune')()";
 
-    # Use color defined by catppuccin
     opts = {
       hl = "AlphaFooter";
       position = "center";
@@ -72,7 +73,6 @@ in
   extra = {
     packages = with pkgs.vimPlugins; [
       alpha-nvim
-      nvim-web-devicons
     ];
 
     # Based on Alpha dashboard theme with tweaks from AstroNvim
@@ -156,12 +156,9 @@ in
       }
     ];
 
-    colorschemes.catppuccin.settings = {
-      # Enable catppuccin colors
-      # https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/alpha.lua
+    colorschemes.gruvbox.settings = {
       integrations.alpha = true;
 
-      # Override default catppuccin header color
       custom_highlights = ''
         function(colors)
           return {

@@ -9,16 +9,23 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    astronvim = {
-      url = "github:AstroNvim/AstroNvim/v4.28.1";
-      flake = false;
-    };
     xmonad-contexts = {
       url = "github:Procrat/xmonad-contexts";
       flake = false;
     };
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Nix formatting pack
+    # https://gerschtli.github.io/nix-formatter-pack/nix-formatter-pack-options.html
+    nix-formatter-pack = {
+      url = "github:Gerschtli/nix-formatter-pack";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

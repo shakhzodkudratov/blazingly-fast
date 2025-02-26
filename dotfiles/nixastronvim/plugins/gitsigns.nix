@@ -26,9 +26,7 @@
   };
 
   rootOpts = {
-    # Enable catppuccin colors
-    # https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/gitsigns.lua
-    colorschemes.catppuccin.settings.integrations.gitsigns = true;
+    colorschemes.gruvbox.settings.integrations.gitsigns = true;
 
     # https://github.com/AstroNvim/AstroNvim/blob/v4.7.7/lua/astronvim/plugins/gitsigns.lua#L9-L21
     keymaps = [

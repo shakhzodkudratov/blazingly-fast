@@ -83,24 +83,24 @@
       ansiblels.enable = true;
       bashls.enable = true;
       cssls.enable = true;
-      docker-compose-language-service.enable = true;
+      docker_compose_language_service.enable = true;
       dockerls.enable = true;
       eslint.enable = true;
       gopls.enable = true;
-      helm-ls.enable = true;
+      helm_ls.enable = true;
       html.enable = true;
-      java-language-server.enable = true;
+      java_language_server.enable = true;
       jsonls.enable = true;
-      lua-ls.enable = true;
-      nginx-language-server.enable = true;
+      lua_ls.enable = true;
+      nginx_language_server.enable = true;
       nixd.enable = true;
       pyright.enable = true;
       sqls.enable = true;
       terraformls.enable = true;
-      tsserver.enable = true;
+      ts_ls.enable = true;
       yamlls.enable = true;
 
-      typos-lsp = {
+      typos_lsp = {
         enable = true;
         extraOptions.init_options.diagnosticSeverity = "Hint";
       };
@@ -108,7 +108,7 @@
   };
 
   rootOpts = {
-    colorschemes.catppuccin.settings.integrations.native_lsp.enabled = true;
+    colorschemes.gruvbox.settings.integrations.native_lsp.enabled = true;
     extraPackages = [ pkgs.go ];
   };
 }

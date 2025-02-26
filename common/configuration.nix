@@ -6,6 +6,12 @@
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
+
+    variables = {
+      EDITOR = pkgs.nixastronvim;
+      SYSTEMD_EDITOR = pkgs.nixastronvim;
+      VISUAL = pkgs.nixastronvim;
+    };
   };
 
   # EXTRA

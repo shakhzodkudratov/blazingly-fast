@@ -17,11 +17,10 @@ let
 
     zednix = "nohup zed --new --foreground . &";
     zn = "nohup zed --new --foreground . &";
-    avim = "NVIM_APPNAME=astronvim nvim";
 
     # configs
-    nixconf = "avim $BLAZINGLY_FAST -c \"cd $BLAZINGLY_FAST\"";
-    dotconf = "avim $BLAZINGLY_FAST/dotfiles -c \"cd $BLAZINGLY_FAST/dotfiles\"";
+    nixconf = "nvim $BLAZINGLY_FAST -c \"cd $BLAZINGLY_FAST\"";
+    dotconf = "nvim $BLAZINGLY_FAST/dotfiles -c \"cd $BLAZINGLY_FAST/dotfiles\"";
 
     # nix related
     nixrebuild = "git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure";

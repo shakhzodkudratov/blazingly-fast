@@ -9,6 +9,5 @@
   git = import ./git;
   alacritty = import ./alacritty;
   tmux = import ./tmux;
-  nvim = import ./nvim;
   zellij = import ./zellij;
 }

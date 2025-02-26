@@ -77,6 +77,7 @@
   cmake
 
   # kicad
+  nixastronvim
 ]) ++ (with pkgs.unstable; [
   zed-editor
   vscode

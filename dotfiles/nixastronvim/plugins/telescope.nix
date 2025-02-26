@@ -11,9 +11,7 @@
     # Needed for live grep
     extraPackages = [ pkgs.ripgrep ];
 
-    # Enable catppuccin colors
-    # https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/telescope.lua
-    colorschemes.catppuccin.settings.integrations.telescope.enabled = true;
+    colorschemes.gruvbox.settings.integrations.telescope.enabled = true;
 
     # Set custom behavior for dropdown theme:
     # - use 80% of window width

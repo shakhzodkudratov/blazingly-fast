@@ -26,9 +26,10 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/cbf66084-0ed7-494d-87d5-3d2b2e5b6f1c"; }
-    ];
+  # this causing long sysinit-reactivation restart
+  # swapDevices =
+  #   [ { device = "/dev/disk/by-uuid/cbf66084-0ed7-494d-87d5-3d2b2e5b6f1c"; }
+  #   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

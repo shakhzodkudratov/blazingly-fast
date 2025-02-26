@@ -6,7 +6,6 @@
   sound = import ./sound;
   fonts = import ./fonts;
   keyboard-layouts = import ./keyboard-layouts;
-  # e-imzo = import ./e-imzo;
   cachix = import ./cachix;
   xmonad = import ./xmonad;
 }
