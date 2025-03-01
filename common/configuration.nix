@@ -8,9 +8,9 @@
     pathsToLink = [ "/share/zsh" ];
 
     variables = {
-      EDITOR = pkgs.nixastronvim;
-      SYSTEMD_EDITOR = pkgs.nixastronvim;
-      VISUAL = pkgs.nixastronvim;
+      EDITOR = pkgs.nixvim;
+      SYSTEMD_EDITOR = pkgs.nixvim;
+      VISUAL = pkgs.nixvim;
     };
   };
 

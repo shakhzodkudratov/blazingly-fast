@@ -6,21 +6,20 @@
     };
   };
   extra-packages = final: _prev: let
-    pkgs = import inputs.nixpkgs {
+    pkgs = import inputs.nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;
     };
   in {
-    nixastronvim = inputs.nixvim.legacyPackages.${final.system}.makeNixvimWithModule {
+    nixvim = inputs.nixvim.legacyPackages.${final.system}.makeNixvimWithModule {
       inherit pkgs;
 
-      module = ../dotfiles/nixastronvim/.;
+      module = ../dotfiles/nixvim/config;
 
       extraSpecialArgs = {
         inherit pkgs;
-
-        icons = import ../dotfiles/nixastronvim/utils/_icons.nix;
-      };
+        inherit inputs;
+      } // import ../dotfiles/nixvim/lib { inherit pkgs; };
     };
   };
 }

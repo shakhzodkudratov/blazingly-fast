@@ -23,10 +23,10 @@ let
     dotconf = "nvim $BLAZINGLY_FAST/dotfiles -c \"cd $BLAZINGLY_FAST/dotfiles\"";
 
     # nix related
-    nixrebuild = "git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure";
+    nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure $1 }; f";
     nixpull = "git -C $BLAZINGLY_FAST pull";
     nixpush = "git -C $BLAZINGLY_FAST add . && git -C $BLAZINGLY_FAST commit -m 'automatically updated by nixupdate' && git -C $BLAZINGLY_FAST push";
-    nixupgrade = "nix flake update --flake $BLAZINGLY_FAST/flake.nix && nixrebuild";
+    nixupgrade = "f() { nix flake update --flake $BLAZINGLY_FAST/flake.nix $1 && nixrebuild }; f";
     nixcleanup = "nix-env --delete-generations +2 && nix store gc && nix-channel --update && nix-env -u --always && nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration switch";
     # nix-shell = "nix-shell --run zsh";
     # nix-develop = "nix develop -c \"$SHELL\"";

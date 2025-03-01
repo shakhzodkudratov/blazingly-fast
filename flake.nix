@@ -24,19 +24,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , kmonad
-    , ...
-    } @ inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      kmonad,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
@@ -46,6 +44,13 @@
       overlays = import ./common/overlays.nix { inherit inputs; };
       configurationModules = import ./common/configuration-modules;
       homeManagerModules = import ./common/home-manager;
-      nixosConfigurations = import ./machines { inherit nixpkgs inputs outputs kmonad; };
+      nixosConfigurations = import ./machines {
+        inherit
+          nixpkgs
+          inputs
+          outputs
+          kmonad
+          ;
+      };
     };
 }
