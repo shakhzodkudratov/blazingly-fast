@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services = {
     xserver.xkb = {
       options = "compose:ralt";

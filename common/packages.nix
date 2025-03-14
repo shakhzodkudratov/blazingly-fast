@@ -57,7 +57,7 @@
 
   telegram-desktop
   element-desktop
-  zulip
+  # zulip
 
   webkitgtk_6_0
 
@@ -77,8 +77,8 @@
   cmake
 
   # kicad
-  nixvim
-]) ++ (with pkgs.unstable; [
+])
+++ (with pkgs.unstable; [
   zed-editor
   vscode
   discord
@@ -89,6 +89,4 @@
   yarn
 
   floorp
-
-  # e-imzo
 ])

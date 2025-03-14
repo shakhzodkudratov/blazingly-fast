@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   services.picom.enable = true;
   services.xserver = {
     windowManager.xmonad = {
@@ -22,7 +23,7 @@
 
     displayManager.sessionCommands = ''
       xset -dpms  # Disable Energy Star, as we are going to suspend anyway and it may hide "success" on that
-      xset s blank # `noblank` may be useful for debugging 
+      xset s blank # `noblank` may be useful for debugging
       xset s 300 # seconds
       ${pkgs.lightlocker}/bin/light-locker --idle-hint &
     '';

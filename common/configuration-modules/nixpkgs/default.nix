@@ -1,4 +1,5 @@
-{ outputs, ... }: {
+{ outputs, ... }:
+{
   nixpkgs = {
     config = {
       allowUnfree = true;

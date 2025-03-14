@@ -1,4 +1,5 @@
-{ pkgs, outputs, ... }: {
+{ pkgs, outputs, ... }:
+{
   # this imports all configuration modules modules from @/common/configuration-modules
   imports = (builtins.attrValues outputs.configurationModules);
 
@@ -6,12 +7,6 @@
   environment = {
     shells = with pkgs; [ zsh ];
     pathsToLink = [ "/share/zsh" ];
-
-    variables = {
-      EDITOR = pkgs.nixvim;
-      SYSTEMD_EDITOR = pkgs.nixvim;
-      VISUAL = pkgs.nixvim;
-    };
   };
 
   # EXTRA

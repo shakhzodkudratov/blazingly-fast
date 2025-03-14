@@ -1,0 +1,6 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -p bash
+#! nix-shell -i bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+sh "$SCRIPT_DIR/astro-install.sh" "$@"
