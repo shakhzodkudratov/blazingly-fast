@@ -17,6 +17,7 @@ let
     rm -rf ~/.local/state/lvim
     rm -rf ~/.local/state/nvim
   '';
+  replace-contents = import ../../../utils/replace-contents.nix;
 in
 {
   imports = [ ./options.nix ];
@@ -37,6 +38,7 @@ in
         nixd
         deadnix
         rustup # Must run `rustup default stable`
+        cornelis
       ]
       ++ [
         config.AstroNvim.pythonPackage
@@ -44,12 +46,17 @@ in
         refresh
       ];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
+      "nvim/init.lua" = {
+        source = ../init.lua;
+      };
       "nvim/lua" = {
         source = ../lua;
         recursive = true;
       };
-      "nvim/init.lua" = {
-        source = ../init.lua;
+      "nvim/extra-lua/cornelis.lua" = {
+        text = replace-contents (builtins.readFile ../extra-lua/cornelis.lua) {
+          "cornelis" = pkgs.vimPlugins.cornelis;
+        };
       };
     };
   };
