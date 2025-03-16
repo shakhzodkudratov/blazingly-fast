@@ -30,7 +30,6 @@
   unzip
   lnav
   keymapp
-  devenv
 
   spotify
   obsidian

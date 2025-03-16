@@ -121,6 +121,15 @@ return {
     },
   },
   {
-    "liuchengxu/vim-which-key",
+    "hrsh7th/nvim-cmp",
+    -- "kdheepak/cmp-latex-symbols"
+    dependencies = { "Arkissa/cmp-agda-symbols" },
+    opts = function()
+      require("cmp").setup.filetype({ "agda", "lagda.md" }, {
+        sources = {
+          { name = "agda-symbols" },
+        },
+      })
+    end,
   },
 }
