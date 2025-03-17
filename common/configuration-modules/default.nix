@@ -7,6 +7,6 @@
   fonts = import ./fonts;
   keyboard-layouts = import ./keyboard-layouts;
   cachix = import ./cachix;
-  xmonad = import ./xmonad;
   astronvim = import ./astronvim;
+  plasma = import ./plasma;
 }

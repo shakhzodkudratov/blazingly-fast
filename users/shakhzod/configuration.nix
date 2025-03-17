@@ -1,8 +1,9 @@
-{ pkgs, inputs, outputs, ... }: {
+{ pkgs, inputs, outputs, ... }:
+{
   users.users.shakhzod = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "input" "uinput" ];
-    packages = (with pkgs; [ ]);
+    extraGroups = [ "wheel" "docker" "input" "uinput" "video"];
+    # packages = (with pkgs; [ ]);
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
   };
