@@ -8,8 +8,8 @@ return {
     -- build = "stack install",
     version = "*",
     config = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "agda,lagda.md",
+      vim.api.nvim_create_autocmd({ "FileType", "BufWritePre" }, {
+        pattern = "*.agda,*.lagda.md",
         callback = function() vim.cmd "silent! CornelisLoad" end,
       })
     end,
