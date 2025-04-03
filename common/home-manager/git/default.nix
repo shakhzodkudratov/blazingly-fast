@@ -9,7 +9,7 @@
 
     signing = {
       signByDefault = true;
-      key = "D3884ED5F00C62CEE1B35DEAA29C0F920936E9DE";
+      key = "5A1E1590CA201638ECCF834FD98C2DC59CFA95D4";
     };
 
     ignores = [
