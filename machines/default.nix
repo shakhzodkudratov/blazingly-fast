@@ -14,4 +14,12 @@
       ../dotfiles/astronvim.nix/nix/nixos.nix
     ];
   };
+  "laptop" = nixpkgs.lib.nixosSystem {
+    specialArgs = { inherit inputs outputs; };
+    modules = [
+      ./laptop/configuration.nix
+      kmonad.nixosModules.default
+      ../dotfiles/astronvim.nix/nix/nixos.nix
+    ];
+  };
 }
