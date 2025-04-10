@@ -140,6 +140,7 @@ let name = "Shakhzod Kudratov";
       };
 
       window = {
+        option_as_alt = "Both";
         opacity = 1.0;
         padding = {
           x = 2;
