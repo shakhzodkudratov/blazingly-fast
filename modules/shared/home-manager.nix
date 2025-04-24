@@ -201,4 +201,9 @@ let name = "Shakhzod Kudratov";
   #     )
   #   ];
   # };
+
+  direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
