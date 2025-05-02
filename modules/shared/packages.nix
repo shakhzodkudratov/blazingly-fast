@@ -69,6 +69,7 @@ with pkgs; [
   unrar
   unzip
   zsh-powerlevel10k
+  texliveFull
 
   # Python packages
   python3

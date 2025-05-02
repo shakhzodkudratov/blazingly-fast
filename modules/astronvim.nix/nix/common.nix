@@ -39,6 +39,8 @@ in
         deadnix
         rustup # Must run `rustup default stable`
         cornelis
+
+        # haskell-language-server
       ]
       ++ [
         config.AstroNvim.pythonPackage

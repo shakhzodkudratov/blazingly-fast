@@ -44,7 +44,7 @@ let user = "shakhzod"; in
   AstroNvim = {
     username = user;
     nerdfont = "JetBrainsMono";
-    nodePackage = pkgs.nodejs_22;
+    nodePackage = pkgs.nodejs;
     pythonPackage = pkgs.python312Full;
   };
 

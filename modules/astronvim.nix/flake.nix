@@ -18,7 +18,7 @@
       astronvim-nix = import ./nix/nixos.nix;
       default = astronvim-nix;
     };
-    darwinModules = rec {
+    darwinModules =  {
       astroNvim = import ./nix/darwin.nix;
       default = astronvim-nix;
     };

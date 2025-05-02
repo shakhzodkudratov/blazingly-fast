@@ -17,6 +17,7 @@ return {
   -- conf
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.markdown-and-latex.vimtex" },
   { import = "astrocommunity.pack.mdx" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.yaml" },
