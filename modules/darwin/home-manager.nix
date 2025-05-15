@@ -63,6 +63,7 @@ in
             nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && cd $BLAZINGLY_FAST && nix run .#build-switch && cd - || cd - }; f";
             nixcmd = "f() { cd $BLAZINGLY_FAST && nix run .#$1 && cd - || cd - }; f";
           };
+          initExtra = ". $HOME/.ghcup/env";
         };
       };
 

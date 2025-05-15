@@ -7,6 +7,7 @@ _:
   "zed"
   "postman"
   "termius"
+  "mongodb-compass"
 
   # Communication Tools
   "discord"
