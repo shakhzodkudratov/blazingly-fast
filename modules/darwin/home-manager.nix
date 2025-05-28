@@ -55,7 +55,7 @@ in
           additionalFiles
         ];
 
-        stateVersion = "24.11";
+        stateVersion = "25.05";
       };
       programs = lib.recursiveUpdate (import ../shared/home-manager.nix { inherit config pkgs lib; }) {
         zsh = {
@@ -63,7 +63,7 @@ in
             nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && cd $BLAZINGLY_FAST && nix run .#build-switch && cd - || cd - }; f";
             nixcmd = "f() { cd $BLAZINGLY_FAST && nix run .#$1 && cd - || cd - }; f";
           };
-          initExtra = ". $HOME/.ghcup/env";
+          initContent = ". $HOME/.ghcup/env";
         };
       };
 

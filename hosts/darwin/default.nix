@@ -43,13 +43,14 @@ let user = "shakhzod"; in
 
   AstroNvim = {
     username = user;
-    nerdfont = "JetBrainsMono";
     nodePackage = pkgs.nodejs;
     pythonPackage = pkgs.python312Full;
   };
 
   system = {
     stateVersion = 4;
+
+    primaryUser = "shakhzod";
 
     defaults = {
       NSGlobalDomain = {

@@ -5,11 +5,6 @@
       type = types.str;
       description = "The user for whom astronvim.nix will be installed";
     };
-    nerdfont = mkOption {
-      type = types.str;
-      default = "Lilex";
-      description = "The Nerd Font to be used";
-    };
     nodePackage = mkOption {
       type = types.package;
       defaultText = "nodejs_20";

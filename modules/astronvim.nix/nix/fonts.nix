@@ -1,8 +1,8 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   config.fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ config.AstroNvim.nerdfont ]; })
+      nerd-fonts.jetbrains-mono
       font-awesome
     ];
   };

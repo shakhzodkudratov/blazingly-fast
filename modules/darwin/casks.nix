@@ -8,6 +8,7 @@ _:
   "postman"
   "termius"
   "mongodb-compass"
+  "jetbrains-toolbox"
 
   # Communication Tools
   "discord"
@@ -22,6 +23,7 @@ _:
   "1password"
   "obsidian"
   "keymapp"
+  "wakatime"
 
   # Entertainment Tools
   "vlc"
