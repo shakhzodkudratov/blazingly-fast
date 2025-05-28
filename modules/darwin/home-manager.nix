@@ -60,10 +60,9 @@ in
       programs = lib.recursiveUpdate (import ../shared/home-manager.nix { inherit config pkgs lib; }) {
         zsh = {
           shellAliases = {
-            nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && cd $BLAZINGLY_FAST && nix run .#build-switch && cd - || cd - }; f";
-            nixcmd = "f() { cd $BLAZINGLY_FAST && nix run .#$1 && cd - || cd - }; f";
+            nixrebuild = "f() { cd $BLAZINGLY_FAST && git add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST && cd - }; f || cd -";
           };
-          initContent = ". $HOME/.ghcup/env";
+          initContent = lib.mkAfter ". $HOME/.ghcup/env";
         };
       };
 

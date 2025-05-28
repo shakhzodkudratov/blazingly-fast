@@ -22,9 +22,9 @@
       flake = false;
     };
   };
-  outputs = { self, darwin, home-manager, nixpkgs, disko, ... } @inputs:
+  outputs = { self, darwin, home-manager, nixpkgs, ... } @inputs:
     let
-      user = "shakhzod";
+      # user = "shakhzod";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
       darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
@@ -68,31 +68,15 @@
       devShells = forAllSystems devShell;
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
-        darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            home-manager.darwinModules.home-manager
-            ./hosts/darwin
-          ];
-        }
-      );
-
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
-        inherit system;
+      # darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
+      darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
+        # inherit system;
         specialArgs = inputs;
         modules = [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
-            };
-          }
-          ./hosts/nixos
+          home-manager.darwinModules.home-manager
+          ./hosts/darwin
         ];
-     });
+        system = "aarch64-darwin";
+      };
   };
 }
