@@ -62,7 +62,12 @@ in
           shellAliases = {
             nixrebuild = "f() { cd $BLAZINGLY_FAST && git add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST && cd - }; f || cd -";
           };
-          initContent = lib.mkAfter ". $HOME/.ghcup/env";
+          initContent = lib.mkAfter ''
+            export BLAZINGLY_FAST="$HOME/blazingly-fast"
+            export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
+
+            . $HOME/.ghcup/env
+          '';
         };
       };
 
@@ -78,7 +83,7 @@ in
       enable = true;
       entries = [
         { path = "/System/Applications/Messages.app/"; }
-        { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+        # { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
       ];
     };
   };

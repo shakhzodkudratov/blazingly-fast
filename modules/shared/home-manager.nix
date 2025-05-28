@@ -69,17 +69,6 @@ let name = "Shakhzod Kudratov";
       # Ripgrep alias
       alias search=rg -p --glob '!node_modules/*'  $@
 
-      # nix shortcuts
-      shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-      }
-
-      # Use difftastic, syntax-aware diffing
-      alias diff=difft
-
-      # Always color ls and group directories
-      alias ls='ls --color=auto'
-
       export BLAZINGLY_FAST="$HOME/blazingly-fast"
       export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
     '';
@@ -89,6 +78,7 @@ let name = "Shakhzod Kudratov";
     enable = true;
     enableZshIntegration = false;
     settings = {
+      show_startup_tips = false;
       theme = "gruvbox-hard";
       simplified_ui = true;
     };
