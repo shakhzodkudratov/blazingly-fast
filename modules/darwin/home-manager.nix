@@ -4,11 +4,8 @@ let
   user = "shakhzod";
   sharedFiles = import ../shared/files.nix { inherit config pkgs; };
   additionalFiles = import ./files.nix { inherit user config pkgs; };
-in
-{
-  imports = [
-   ./dock
-  ];
+in {
+  imports = [ ./dock ];
 
   # It me
   users.users.${user} = {
@@ -20,7 +17,7 @@ in
 
   homebrew = {
     enable = true;
-    casks = pkgs.callPackage ./casks.nix {};
+    casks = pkgs.callPackage ./casks.nix { };
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall";
@@ -46,30 +43,29 @@ in
   # Enable home-manager
   home-manager = {
     useGlobalPkgs = true;
-    users.${user} = { pkgs, config, lib, ... }:{
+    users.${user} = { pkgs, config, lib, ... }: {
       home = {
         enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ./packages.nix {};
-        file = lib.mkMerge [
-          sharedFiles
-          additionalFiles
-        ];
+        packages = pkgs.callPackage ./packages.nix { };
+        file = lib.mkMerge [ sharedFiles additionalFiles ];
 
         stateVersion = "25.05";
       };
-      programs = lib.recursiveUpdate (import ../shared/home-manager.nix { inherit config pkgs lib; }) {
-        zsh = {
-          shellAliases = {
-            nixrebuild = "f() { cd $BLAZINGLY_FAST && git add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST && cd - }; f || cd -";
-          };
-          initContent = lib.mkAfter ''
-            export BLAZINGLY_FAST="$HOME/blazingly-fast"
-            export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
+      programs = lib.recursiveUpdate
+        (import ../shared/home-manager.nix { inherit config pkgs lib; }) {
+          zsh = {
+            shellAliases = {
+              nixrebuild =
+                "f() { cd $BLAZINGLY_FAST && git add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST && cd - }; f || cd -";
+            };
+            initContent = lib.mkAfter ''
+              export BLAZINGLY_FAST="$HOME/blazingly-fast"
+              export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
 
-            . $HOME/.ghcup/env
-          '';
+              . $HOME/.ghcup/env
+            '';
+          };
         };
-      };
 
       # Marked broken Oct 20, 2022 check later to remove this
       # https://github.com/nix-community/home-manager/issues/3344
@@ -78,13 +74,14 @@ in
   };
 
   # Fully declarative dock using the latest from Nix Store
-  local = { 
+  local = {
     dock = {
       enable = true;
-      entries = [
-        { path = "/System/Applications/Messages.app/"; }
-        # { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
-      ];
+      entries = [{
+        path = "/System/Applications/Messages.app/";
+      }
+      # { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+        ];
     };
   };
 }

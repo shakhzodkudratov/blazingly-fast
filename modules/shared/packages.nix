@@ -36,6 +36,7 @@ with pkgs; [
   age-plugin-yubikey
   gnupg
   libfido2
+  bundletool
 
   # Cloud-related tools and SDKs
   docker
@@ -79,4 +80,5 @@ with pkgs; [
   nil
   nixd
   nixpkgs-fmt
+  nixfmt
 ]

@@ -1,7 +1,1 @@
-{ ... }:
-{
-  imports = [
-    ./common.nix
-    ./fonts.nix
-  ];
-}
+{ ... }: { imports = [ ./common.nix ./fonts.nix ]; }

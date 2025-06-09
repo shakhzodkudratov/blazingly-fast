@@ -1,15 +1,15 @@
 { agenix, config, pkgs, ... }:
 
-let user = "shakhzod"; in
+let user = "shakhzod";
 
-{
+in {
 
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
     ../../modules/shared
     ../../modules/astronvim.nix/nix/darwin.nix
-     agenix.darwinModules.default
+    agenix.darwinModules.default
   ];
 
   # Setup user, packages, programs
@@ -19,12 +19,17 @@ let user = "shakhzod"; in
     settings = {
       trusted-users = [ "@admin" "${user}" ];
       substituters = [ "https://cache.nixos.org" ];
-      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+      trusted-public-keys =
+        [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     };
 
     gc = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 
@@ -37,9 +42,8 @@ let user = "shakhzod"; in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages = [ agenix.packages."${pkgs.system}".default ]
+    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   AstroNvim = {
     username = user;
@@ -76,9 +80,7 @@ let user = "shakhzod"; in
         tilesize = 48;
       };
 
-      finder = {
-        _FXShowPosixPathInTitle = false;
-      };
+      finder = { _FXShowPosixPathInTitle = false; };
 
       trackpad = {
         Clicking = true;

@@ -1,9 +1,7 @@
 {
   description = "astronvim.nix";
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +16,7 @@
       astronvim-nix = import ./nix/nixos.nix;
       default = astronvim-nix;
     };
-    darwinModules =  {
+    darwinModules = {
       astroNvim = import ./nix/darwin.nix;
       default = astronvim-nix;
     };
