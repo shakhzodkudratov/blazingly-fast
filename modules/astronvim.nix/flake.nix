@@ -18,7 +18,7 @@
     };
     darwinModules = {
       astroNvim = import ./nix/darwin.nix;
-      default = astronvim-nix;
+      # default = astronvim-nix;
     };
   };
 }

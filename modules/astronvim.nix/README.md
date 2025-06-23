@@ -48,8 +48,6 @@ A very minimal installation in a typical nix flake would look as follows:
 {
   AstroNvim = {
     username = "shakhzod";
-    nodePackage = pkgs.nodejs;
-    pythonPackage = pkgs.python311Full;
   };
 
   # Everything else required to configure your machine...

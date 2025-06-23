@@ -45,11 +45,7 @@ in {
   environment.systemPackages = [ agenix.packages."${pkgs.system}".default ]
     ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
-  AstroNvim = {
-    username = user;
-    nodePackage = pkgs.nodejs;
-    pythonPackage = pkgs.python312Full;
-  };
+  AstroNvim.username = user;
 
   system = {
     stateVersion = 4;

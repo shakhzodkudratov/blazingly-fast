@@ -21,6 +21,7 @@
       url = "git+ssh://git@github.com/shakhzodkudratov/nixcrets.git";
       flake = false;
     };
+    kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
   };
   outputs = { self, darwin, home-manager, nixpkgs, ... }@inputs:
     let

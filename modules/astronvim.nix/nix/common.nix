@@ -31,13 +31,14 @@ in {
         ruff
         nixd
         deadnix
-        rustup # Must run `rustup default stable`
+        # rustup # Must run `rustup default stable`
         cornelis
 
         # haskell-language-server
+
+        # python314Full
+        # nodejs_24
       ] ++ [
-        config.AstroNvim.pythonPackage
-        config.AstroNvim.nodePackage
         refresh
       ];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
