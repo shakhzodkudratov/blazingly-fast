@@ -1,6 +1,4 @@
-_:
-
-[
+_: [
   # Development Tools
   "docker-desktop"
   "visual-studio-code"

@@ -23,16 +23,33 @@
     };
     kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
   };
-  outputs = { self, darwin, home-manager, nixpkgs, ... }@inputs:
+  outputs =
+    {
+      self,
+      darwin,
+      home-manager,
+      nixpkgs,
+      ...
+    }@inputs:
     let
       # user = "shakhzod";
-      linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
-      darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
+      linuxSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      darwinSystems = [
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
       forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
-      devShell = system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
-          default = with pkgs;
+      devShell =
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default =
+            with pkgs;
             mkShell {
               nativeBuildInputs = with pkgs; [
                 bashInteractive
@@ -48,13 +65,13 @@
       mkApp = scriptName: system: {
         type = "app";
         program = "${
-            (nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
-              #!/usr/bin/env bash
-              PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
-              echo "Running ${scriptName} for ${system}"
-              exec ${self}/apps/${system}/${scriptName}
-            '')
-          }/bin/${scriptName}";
+          (nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
+            #!/usr/bin/env bash
+            PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
+            echo "Running ${scriptName} for ${system}"
+            exec ${self}/apps/${system}/${scriptName}
+          '')
+        }/bin/${scriptName}";
       };
       mkLinuxApps = system: {
         "apply" = mkApp "apply" system;
@@ -74,16 +91,21 @@
         "check-keys" = mkApp "check-keys" system;
         "rollback" = mkApp "rollback" system;
       };
-    in {
+    in
+    {
       devShells = forAllSystems devShell;
-      apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
+      apps =
+        nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
         // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
       # darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
       darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
         # inherit system;
         specialArgs = inputs;
-        modules = [ home-manager.darwinModules.home-manager ./hosts/darwin ];
+        modules = [
+          home-manager.darwinModules.home-manager
+          ./hosts/darwin
+        ];
         system = "aarch64-darwin";
       };
     };

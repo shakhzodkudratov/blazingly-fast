@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   options.AstroNvim = with lib; {
     username = mkOption {
       type = types.str;

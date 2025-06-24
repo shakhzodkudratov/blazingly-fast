@@ -1,8 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let name = "Shakhzod Kudratov";
-    user = "shakhzod";
-    email = "shakhzodkudratov@gmail.com"; in
+let
+  name = "Shakhzod Kudratov";
+  user = "shakhzod";
+  email = "shakhzodkudratov@gmail.com";
+in
 {
   # Shared shell configuration
   zsh = {
@@ -54,7 +61,7 @@ let name = "Shakhzod Kudratov";
 
       nix-shell-go = "nix-shell $NIX_SHELL_WORKSPACE/golang/latest/shell.nix";
     };
-  
+
     initContent = lib.mkAfter ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
@@ -104,7 +111,7 @@ let name = "Shakhzod Kudratov";
     extraConfig = {
       init.defaultBranch = "main";
       core = {
-	      editor = "nvim";
+        editor = "nvim";
         autocrlf = "input";
       };
       commit.gpgsign = true;

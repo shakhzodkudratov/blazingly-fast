@@ -1,8 +1,15 @@
-{ agenix, kmonad, pkgs, ... }:
+{
+  agenix,
+  kmonad,
+  pkgs,
+  ...
+}:
 
-let user = "shakhzod";
+let
+  user = "shakhzod";
 
-in {
+in
+{
 
   imports = [
     ../../modules/darwin/secrets.nix
@@ -17,10 +24,12 @@ in {
     package = pkgs.nix;
 
     settings = {
-      trusted-users = [ "@admin" "${user}" ];
+      trusted-users = [
+        "@admin"
+        "${user}"
+      ];
       substituters = [ "https://cache.nixos.org" ];
-      trusted-public-keys =
-        [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
     };
 
     gc = {
@@ -42,11 +51,10 @@ in {
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = [ 
+  environment.systemPackages = [
     agenix.packages."${pkgs.system}".default
     kmonad.packages."${pkgs.system}".default
-  ]
-    ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   AstroNvim.username = user;
 
@@ -79,7 +87,9 @@ in {
         tilesize = 48;
       };
 
-      finder = { _FXShowPosixPathInTitle = false; };
+      finder = {
+        _FXShowPosixPathInTitle = false;
+      };
 
       trackpad = {
         Clicking = true;
