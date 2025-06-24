@@ -30,7 +30,7 @@ in {
         selene
         ruff
         nixd
-        nixfmt
+        nixfmt-rfc-style
         deadnix
         # rustup # Must run `rustup default stable`
         cornelis
@@ -39,9 +39,7 @@ in {
 
         # python314Full
         # nodejs_24
-      ] ++ [
-        refresh
-      ];
+      ] ++ [ refresh ];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
       "nvim/init.lua" = { source = ../init.lua; };
       "nvim/lua" = {

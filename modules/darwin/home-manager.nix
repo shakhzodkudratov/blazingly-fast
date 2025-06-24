@@ -57,6 +57,8 @@ in {
             shellAliases = {
               nixrebuild =
                 "f() { cd $BLAZINGLY_FAST && git add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST && cd - }; f || cd -";
+              kmonad-gallium =
+                "sudo kmonad $BLAZINGLY_FAST/modules/darwin/kmonad.kbd";
             };
             initContent = lib.mkAfter ''
               export BLAZINGLY_FAST="$HOME/blazingly-fast"

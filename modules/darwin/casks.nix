@@ -2,7 +2,7 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
+  "docker-desktop"
   "visual-studio-code"
   "zed"
   "postman"
