@@ -145,13 +145,25 @@ in
         };
       };
 
-      bindings = [
-        {
-          key = "`";
-          mods = "Command";
-          action = "SelectNextTab";
-        }
-      ];
+      keyboard = {
+        bindings = [
+          {
+            key = "N";
+            mods = "Command|Shift";
+            action = "CreateNewTab";
+          }
+          {
+            key = "I";
+            mods = "Command|Shift";
+            action = "SelectNextTab";
+          }
+          {
+            key = "H";
+            mods = "Command|Shift";
+            action = "SelectPreviousTab";
+          }
+        ];
+      };
 
       font = {
         normal = {
