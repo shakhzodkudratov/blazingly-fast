@@ -30,6 +30,7 @@ in {
         selene
         ruff
         nixd
+        nixfmt
         deadnix
         # rustup # Must run `rustup default stable`
         cornelis

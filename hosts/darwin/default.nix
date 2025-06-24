@@ -1,4 +1,4 @@
-{ agenix, config, pkgs, ... }:
+{ agenix, kmonad, pkgs, ... }:
 
 let user = "shakhzod";
 
@@ -42,7 +42,10 @@ in {
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = [ agenix.packages."${pkgs.system}".default ]
+  environment.systemPackages = [ 
+    agenix.packages."${pkgs.system}".default
+    kmonad.packages."${pkgs.system}".default
+  ]
     ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   AstroNvim.username = user;
