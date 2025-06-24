@@ -145,6 +145,14 @@ in
         };
       };
 
+      bindings = [
+        {
+          key = "`";
+          mods = "Command";
+          action = "SelectNextTab";
+        }
+      ];
+
       font = {
         normal = {
           family = "JetBrainsMono Nerd Font";
