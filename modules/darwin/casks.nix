@@ -7,6 +7,7 @@ _: [
   "termius"
   "mongodb-compass"
   "jetbrains-toolbox"
+  "proxyman"
 
   # Communication Tools
   "discord"
