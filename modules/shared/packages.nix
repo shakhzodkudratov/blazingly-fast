@@ -21,6 +21,8 @@ with pkgs;
   unrar
   tree
   # cargo
+  devbox
+  fzf
 
   # orzklv's rust rewrite packages
   btop

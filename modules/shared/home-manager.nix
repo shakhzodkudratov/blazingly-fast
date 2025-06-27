@@ -29,6 +29,16 @@ in
           sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
         };
       }
+      {
+        name = "zsh-fzf-history-search";
+        file = "zsh-fzf-history-search.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "joshskidmore";
+          repo = "zsh-fzf-history-search";
+          rev = "master";
+          sha256 = "tQqIlkgIWPEdomofPlmWNEz/oNFA1qasILk4R5RWobY=";
+        };
+      }
     ];
 
     shellAliases = {
