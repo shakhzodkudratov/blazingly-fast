@@ -33,6 +33,7 @@ in
         ruff
         nixd
         nixfmt-rfc-style
+        statix
         deadnix
         # rustup # Must run `rustup default stable`
         cornelis
