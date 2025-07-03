@@ -52,13 +52,17 @@
             with pkgs;
             mkShell {
               nativeBuildInputs = with pkgs; [
+                nixd
+                deadnix
+                statix
+                nixfmt-rfc-style
                 bashInteractive
                 git
                 age
                 age-plugin-yubikey
               ];
               shellHook = ''
-                export EDITOR=vim
+                export EDITOR=nvim
               '';
             };
         };
@@ -98,15 +102,21 @@
         nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
         // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-      # darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
       darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
-        # inherit system;
         specialArgs = inputs;
         modules = [
           home-manager.darwinModules.home-manager
           ./hosts/darwin
         ];
         system = "aarch64-darwin";
+      };
+
+      nixosConfigurations.worklaptop = nixpkgs.lib.nixosSystem {
+        specialArgs = inputs;
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/linux/worklaptop/configuration.nix
+        ];
       };
     };
 }

@@ -23,6 +23,7 @@ _: [
   "obsidian"
   "keymapp"
   "wakatime"
+  "balenaetcher"
 
   # Entertainment Tools
   "vlc"
