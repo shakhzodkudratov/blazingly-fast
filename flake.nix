@@ -118,5 +118,13 @@
           ./hosts/linux/worklaptop/configuration.nix
         ];
       };
+
+      darwinModules = {
+        AstroNvim = import ./modules/astronvim.nix/nix/darwin.nix;
+      };
+
+      nixosModules = {
+        AstroNvim = import ./modules/astronvim.nix/nix/nixos.nix;
+      };
     };
 }

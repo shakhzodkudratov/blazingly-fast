@@ -8,6 +8,7 @@ _: [
   "mongodb-compass"
   "jetbrains-toolbox"
   "proxyman"
+  "utm"
 
   # Communication Tools
   "discord"
