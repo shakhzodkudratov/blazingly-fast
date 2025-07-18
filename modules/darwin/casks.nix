@@ -30,6 +30,7 @@ _: [
   "vlc"
   "spotify"
   "obs"
+  "krita"
 
   # Productivity Tools
   "raycast"
