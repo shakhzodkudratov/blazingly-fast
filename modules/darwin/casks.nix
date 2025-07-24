@@ -31,6 +31,7 @@ _: [
   "spotify"
   "obs"
   "krita"
+  "blender"
 
   # Productivity Tools
   "raycast"

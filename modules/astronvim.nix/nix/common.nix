@@ -32,7 +32,8 @@ in
         selene
         ruff
         nixd
-        nixfmt-rfc-style
+        # nixfmt-rfc-style
+        alejandra
         statix
         deadnix
         # rustup # Must run `rustup default stable`
