@@ -3,14 +3,9 @@
   kmonad,
   pkgs,
   ...
-}:
-
-let
+}: let
   user = "shakhzod";
-
-in
-{
-
+in {
   imports = [
     ../../modules/darwin/secrets.nix
     ../../modules/darwin/home-manager.nix
@@ -28,8 +23,8 @@ in
         "@admin"
         "${user}"
       ];
-      substituters = [ "https://cache.nixos.org" ];
-      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+      substituters = ["https://cache.nixos.org"];
+      trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
     };
 
     gc = {
@@ -51,10 +46,12 @@ in
   system.checks.verifyNixPath = false;
 
   # Load configuration that is shared across systems
-  environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
-    kmonad.packages."${pkgs.system}".default
-  ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages =
+    [
+      agenix.packages."${pkgs.system}".default
+      kmonad.packages."${pkgs.system}".default
+    ]
+    ++ (import ../../modules/shared/packages.nix {inherit pkgs;});
 
   AstroNvim.username = user;
 

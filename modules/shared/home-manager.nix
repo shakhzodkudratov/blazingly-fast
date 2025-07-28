@@ -3,14 +3,11 @@
   pkgs,
   lib,
   ...
-}:
-
-let
+}: let
   name = "Shakhzod Kudratov";
   user = "shakhzod";
   email = "shakhzodkudratov@gmail.com";
-in
-{
+in {
   # Shared shell configuration
   zsh = {
     enable = true;

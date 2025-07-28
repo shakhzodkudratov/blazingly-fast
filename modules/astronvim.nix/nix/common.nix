@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
-let
+{
+  pkgs,
+  config,
+  ...
+}: let
   refresh = pkgs.writeScriptBin "nvim-refresh" ''
     rm -rf ~/.config/nvim/lazy-lock.json
     rm -rf ~/.config/lvim
@@ -14,12 +17,10 @@ let
     rm -rf ~/.local/state/nvim
   '';
   replace-contents = import ../../../utils/replace-contents.nix;
-in
-{
-  imports = [ ./options.nix ];
+in {
+  imports = [./options.nix];
   config = {
-    environment.systemPackages =
-      with pkgs;
+    environment.systemPackages = with pkgs;
       [
         # Essential
         neovim-unwrapped
@@ -44,7 +45,7 @@ in
         # python314Full
         # nodejs_24
       ]
-      ++ [ refresh ];
+      ++ [refresh];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
       "nvim/init.lua" = {
         source = ../init.lua;

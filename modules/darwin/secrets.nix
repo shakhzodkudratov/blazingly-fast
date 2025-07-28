@@ -4,12 +4,10 @@
   agenix,
   secrets,
   ...
-}:
-let
+}: let
   user = "shakhzod";
-in
-{
-  age.identityPaths = [ "/Users/${user}/.ssh/id_ed25519" ];
+in {
+  age.identityPaths = ["/Users/${user}/.ssh/id_ed25519"];
 
   # Your secrets go here
   #
@@ -38,5 +36,4 @@ in
   #   mode = "600";
   #   owner = "${user}";
   # };
-
 }

@@ -5,5 +5,4 @@ _:
 #   xdg_stateHome = "${config.users.users.${user}.home}/.local/state";
 # in
 {
-
 }

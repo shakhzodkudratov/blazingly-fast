@@ -23,108 +23,107 @@
     };
     kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
   };
-  outputs =
-    {
-      self,
-      darwin,
-      home-manager,
-      nixpkgs,
-      ...
-    }@inputs:
-    let
-      # user = "shakhzod";
-      linuxSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-      darwinSystems = [
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-      forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
-      devShell =
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default =
-            with pkgs;
-            mkShell {
-              nativeBuildInputs = with pkgs; [
-                nixd
-                deadnix
-                statix
-                nixfmt-rfc-style
-                bashInteractive
-                git
-                age
-                age-plugin-yubikey
-              ];
-              shellHook = ''
-                export EDITOR=nvim
-              '';
-            };
-        };
-      mkApp = scriptName: system: {
-        type = "app";
-        program = "${
-          (nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
-            #!/usr/bin/env bash
-            PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
-            echo "Running ${scriptName} for ${system}"
-            exec ${self}/apps/${system}/${scriptName}
-          '')
-        }/bin/${scriptName}";
-      };
-      mkLinuxApps = system: {
-        "apply" = mkApp "apply" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "install" = mkApp "install" system;
-        "install-with-secrets" = mkApp "install-with-secrets" system;
-      };
-      mkDarwinApps = system: {
-        "apply" = mkApp "apply" system;
-        "build" = mkApp "build" system;
-        "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "rollback" = mkApp "rollback" system;
-      };
-    in
-    {
-      devShells = forAllSystems devShell;
-      apps =
-        nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
-        // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
-
-      darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
-        specialArgs = inputs;
-        modules = [
-          home-manager.darwinModules.home-manager
-          ./hosts/darwin
-        ];
-        system = "aarch64-darwin";
-      };
-
-      nixosConfigurations.worklaptop = nixpkgs.lib.nixosSystem {
-        specialArgs = inputs;
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hosts/linux/worklaptop/configuration.nix
-        ];
-      };
-
-      darwinModules = {
-        AstroNvim = import ./modules/astronvim.nix/nix/darwin.nix;
-      };
-
-      nixosModules = {
-        AstroNvim = import ./modules/astronvim.nix/nix/nixos.nix;
-      };
+  outputs = {
+    self,
+    darwin,
+    home-manager,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    # user = "shakhzod";
+    linuxSystems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+    darwinSystems = [
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    forAllSystems = f: nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems) f;
+    formatter = system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      default = pkgs.alejandra;
     };
+    devShell = system: let
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      default = with pkgs;
+        mkShell {
+          nativeBuildInputs = with pkgs; [
+            nixd
+            deadnix
+            statix
+            alejandra
+            bashInteractive
+            git
+            age
+            age-plugin-yubikey
+          ];
+          shellHook = ''
+            export EDITOR=nvim
+          '';
+        };
+    };
+    mkApp = scriptName: system: {
+      type = "app";
+      program = "${
+        (nixpkgs.legacyPackages.${system}.writeScriptBin scriptName ''
+          #!/usr/bin/env bash
+          PATH=${nixpkgs.legacyPackages.${system}.git}/bin:$PATH
+          echo "Running ${scriptName} for ${system}"
+          exec ${self}/apps/${system}/${scriptName}
+        '')
+      }/bin/${scriptName}";
+    };
+    mkLinuxApps = system: {
+      "apply" = mkApp "apply" system;
+      "build-switch" = mkApp "build-switch" system;
+      "copy-keys" = mkApp "copy-keys" system;
+      "create-keys" = mkApp "create-keys" system;
+      "check-keys" = mkApp "check-keys" system;
+      "install" = mkApp "install" system;
+      "install-with-secrets" = mkApp "install-with-secrets" system;
+    };
+    mkDarwinApps = system: {
+      "apply" = mkApp "apply" system;
+      "build" = mkApp "build" system;
+      "build-switch" = mkApp "build-switch" system;
+      "copy-keys" = mkApp "copy-keys" system;
+      "create-keys" = mkApp "create-keys" system;
+      "check-keys" = mkApp "check-keys" system;
+      "rollback" = mkApp "rollback" system;
+    };
+  in {
+    devShells = forAllSystems devShell;
+    formatter = forAllSystems formatter;
+    apps =
+      nixpkgs.lib.genAttrs linuxSystems mkLinuxApps
+      // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
+
+    darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
+      specialArgs = inputs;
+      modules = [
+        home-manager.darwinModules.home-manager
+        ./hosts/darwin
+      ];
+      system = "aarch64-darwin";
+    };
+
+    nixosConfigurations.worklaptop = nixpkgs.lib.nixosSystem {
+      specialArgs = inputs;
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./hosts/linux/worklaptop/configuration.nix
+      ];
+    };
+
+    darwinModules = {
+      AstroNvim = import ./modules/astronvim.nix/nix/darwin.nix;
+    };
+
+    nixosModules = {
+      AstroNvim = import ./modules/astronvim.nix/nix/nixos.nix;
+    };
+  };
 }

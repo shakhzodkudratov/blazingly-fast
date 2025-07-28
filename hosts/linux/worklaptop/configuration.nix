@@ -2,17 +2,18 @@
   agenix,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../../modules/shared
     # ../../../modules/shared/home-manager.nix
   ];
 
-  environment.systemPackages = [
-    agenix.packages."${pkgs.system}".default
-  ] ++ (import ../../../modules/shared/packages.nix { inherit pkgs; });
+  environment.systemPackages =
+    [
+      agenix.packages."${pkgs.system}".default
+    ]
+    ++ (import ../../../modules/shared/packages.nix {inherit pkgs;});
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
