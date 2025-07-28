@@ -107,6 +107,7 @@ in {
     ignores = [
       ".idea"
       "node_modules"
+      ".DS_Store"
       "*.swp"
     ];
 
