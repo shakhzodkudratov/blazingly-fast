@@ -45,12 +45,45 @@ return {
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
 
+      -- -- https://github.com/NixOS/nixfmt#neovim--nixd
+      -- nixd = {
+      --   settings = {
+      --     nixd = {
+      --       formatting = {
+      --         command = { "alejandra" },
+      --       },
+      --     },
+      --   },
+      -- },
+
       -- https://github.com/AstroNvim/astrocommunity/blob/main/lua/astrocommunity/pack/go/init.lua
       gopls = {
         settings = {
           gopls = {
             analyses = {
               ST1003 = false,
+            },
+          },
+        },
+      },
+
+      ["rust-analyzer"] = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
+            },
+          },
+        },
+      },
+
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
             },
           },
         },

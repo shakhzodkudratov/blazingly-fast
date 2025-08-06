@@ -39,6 +39,10 @@ in {
         deadnix
         # rustup # Must run `rustup default stable`
         cornelis
+        taplo
+        bash
+        nodejs
+        # go
 
         # haskell-language-server
 
