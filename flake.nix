@@ -34,21 +34,7 @@
       };
     in {
       formatter = pkgs.alejandra;
-      devShells = {
-        default = with pkgs;
-          mkShell {
-            nativeBuildInputs = with pkgs; [
-              nixd
-              deadnix
-              statix
-              alejandra
-              git
-            ];
-            shellHook = ''
-              export EDITOR=nvim
-            '';
-          };
-      };
+      devShells.default = pkgs.callPackage ./shell.nix {};
     })
     // (let
       lib = nixpkgs.lib // home-manager.lib // (import ./lib);
