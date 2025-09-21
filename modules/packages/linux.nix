@@ -7,5 +7,4 @@ with pkgs; [
   obsidian
   floorp
   pinentry-all
-  gcr
 ]
