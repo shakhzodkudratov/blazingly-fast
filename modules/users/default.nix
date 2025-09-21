@@ -1,0 +1,3 @@
+{
+  shakhzod = import ./shakhzod.nix;
+}

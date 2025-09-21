@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
   refresh = pkgs.writeScriptBin "nvim-refresh" ''
@@ -16,7 +17,6 @@
     rm -rf ~/.local/state/lvim
     rm -rf ~/.local/state/nvim
   '';
-  replace-contents = import ../../../utils/replace-contents.nix;
 in {
   imports = [./options.nix];
   config = {
@@ -37,17 +37,21 @@ in {
         alejandra
         statix
         deadnix
-        # rustup # Must run `rustup default stable`
+        rustup # Must run `rustup default stable`
         cornelis
         taplo
         bash
         nodejs
-        # go
+        go
 
-        # haskell-language-server
+        haskell-language-server
 
-        # python314Full
-        # nodejs_24
+        python3
+        cmake
+        llvmPackages.llvm
+        llvmPackages.clang
+        cargo
+        rustc
       ]
       ++ [refresh];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
@@ -59,7 +63,7 @@ in {
         recursive = true;
       };
       "nvim/extra-lua/cornelis.lua" = {
-        text = replace-contents (builtins.readFile ../extra-lua/cornelis.lua) {
+        text = lib.replaceContents (builtins.readFile ../extra-lua/cornelis.lua) {
           "cornelis" = pkgs.vimPlugins.cornelis;
         };
       };
