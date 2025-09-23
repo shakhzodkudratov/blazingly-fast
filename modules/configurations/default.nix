@@ -5,5 +5,6 @@ _: {
     ./home-manager.nix
     ./niri.nix
     ./plasma.nix
+    ./keyboard.nix
   ];
 }

@@ -8,5 +8,6 @@
   shared = import ./shared.nix args;
   systemSpecific =
     lib.linuxDarwinElse pkgs linux darwin [];
-in
-  systemSpecific ++ shared
+in {
+  environment.systemPackages = systemSpecific ++ shared;
+}

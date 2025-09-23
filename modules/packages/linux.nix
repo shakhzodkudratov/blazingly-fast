@@ -7,4 +7,7 @@ with pkgs; [
   obsidian
   floorp
   pinentry-all
+  android-studio
+  google-chrome
+  element-desktop
 ]

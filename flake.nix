@@ -24,13 +24,11 @@
     nixpkgs,
     flake-utils,
     nixos-hardware,
-    nur,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [nur.overlays.default];
       };
     in {
       formatter = pkgs.alejandra;

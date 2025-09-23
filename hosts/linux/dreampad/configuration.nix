@@ -8,11 +8,12 @@
     modules.configurations
     modules.nix
     modules.astronvim-nix-nixos
+    modules.packages
     modules.users.shakhzod
   ];
 
   boot.kernelParams = [
-    "intel_iommu=off"
+    # "intel_iommu=off"
     # "i915.enable_guc=3"
   ];
 
@@ -37,11 +38,6 @@
   services = {
     xserver = {
       enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-
       videoDrivers = ["intel"];
     };
 
@@ -75,6 +71,8 @@
       };
     };
   };
+
+  hardware.bluetooth.enable = true;
 
   security.rtkit.enable = true;
 

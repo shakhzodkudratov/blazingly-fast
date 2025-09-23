@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-} @ args: let
+{lib, ...} @ args: let
   submodules = [
     (import ./alacritty.nix)
     (import ./direnv.nix)
@@ -15,8 +11,6 @@
     (_: {
       home = {
         enableNixpkgsReleaseCheck = false;
-        packages = pkgs.callPackage ../packages args;
-
         stateVersion = "25.05";
       };
 
