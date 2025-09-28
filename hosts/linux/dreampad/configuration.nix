@@ -52,10 +52,10 @@
     libinput.enable = true;
     printing.enable = true;
 
-    openssh = {
-      enable = true;
-      ports = [22];
-    };
+    # openssh = {
+    #   enable = true;
+    #   ports = [22];
+    # };
 
     kmonad = {
       enable = true;
@@ -72,7 +72,18 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    enableAllFirmware = true;
+    graphics = {
+      enable = true;
+    };
+
+    intelgpu = {
+      driver = "xe";
+    };
+
+    bluetooth.enable = true;
+  };
 
   security.rtkit.enable = true;
 

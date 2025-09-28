@@ -5,9 +5,11 @@ with pkgs; [
   telegram-desktop
   element-desktop
   obsidian
-  floorp
+  floorp-bin
   pinentry-all
   android-studio
   google-chrome
   element-desktop
+  xclip
+  wl-clipboard
 ]
