@@ -12,4 +12,5 @@ with pkgs; [
   element-desktop
   xclip
   wl-clipboard
+  wpsoffice
 ]
