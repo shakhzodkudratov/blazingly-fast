@@ -40,8 +40,8 @@ with pkgs; [
   bundletool
 
   # Cloud-related tools and SDKs
-  docker
-  docker-compose
+  # docker
+  # docker-compose
 
   # Media-related packages
   dejavu_fonts

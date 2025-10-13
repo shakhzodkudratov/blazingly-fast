@@ -6,5 +6,6 @@ _: {
     ./niri.nix
     ./plasma.nix
     ./keyboard.nix
+    ./docker.nix
   ];
 }

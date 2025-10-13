@@ -11,7 +11,7 @@ in {
   users.users.${user} = {
     isNormalUser = true;
     description = "Shakhzod";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = lib.getExe pkgs.zsh;
   };
 

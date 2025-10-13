@@ -13,4 +13,6 @@ with pkgs; [
   xclip
   wl-clipboard
   wpsoffice
+  obs-studio
+  guvcview
 ]
