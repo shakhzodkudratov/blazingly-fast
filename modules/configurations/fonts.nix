@@ -5,12 +5,14 @@
     packages = with pkgs; [
       liberation_ttf
       times-newer-roman
-      ubuntu_font_family
+      ubuntu-classic
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
       jetbrains-mono
       nerd-fonts.jetbrains-mono
+      hack-font
+      font-awesome
     ];
 
     fontconfig = {

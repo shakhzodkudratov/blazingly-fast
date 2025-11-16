@@ -1,15 +1,12 @@
-{
-  flags,
-  pkgs,
-  ...
-}:
-if flags.niri.enable
-then {
+{pkgs, ...}: {
   # imports = [inputs.niri.nixosModules.niri];
 
+  services = {
+    displayManager.sddm.enable = true;
+  };
+
   programs.niri = {
-    enable = true;
+    enable = false;
     package = pkgs.niri-stable;
   };
 }
-else {}

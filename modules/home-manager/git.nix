@@ -10,7 +10,7 @@ _: {
       "*.swp"
     ];
 
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       core = {
         editor = "nvim";

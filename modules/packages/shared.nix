@@ -44,15 +44,8 @@ with pkgs; [
   # docker-compose
 
   # Media-related packages
-  dejavu_fonts
   ffmpeg
   fd
-  font-awesome
-  hack-font
-  noto-fonts
-  noto-fonts-emoji
-  meslo-lgs-nf
-  nerd-fonts.jetbrains-mono
 
   # Node.js development tools
   # nodePackages.npm # globally install npm
@@ -84,4 +77,6 @@ with pkgs; [
   # nixfmt
 
   wakatime-cli
+
+  claude-code
 ]

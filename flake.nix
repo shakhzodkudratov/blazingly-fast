@@ -40,20 +40,13 @@
     })
     // (let
       lib = nixpkgs-unstable.lib // home-manager.lib // (import ./lib);
-      _specialArgs = {
+      specialArgs = {
         inherit inputs lib;
         modules = import ./modules;
-        flags = {
-          plasma.enable = false;
-          niri.enable = false;
-        };
       };
-      specialArgs = extraArgs: lib.recursiveUpdate _specialArgs extraArgs;
     in {
       nixosConfigurations.dreampad = nixpkgs-unstable.lib.nixosSystem {
-        specialArgs = specialArgs {
-          flags.plasma.enable = true;
-        };
+        inherit specialArgs;
         modules = [
           determinate.nixosModules.default
           nixos-hardware.nixosModules.lenovo-thinkpad-t14-intel-gen6

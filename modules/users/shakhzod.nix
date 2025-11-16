@@ -22,8 +22,9 @@ in {
 
   home-manager.users.${user} = lib.recursiveUpdate (modules.home-manager args) {
     programs.git = {
-      userName = name;
-      userEmail = email;
+      settings.user = {
+        inherit name email;
+      };
 
       signing = {
         signByDefault = true;

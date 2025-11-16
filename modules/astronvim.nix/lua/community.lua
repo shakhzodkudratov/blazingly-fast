@@ -10,6 +10,7 @@ return {
   -- { import = "astrocommunity.pack.go" },
   -- { import = "astrocommunity.pack.java" },
   -- { import = "astrocommunity.pack.haskell" },
+  { import = "astrocommunity.pack.lean" },
   { import = "astrocommunity.pack.dart" },
   -- shell
   { import = "astrocommunity.pack.nix" },

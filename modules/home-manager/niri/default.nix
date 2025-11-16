@@ -1,6 +1,3 @@
-{flags, ...}:
-if flags.niri.enable
-then {
-  programs.niri.enable = true;
+{...}: {
+  programs.niri.enable = false;
 }
-else {}

@@ -14,5 +14,7 @@ with pkgs; [
   wl-clipboard
   wpsoffice
   obs-studio
-  guvcview
+  # guvcview
+  postman
+  vlc
 ]

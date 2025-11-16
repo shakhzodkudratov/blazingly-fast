@@ -52,6 +52,8 @@ in {
         llvmPackages.clang
         cargo
         rustc
+
+        elan
       ]
       ++ [refresh];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {
