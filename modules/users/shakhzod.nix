@@ -30,7 +30,7 @@ in
     }
 
     # NixOS
-    (lib.mkIf pkgs.stdenv.isLinux {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       users.users.${user} = {
         isNormalUser = true;
         description = "Shakhzod";
@@ -40,7 +40,7 @@ in
     })
 
     # nix-darwin
-    (lib.mkIf pkgs.stdenv.isDarwin {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
       users.users.${user} = {
         name = "${user}";
         home = "/Users/${user}";

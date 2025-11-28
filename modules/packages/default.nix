@@ -9,10 +9,10 @@
   homebrew = import ./homebrew.nix args;
 in
   lib.mkMerge [
-    (lib.mkIf pkgs.stdenv.isLinux {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       environment.systemPackages = linux ++ shared;
     })
-    (lib.mkIf pkgs.stdenv.isDarwin {
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         environment.systemPackages = darwin ++ shared;
       }
       // homebrew)

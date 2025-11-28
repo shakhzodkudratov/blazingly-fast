@@ -41,6 +41,6 @@
 in
   lib.mkMerge [
     shared
-    (lib.mkIf pkgs.stdenv.isLinux linux)
-    (lib.mkIf pkgs.stdenv.isDarwin darwin)
+    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux linux)
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin darwin)
   ]
