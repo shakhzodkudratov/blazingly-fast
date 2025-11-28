@@ -2,6 +2,10 @@
   # https://nur.nix-community.org/repos/rycee/
   programs.floorp = {
     enable = true;
+    package =
+      if pkgs.stdenv.hostPlatform.isLinux
+      then pkgs.floorp-bin
+      else pkgs.floorp;
 
     profiles.default = {
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
