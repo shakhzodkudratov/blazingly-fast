@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    modules.configurations
     modules.nix
     modules.astronvim-nix-darwin
     modules.packages
