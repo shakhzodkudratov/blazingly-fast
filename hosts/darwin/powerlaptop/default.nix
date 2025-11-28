@@ -7,7 +7,7 @@
   imports = [
     modules.configurations
     modules.nix
-    modules.astronvim-nix-nixos
+    modules.astronvim-nix-darwin
     modules.packages
     modules.users.shakhzod
   ];
