@@ -1,11 +1,5 @@
-{
-  inputs,
-  # pkgs,
-  ...
-}: {
+{inputs, ...}: {
   nix = {
-    # package = pkgs.nix;
-
     settings = {
       trusted-users = [
         "@admin"

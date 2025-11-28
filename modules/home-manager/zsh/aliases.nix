@@ -1,13 +1,13 @@
 {
-  lib,
   pkgs,
+  lib,
   ...
 }: let
   shared = {
     # made with rust from orzklv/nix
     # top = "btop";
     # htop = "btop";
-    # cat = "bat";
+    cat = "bat";
     ls = "eza";
     # sl = "eza";
     # ps = "procs";
@@ -25,6 +25,7 @@
     nixconf = "nvim $BLAZINGLY_FAST -c \"cd $BLAZINGLY_FAST\"";
 
     # nix related
+    nixupgrade = "f() { nix flake update --flake $BLAZINGLY_FAST $1 && nixrebuild }; f";
     nixpull = "f() { cd $BLAZINGLY_FAST && git pull && cd -}; f || cd -";
     nixpush = "f() { cd $BLAZINGLY_FAST && git add . && git commit -m \"automatically updated by nixpush\" && git push && cd - }; f || cd -";
 
@@ -32,9 +33,14 @@
   };
   linux = {
     nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && sudo nixos-rebuild switch --flake $BLAZINGLY_FAST --impure $1 }; f";
-    nixupgrade = "f() { nix flake update --flake $BLAZINGLY_FAST $1 && nixrebuild }; f";
     nixcleanup = "nix-env --delete-generations +2 && nix store gc && nix-channel --update && nix-env -u --always && nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration switch";
   };
-  darwin = {};
+  darwin = {
+    nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST --impure $1 }; f";
+  };
 in
-  shared // lib.linuxDarwinElse pkgs linux darwin {}
+  lib.mkMerge [
+    shared
+    (lib.mkIf pkgs.stdenv.isLinux linux)
+    (lib.mkIf pkgs.stdenv.isDarwin darwin)
+  ]

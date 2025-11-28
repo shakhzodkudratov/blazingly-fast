@@ -2,6 +2,7 @@
 with pkgs; [
   # General packages for development and system management
   alacritty
+  ghostty
   aspell
   aspellDicts.en
   bash-completion
@@ -77,6 +78,4 @@ with pkgs; [
   # nixfmt
 
   wakatime-cli
-
-  claude-code
 ]

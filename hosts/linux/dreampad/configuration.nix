@@ -29,6 +29,7 @@
   networking = {
     hostName = "dreampad";
     networkmanager.enable = true;
+    # firewall.enable = false;
   };
 
   time.timeZone = "Asia/Tashkent";
@@ -93,5 +94,5 @@
     shells = [pkgs.zsh];
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

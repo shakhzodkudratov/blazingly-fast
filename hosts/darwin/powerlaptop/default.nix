@@ -1,0 +1,67 @@
+{
+  inputs,
+  pkgs,
+  modules,
+  ...
+}: {
+  imports = [
+    modules.configurations
+    modules.nix
+    modules.astronvim-nix-nixos
+    modules.packages
+    modules.users.shakhzod
+  ];
+
+  # Turn off NIX_PATH warnings now that we're using flakes
+  # system.checks.verifyNixPath = false;
+
+  environment.systemPackages = let
+    kmonad =
+      inputs.kmonad.packages."${pkgs.system}".default;
+  in [
+    kmonad
+    (pkgs.writeScriptBin "kmonad-gallium" ''
+      sudo kmonad ${./keyboard.kbd}
+    '')
+  ];
+
+  system = {
+    stateVersion = 6;
+
+    primaryUser = "shakhzod";
+
+    defaults = {
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        ApplePressAndHoldEnabled = false;
+
+        # 120, 90, 60, 30, 12, 6, 2
+        KeyRepeat = 2;
+
+        # 120, 94, 68, 35, 25, 15
+        InitialKeyRepeat = 15;
+
+        "com.apple.mouse.tapBehavior" = 1;
+        "com.apple.sound.beep.volume" = 0.0;
+        "com.apple.sound.beep.feedback" = 0;
+      };
+
+      dock = {
+        autohide = true;
+        show-recents = false;
+        launchanim = true;
+        orientation = "bottom";
+        tilesize = 48;
+      };
+
+      finder = {
+        _FXShowPosixPathInTitle = false;
+      };
+
+      trackpad = {
+        Clicking = true;
+        TrackpadThreeFingerDrag = true;
+      };
+    };
+  };
+}
