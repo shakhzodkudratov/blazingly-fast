@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   nix = {
     settings = {
       trusted-users = [
@@ -9,11 +13,22 @@
       trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="];
     };
 
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 30d";
-    };
+    gc =
+      {
+        automatic = true;
+        options = "--delete-older-than 30d";
+      }
+      // (
+        if pkgs.stdenv.hostPlatform.isLinux
+        then {
+          dates = "daily";
+        }
+        else if pkgs.stdenv.hostPlatform.isDarwin
+        then {
+          interval = "daily";
+        }
+        else {}
+      );
 
     extraOptions = ''
       experimental-features = nix-command flakes pipe-operators
@@ -31,7 +46,6 @@
 
     overlays = [
       inputs.nur.overlays.default
-      inputs.niri.overlays.niri
     ];
   };
 }

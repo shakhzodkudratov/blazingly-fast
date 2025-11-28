@@ -18,11 +18,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-    };
     kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
   };
   outputs = {
