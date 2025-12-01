@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    modules.nix
+    modules.configurations.darwin
+    modules.nix.darwin
     modules.astronvim-nix-darwin
     modules.packages
     modules.users.shakhzod
@@ -20,7 +21,7 @@
   in [
     kmonad
     (pkgs.writeScriptBin "kmonad-gallium" ''
-      sudo kmonad ${./keyboard.kbd}
+      sudo ${kmonad}/bin/kmonad ${./keyboard.kbd}
     '')
   ];
 

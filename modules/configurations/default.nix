@@ -1,4 +1,4 @@
-{lib, ...}: {
-  imports =
-    builtins.map (x: import x) (lib.folderNixList ./.);
+{
+  nixos = import ./nixos;
+  darwin = import ./darwin;
 }

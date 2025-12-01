@@ -1,17 +1,21 @@
 {
   description = "blazingly fast nix config";
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*";
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
-    darwin = {
-      url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
+    nix-darwin = {
+      url = "https://flakehub.com/f/nix-darwin/nix-darwin/0.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
     nur = {
@@ -21,16 +25,16 @@
     kmonad.url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
   };
   outputs = {
-    nixpkgs-unstable,
+    nixpkgs,
     determinate,
     nixos-hardware,
     home-manager,
-    darwin,
+    nix-darwin,
     flake-utils,
     ...
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs-unstable {
+      pkgs = import nixpkgs {
         inherit system;
       };
     in {
@@ -38,13 +42,13 @@
       devShells.default = pkgs.callPackage ./shell.nix {};
     })
     // (let
-      lib = nixpkgs-unstable.lib // home-manager.lib // (import ./lib);
+      lib = nixpkgs.lib // home-manager.lib // (import ./lib);
       specialArgs = {
         inherit inputs lib;
         modules = import ./modules;
       };
     in {
-      nixosConfigurations.dreampad = nixpkgs-unstable.lib.nixosSystem {
+      nixosConfigurations.dreampad = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
           determinate.nixosModules.default
@@ -53,7 +57,7 @@
           ./hosts/linux/dreampad/configuration.nix
         ];
       };
-      darwinConfigurations.powerlaptop = darwin.lib.darwinSystem {
+      darwinConfigurations.powerlaptop = nix-darwin.lib.darwinSystem {
         inherit specialArgs;
         modules = [
           determinate.darwinModules.default

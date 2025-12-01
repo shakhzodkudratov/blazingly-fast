@@ -41,7 +41,9 @@ in
 
     # nix-darwin
     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+      users.knownUsers = [user];
       users.users.${user} = {
+        uid = 501; # id -u
         name = "${user}";
         home = "/Users/${user}";
         isHidden = false;

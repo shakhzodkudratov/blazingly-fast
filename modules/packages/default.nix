@@ -13,7 +13,7 @@ in
       environment.systemPackages = linux ++ shared;
     })
     (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
-        environment.systemPackages = darwin ++ shared;
-      }
-      // homebrew)
+      environment.systemPackages = darwin ++ shared;
+    })
+    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin homebrew)
   ]

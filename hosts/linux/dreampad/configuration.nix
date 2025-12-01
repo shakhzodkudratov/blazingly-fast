@@ -5,8 +5,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    modules.configurations
-    modules.nix
+    modules.configurations.nixos
+    modules.nix.linux
     modules.astronvim-nix-nixos
     modules.packages
     modules.users.shakhzod

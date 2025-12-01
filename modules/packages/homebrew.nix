@@ -25,9 +25,13 @@ _: {
       # "syncthing"
       "1password"
       "obsidian"
+      "anytype"
       "keymapp"
       "wakatime"
       "balenaetcher"
+      "karabiner-elements"
+      "font-jetbrains-mono-nerd-font"
+      "logi-options+"
 
       # Entertainment Tools
       "vlc"
@@ -62,6 +66,7 @@ _: {
 
     masApps = {
       # "1password" = 1333542190;
+      # Xcode = 497799835;
     };
   };
 }
