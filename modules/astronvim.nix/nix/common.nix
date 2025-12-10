@@ -24,36 +24,36 @@ in {
       [
         # Essential
         neovim-unwrapped
-        ripgrep
-        lazygit
-        gdu
-        bottom
-        # LSP dependencies
-        stylua
-        selene
-        ruff
+        # ripgrep
+        # lazygit
+        # gdu
+        # bottom
+        # # LSP dependencies
+        # stylua
+        # selene
+        # ruff
         nixd
-        # nixfmt-rfc-style
-        alejandra
+        # # nixfmt-rfc-style
+        # alejandra
         statix
         deadnix
-        rustup # Must run `rustup default stable`
-        cornelis
-        taplo
-        bash
-        nodejs
-        go
+        # # rustup # Must run `rustup default stable`
+        # cornelis
+        # taplo
+        # bash
+        # nodejs
+        # go
+        #
+        # haskell-language-server
 
-        haskell-language-server
+        # python3
+        # cmake
+        # llvmPackages.llvm
+        # llvmPackages.clang
+        # cargo
+        # rustc
 
-        python3
-        cmake
-        llvmPackages.llvm
-        llvmPackages.clang
-        cargo
-        rustc
-
-        elan
+        # elan
       ]
       ++ [refresh];
     home-manager.users.${config.AstroNvim.username}.xdg.configFile = {

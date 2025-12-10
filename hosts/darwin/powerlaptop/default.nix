@@ -17,7 +17,7 @@
 
   environment.systemPackages = let
     kmonad =
-      inputs.kmonad.packages."${pkgs.system}".default;
+      inputs.kmonad.packages."${pkgs.stdenv.hostPlatform.system}".default;
   in [
     kmonad
     (pkgs.writeScriptBin "kmonad-gallium" ''

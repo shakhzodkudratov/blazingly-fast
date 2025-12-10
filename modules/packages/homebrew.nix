@@ -1,6 +1,9 @@
 _: {
   homebrew = {
     enable = true;
+    brews = [
+      "cocoapods"
+    ];
     casks = [
       # Development Tools
       "docker-desktop"
@@ -12,6 +15,7 @@ _: {
       "jetbrains-toolbox"
       "proxyman"
       "utm"
+      "little-snitch"
 
       # Communication Tools
       "discord"
@@ -25,13 +29,13 @@ _: {
       # "syncthing"
       "1password"
       "obsidian"
-      "anytype"
       "keymapp"
       "wakatime"
       "balenaetcher"
       "karabiner-elements"
       "font-jetbrains-mono-nerd-font"
       "logi-options+"
+      "piphero"
 
       # Entertainment Tools
       "vlc"
@@ -67,6 +71,7 @@ _: {
     masApps = {
       # "1password" = 1333542190;
       # Xcode = 497799835;
+      # RunCat = 1429033973;
     };
   };
 }

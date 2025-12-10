@@ -18,7 +18,6 @@ with pkgs; [
   lnav
   unrar
   tree
-  # cargo
   devbox
   fzf
 

@@ -1,4 +1,3 @@
 {lib, ...}: {
-  imports =
-    builtins.map (x: import x) ((lib.folderNixList ./.) ++ (lib.folderNixList ../common));
+  imports = builtins.map (x: import x) ((lib.folderNixList ./.) ++ (lib.folderNixList ../common));
 }
