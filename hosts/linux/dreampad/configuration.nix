@@ -2,13 +2,13 @@
   pkgs,
   modules,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     modules.configurations.nixos
     modules.nix.linux
-    modules.astronvim-nix-nixos
-    modules.packages
+    modules.packages.linux
     modules.users.shakhzod
   ];
 
@@ -23,7 +23,8 @@
       efi.canTouchEfiVariables = true;
     };
 
-    initrd.luks.devices."luks-eaa96618-1505-405b-87e0-7e6ab29de6f8".device = "/dev/disk/by-uuid/eaa96618-1505-405b-87e0-7e6ab29de6f8";
+    initrd.luks.devices."luks-eaa96618-1505-405b-87e0-7e6ab29de6f8".device =
+      "/dev/disk/by-uuid/eaa96618-1505-405b-87e0-7e6ab29de6f8";
   };
 
   networking = {
@@ -39,7 +40,7 @@
   services = {
     xserver = {
       enable = true;
-      videoDrivers = ["intel"];
+      videoDrivers = [ "intel" ];
     };
 
     pipewire = {
@@ -91,7 +92,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment = {
-    shells = [pkgs.zsh];
+    shells = [ pkgs.zsh ];
   };
 
   system.stateVersion = "25.11";

@@ -1,6 +1,4 @@
 {
-  astronvim-nix-nixos = import ./astronvim.nix/nix/nixos.nix;
-  astronvim-nix-darwin = import ./astronvim.nix/nix/darwin.nix;
   configurations = import ./configurations;
   home-manager = import ./home-manager;
   nix = import ./nix;

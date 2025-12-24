@@ -1,3 +1,3 @@
 {
-  shakhzod = import ./shakhzod.nix;
+  shakhzod = ./shakhzod.nix;
 }

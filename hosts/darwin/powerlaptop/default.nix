@@ -3,27 +3,28 @@
   pkgs,
   modules,
   ...
-}: {
+}:
+{
   imports = [
     modules.configurations.darwin
     modules.nix.darwin
-    modules.astronvim-nix-darwin
-    modules.packages
     modules.users.shakhzod
+    modules.packages.darwin
   ];
 
   # Turn off NIX_PATH warnings now that we're using flakes
   # system.checks.verifyNixPath = false;
 
-  environment.systemPackages = let
-    kmonad =
-      inputs.kmonad.packages."${pkgs.stdenv.hostPlatform.system}".default;
-  in [
-    kmonad
-    (pkgs.writeScriptBin "kmonad-gallium" ''
-      sudo ${kmonad}/bin/kmonad ${./keyboard.kbd}
-    '')
-  ];
+  environment.systemPackages =
+    let
+      kmonad = inputs.kmonad.packages."${pkgs.stdenv.hostPlatform.system}".default;
+    in
+    [
+      kmonad
+      (pkgs.writeScriptBin "kmonad-gallium" ''
+        sudo ${kmonad}/bin/kmonad ${./keyboard.kbd}
+      '')
+    ];
 
   system = {
     stateVersion = 6;

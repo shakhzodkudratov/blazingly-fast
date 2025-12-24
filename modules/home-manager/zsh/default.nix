@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-} @ args: {
+}@args:
+{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -43,11 +44,12 @@
       fi
 
       ${
-        if pkgs.stdenv.hostPlatform.isDarwin
-        then ''
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-        ''
-        else ""
+        if pkgs.stdenv.hostPlatform.isDarwin then
+          ''
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+          ''
+        else
+          ""
       }
     '';
   };

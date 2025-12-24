@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # https://nur.nix-community.org/repos/rycee/
   programs.floorp = {
     enable = true;

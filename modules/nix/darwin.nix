@@ -1,8 +1,8 @@
 {
   inputs,
-  lib,
   ...
-}: {
+}:
+{
   nix.enable = false;
 
   determinate-nix.customSettings = {

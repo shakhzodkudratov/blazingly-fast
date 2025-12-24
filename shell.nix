@@ -8,7 +8,7 @@ mkShell {
     nixd
     deadnix
     statix
-    alejandra
+    nixfmt-rfc-style
     git
   ];
   shellHook = ''

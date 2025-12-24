@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   shared = {
     # made with rust from orzklv/nix
     # top = "btop";
@@ -39,8 +40,8 @@
     nixrebuild = "f() { git -C $BLAZINGLY_FAST add . && sudo darwin-rebuild switch --flake $BLAZINGLY_FAST --impure $1 }; f";
   };
 in
-  lib.mkMerge [
-    shared
-    (lib.mkIf pkgs.stdenv.hostPlatform.isLinux linux)
-    (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin darwin)
-  ]
+lib.mkMerge [
+  shared
+  (lib.mkIf pkgs.stdenv.hostPlatform.isLinux linux)
+  (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin darwin)
+]
