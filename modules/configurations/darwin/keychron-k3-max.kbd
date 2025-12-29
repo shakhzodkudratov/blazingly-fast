@@ -1,0 +1,87 @@
+(defcfg 
+  input  (iokit-name "Keychron K3 Max")
+  output (kext)
+)
+
+(defalias
+  default (tap-hold 200 grv (layer-switch default))
+  gal (tap-hold 200 grv (layer-switch gallium))
+
+  b (tap-hold 200 b (layer-toggle symbols))
+  m (tap-hold 200 m (layer-toggle movement))
+  w (tap-hold 200 w (layer-toggle symbols))
+  f (tap-hold 200 f (layer-toggle numbers))
+
+  n1 (tap-hold 200 n lmet)
+  n2 lmet
+  r1 (tap-hold 200 r lalt)
+  r2 lalt
+  t1 (tap-hold 200 t lctl)
+  t2 lctl
+  s1 (tap-hold 200 s lsft)
+  s2 lsft
+
+  h1 (tap-hold 200 h rsft)
+  h2 rsft
+  a1 (tap-hold 200 a rctl)
+  a2 rctl
+  e1 (tap-hold 200 e ralt)
+  e2 ralt
+  i1 (tap-hold 200 i rmet)
+  i2 rmet
+)
+
+(defsrc
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret  home
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+
+(deflayer default
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  @gal 1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret  home
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+
+(deflayer gallium
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  @gal 1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
+  tab  @b   l    d    c    v    z    y    o    u    ,    /    XX   XX   pgdn
+  esc  @n1  @r1  @t1  @s1  g    p    @h1  @a1  @e1  @i1  -    ret  home
+  lsft q    x    @m   @w   j    k    @f   '    ;    .    rsft up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+
+(deflayer symbols
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  @gal XX   XX   XX   XX   XX   S-grv S-, S-.  S-6  grv  \    XX   bspc pgup
+  tab  XX   XX   XX   XX   XX   S-\  [    ]    S-2  S-1  S-/  XX   XX   pgdn
+  esc  @n2  @r2  @t2  @s2  XX   S-7  S-9  S-0  S-4  S-3  S--  ret  home
+  lsft XX   XX   XX   XX   XX   =    S-[  S-]  S-=  S-8  S-5  up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+
+(deflayer numbers
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  @gal XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc pgup
+  tab  -    7    8    9    /    XX   XX   XX   XX   XX   XX   XX   XX   pgdn
+  caps S-=  4    5    6    S-8  XX   @h2  @a2  @e2  @i2  XX   ret  home
+  lsft 0    1    2    3    =    XX   XX   XX   XX   XX   rsft up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+
+(deflayer movement
+  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  prnt del
+  @gal XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   bspc pgup
+  tab  XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   pgdn
+  caps XX   XX   XX   XX   XX   left down up   right XX  XX   ret  home
+  lsft XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   rsft up   end
+  lctl lmet lalt              spc              ralt rctl left down right
+)
+

@@ -37,7 +37,6 @@ in
       # Utility Tools
       # "syncthing"
       "1password"
-      "obsidian"
       "keymapp"
       "wakatime"
       "balenaetcher"

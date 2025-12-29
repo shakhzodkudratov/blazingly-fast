@@ -2,6 +2,7 @@
 {
   nix = {
     enable = true;
+    nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
     settings = {
       trusted-users = [
         "@admin"
