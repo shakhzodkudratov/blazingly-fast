@@ -1,6 +1,4 @@
 {
-  inputs,
-  pkgs,
   modules,
   ...
 }:
@@ -14,17 +12,6 @@
 
   # Turn off NIX_PATH warnings now that we're using flakes
   # system.checks.verifyNixPath = false;
-
-  environment.systemPackages =
-    let
-      kmonad = inputs.kmonad.packages."${pkgs.stdenv.hostPlatform.system}".default;
-    in
-    [
-      kmonad
-      (pkgs.writeScriptBin "kmonad-gallium" ''
-        sudo ${kmonad}/bin/kmonad ${./keyboard.kbd}
-      '')
-    ];
 
   system = {
     stateVersion = 6;
