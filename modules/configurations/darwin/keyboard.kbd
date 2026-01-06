@@ -2,9 +2,9 @@
   def (tap-hold 200 200 grv (layer-switch default))
   gal (tap-hold 200 200 grv (layer-switch gallium))
 
-  m (tap-hold 200 200 m (layer-toggle movement))
-  w (tap-hold 200 200 w (layer-toggle symbols))
-  f (tap-hold 200 200 f (layer-toggle numbers))
+  m (multi f24 (tap-hold 200 200 m (layer-toggle movement)))
+  w (multi f24 (tap-hold 200 200 w (layer-toggle symbols)))
+  f (multi f24 (tap-hold 200 200 f (layer-toggle numbers)))
 
   n1 (tap-hold 200 200 n lmet)
   n2 lmet
@@ -23,59 +23,66 @@
   e2 ralt
   i1 (tap-hold 200 200 i rmet)
   i2 rmet
+
+  cxl (macro C-u left)
+  cxr (macro C-u right)
+  ml (macro M-left)
+  md (macro M-down)
+  mu (macro M-up)
+  mr (macro M-right)
 )
 
 (defsrc
-  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  del
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret  home
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up   end
-  lctl lmet lalt              spc              ralt rctl left down right
+  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9 f10 f11  f12 del 
+  grv  1    2    3   4    5    6    7    8     9  0   -    =   bspc pgup
+  tab  q    w    e   r    t    y    u    i     o  p   [    ]   \    pgdn
+  caps a    s    d   f    g    h    j    k     l  ;   '    ret home
+  lsft z    x    c   v    b    n    m    ,     .  /   rsft up  end 
+  lctl lmet lalt spc ralt rctl left down right
 )
 
 (deflayer default
-  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  del
-  @gal 1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret  home
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft up   end
-  lctl lmet lalt              spc              ralt rctl left down right
+  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9 f10 f11  f12 del 
+  @gal 1    2    3   4    5    6    7    8     9  0   -    =   bspc pgup
+  tab  q    w    e   r    t    y    u    i     o  p   [    ]   \    pgdn
+  caps a    s    d   f    g    h    j    k     l  ;   '    ret home
+  lsft z    x    c   v    b    n    m    ,     .  /   rsft up  end 
+  lctl lmet lalt spc ralt rctl left down right
 )
 
 (deflayer gallium
-  esc  f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12  del
-  @def 1    2    3    4    5    6    7    8    9    0    -    =    bspc pgup
-  tab  b    l    d    c    v    z    y    o    u    ,    /    XX   XX   pgdn
-  esc  @n1  @r1  @t1  @s1  g    p    @h1  @a1  @e1  @i1  -    ret  home
-  lsft q    x    @m   @w   j    k    @f   '    ;    .    rsft up   end
-  lctl lmet lalt              spc              ralt rctl left down right
+  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9  f10 f11  f12 del 
+  @def 1    2    3   4    5    6    7    8     9   0   -    =   bspc pgup
+  tab  b    l    d   c    v    z    y    o     u   ,   /    XX  XX   pgdn
+  esc  @n1  @r1  @t1 @s1  g    p    @h1  @a1   @e1 @i1 -    ret home
+  lsft q    x    @m  @w   j    k    @f   '     ;   .   rsft up  end 
+  lctl lmet lalt spc ralt rctl left down right
 )
 
 (deflayer symbols
-  _    _  _  _  _  _  _  _  _  _  _   _   _    _
-  _    XX   XX   XX   XX   XX   S-grv S-, S-.  S-6  grv  \    XX   _    _
-  _    XX   XX   XX   XX   XX   S-\  [    ]    S-2  S-1  S-/  XX   XX   _
-  _    @n2  @r2  @t2  @s2  XX   S-7  S-9  S-0  S-4  S-3  S--  _    _
-  _    XX   XX   XX   XX   XX   =    S-[  S-]  S-=  S-8  S-5  _    _
-  _    _    _                 _                _    _    _    _    _
+  _ _   _   _   _   _  _     _   _   _   _   _   _  _ 
+  _ XX  XX  XX  XX  XX S-grv S-, S-. S-6 grv \   XX _  _
+  _ XX  XX  XX  XX  XX S-\   [   ]   S-2 S-1 S-/ XX XX _
+  _ @n2 @r2 @t2 @s2 XX S-7   S-9 S-0 S-4 S-3 S-- _  _ 
+  _ XX  XX  XX  XX  XX =     S-[ S-] S-= S-8 S-5 _  _ 
+  _ _   _   _   _   _  _     _   _  
 )
 
 (deflayer numbers
-  _    _  _  _  _  _  _  _  _  _  _   _   _    _
-  _    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _    _
-  _    -    7    8    9    /    XX   XX   XX   XX   XX   XX   XX   XX   _
-  _    S-=  4    5    6    S-8  XX   @h2  @a2  @e2  @i2  XX   _    _
-  _    0    1    2    3    =    XX   XX   XX   XX   XX   _    _    _
-  _    _    _                 _                _    _    _    _    _
+  _ _   _  _  _  _   _  _   _   _   _   _  _  _ 
+  _ XX  XX XX XX XX  XX XX  XX  XX  XX  XX XX _  _
+  _ -   7  8  9  /   XX XX  XX  XX  XX  XX XX XX _
+  _ S-= 4  5  6  S-8 XX @h2 @a2 @e2 @i2 XX _  _ 
+  _ 0   1  2  3  =   XX XX  XX  XX  XX  _  _  _ 
+  _ _   _  _  _  _   _  _   _  
 )
 
 (deflayer movement
-  _    _  _  _  _  _  _  _  _  _  _   _   _    _
-  _    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _    _
-  _    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _
-  _    XX   XX   XX   XX   XX   left down up   right XX  XX   _    _
-  _    XX   XX   XX   XX   XX   XX   XX   XX   XX   XX   _    _    _
-  _    _    _                 _                _    _    _    _    _
+  _ _   _   _   _   _  _    _    _    _     _  _  _  _ 
+  _ XX  XX  XX  XX  XX XX   XX   XX   XX    XX XX XX _  _
+  _ XX  XX  XX  XX  XX XX   @cxl @cxr XX    XX XX XX XX _
+  _ @n2 @r2 @t2 @s2 XX left down up   right XX XX _  _ 
+  _ XX  XX  XX  XX  XX @ml  @md  @mu  @mr   XX _  _  _ 
+  _ _   _   _   _   _  _    _    _   
 )
 

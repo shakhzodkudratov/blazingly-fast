@@ -27,6 +27,13 @@
       url = "git+https://codeberg.org/shakhzodkudratov/nixvim.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        nixpkgs-stable.follows = "nixpkgs";
+      };
+    };
   };
   outputs =
     {

@@ -9,6 +9,7 @@ mkShell {
     deadnix
     statix
     nixfmt-rfc-style
+    nixfmt-tree
     git
   ];
   shellHook = ''

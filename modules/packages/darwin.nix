@@ -44,6 +44,7 @@ in
       "font-jetbrains-mono-nerd-font"
       "logi-options+"
       "piphero"
+      "transmission"
 
       # Entertainment Tools
       "vlc"

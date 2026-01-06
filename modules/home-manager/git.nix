@@ -8,6 +8,9 @@ _: {
       "node_modules"
       ".DS_Store"
       "*.swp"
+      "*~"
+      "*#"
+      ".#*"
     ];
 
     settings = {
