@@ -31,10 +31,15 @@
   programs.emacs = {
     enable = true;
     package = pkgs.emacs-macport;
-    extraConfig = ''
-      (defconst *config-file* "~/blazingly-fast/modules/home-manager/emacs/config.org")
-      (org-babel-load-file *config-file*)
-    '';
+    extraConfig =
+      let
+        treesitGrammars = pkgs.emacsPackages.treesit-grammars.with-all-grammars;
+      in
+      ''
+        (setq treesit-extra-load-path '("${treesitGrammars}/lib"))
+        (defconst *config-file* "~/blazingly-fast/modules/home-manager/emacs/config.org")
+        (org-babel-load-file *config-file*)
+      '';
     extraPackages =
       epkgs:
       with epkgs;
@@ -61,8 +66,17 @@
         direnv
         vterm
 
-        nix-mode
+        eglot
+
+        nix-ts-mode
+        nixpkgs-fmt
+        nixfmt
+	pkgs.nixd
+	
         kanata-kbd-mode
+	
+        rust-mode
+        flycheck-rust
       ]
       ++ (
         if pkgs.stdenv.hostPlatform.isLinux then
