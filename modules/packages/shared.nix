@@ -1,15 +1,9 @@
 {
-  inputs,
   pkgs,
   ...
 }:
 with pkgs;
-let
-  nixvim = inputs.nixvim.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in
 [
-  nixvim
-
   # General packages for development and system management
   alacritty
   aspell

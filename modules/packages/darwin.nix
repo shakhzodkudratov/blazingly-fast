@@ -7,11 +7,11 @@ in
   homebrew = {
     enable = true;
     taps = [
-      "dart-lang/dart"
+      # "dart-lang/dart"
     ];
     brews = [
       "cocoapods"
-      "dart"
+      # "dart"
     ];
     casks = [
       # Development Tools
@@ -40,7 +40,6 @@ in
       "keymapp"
       "wakatime"
       "balenaetcher"
-      "karabiner-elements"
       "font-jetbrains-mono-nerd-font"
       "logi-options+"
       "piphero"
