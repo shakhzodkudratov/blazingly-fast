@@ -1,4 +1,5 @@
-_: {
+{ ... }:
+{
   home = {
     enableNixpkgsReleaseCheck = false;
     stateVersion = "25.11";

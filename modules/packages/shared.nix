@@ -1,83 +1,65 @@
 {
+  inputs,
+  globalib,
   pkgs,
   ...
 }:
-with pkgs;
-[
-  # General packages for development and system management
-  alacritty
-  aspell
-  aspellDicts.en
-  bash-completion
-  bat
-  btop
-  coreutils
-  killall
-  neofetch
-  openssh
-  sqlite
-  wget
-  zip
-  unzip
-  lnav
-  unrar
-  tree
-  devbox
-  fzf
+let
+  nmacs = globalib.getPackage pkgs inputs.nmacs "default";
+in
+{
+  environment.systemPackages = with pkgs; [
+    nmacs
 
-  # orzklv's rust rewrite packages
-  btop
-  bat
-  eza
-  procs
-  ripgrep
-  fd
-  gping
-  hyperfine
+    # General packages
+    alacritty
+    aspell
+    aspellDicts.en
+    bash-completion
+    coreutils
+    devbox
+    fzf
+    killall
+    lnav
+    neofetch
+    openssh
+    sqlite
+    wget
+    zip
 
-  # Encryption and security tools
-  age
-  age-plugin-yubikey
-  gnupg
-  libfido2
-  bundletool
+    # Rust rewrites
+    bat
+    btop
+    eza
+    fd
+    gping
+    hyperfine
+    procs
+    ripgrep
 
-  # Cloud-related tools and SDKs
-  # docker
-  # docker-compose
+    # Encryption and security
+    age
+    age-plugin-yubikey
+    gnupg
+    libfido2
+    bundletool
+    _1password-cli
 
-  # Media-related packages
-  ffmpeg
-  fd
+    # Media
+    ffmpeg
 
-  # Node.js development tools
-  # nodePackages.npm # globally install npm
-  # nodePackages.prettier
-  # nodejs
-  # pnpm_10
+    # Text and terminal utilities
+    htop
+    hunspell
+    iftop
+    jq
+    tmux
+    tree
+    unrar
+    unzip
+    zsh-powerlevel10k
+    texliveFull
 
-  # Text and terminal utilities
-  htop
-  hunspell
-  iftop
-  jq
-  ripgrep
-  tree
-  tmux
-  unrar
-  unzip
-  zsh-powerlevel10k
-  texliveFull
-
-  # Python packages
-  # python3
-  # virtualenv
-
-  # Nix related
-  # nil
-  # nixd
-  # nixpkgs-fmt
-  # nixfmt
-
-  wakatime-cli
-]
+    wakatime-cli
+  ];
+}

@@ -1,3 +1,4 @@
+{ globalib, ... }:
 {
-  shakhzod = ./shakhzod.nix;
+  imports = globalib.folderNixList ./.;
 }

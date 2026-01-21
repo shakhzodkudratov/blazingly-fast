@@ -1,4 +1,5 @@
-_: {
+{ ... }:
+{
   i18n.inputMethod.enabled = null;
   hardware.keyboard.qmk.enable = true;
   services.udev.extraRules = ''

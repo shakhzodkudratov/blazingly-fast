@@ -1,15 +1,10 @@
 {
   pkgs,
-  modules,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
-    modules.configurations.nixos
-    modules.nix.linux
-    modules.packages.linux
-    modules.users.shakhzod
   ];
 
   boot.kernelParams = [
@@ -58,6 +53,7 @@
     #   enable = true;
     #   ports = [22];
     # };
+  };
 
   hardware = {
     enableAllFirmware = true;

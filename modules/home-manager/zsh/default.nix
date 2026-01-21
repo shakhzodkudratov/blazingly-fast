@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  isDarwin,
   ...
 }@args:
 {
@@ -32,25 +33,21 @@
         };
       }
     ];
+
     shellAliases = import ./aliases.nix args;
 
     initContent = lib.mkAfter ''
       export BLAZINGLY_FAST="$HOME/blazingly-fast"
       export NIX_SHELL_WORKSPACE="$HOME/dev/nix-shell-workspace"
 
-
       if [ -f "$HOME/.zshrc_custom" ]; then
         source "$HOME/.zshrc_custom"
       fi
 
-      ${
-        if pkgs.stdenv.hostPlatform.isDarwin then
-          ''
-            eval "$(/opt/homebrew/bin/brew shellenv)"
-          ''
-        else
-          ""
-      }
+      ${lib.optionalString isDarwin ''
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      ''}
     '';
+
   };
 }

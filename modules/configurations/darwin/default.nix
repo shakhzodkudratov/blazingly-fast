@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ globalib, ... }:
 {
-  imports = builtins.map (x: import x) ((lib.folderNixList ./.) ++ (lib.folderNixList ../common));
+  imports = (globalib.folderNixList ./.) ++ (globalib.folderNixList ../common);
 }

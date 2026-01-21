@@ -1,9 +1,9 @@
-{ inputs, pkgs, ... }:
-let
-  shared = import ./shared.nix { inherit pkgs inputs; };
-in
+{ ... }:
 {
-  environment.systemPackages = shared ++ [ ];
+  imports = [
+    ./shared.nix
+  ];
+
   homebrew = {
     enable = true;
     taps = [
@@ -59,6 +59,7 @@ in
       "floorp"
       "google-chrome"
     ];
+
     onActivation = {
       autoUpdate = true;
       cleanup = "uninstall";

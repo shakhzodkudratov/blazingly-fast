@@ -1,4 +1,5 @@
-_: {
+{ ... }:
+{
   virtualisation.docker = {
     enable = true;
     rootless = {

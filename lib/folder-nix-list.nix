@@ -1,6 +1,7 @@
 path:
 let
   matchToBool = match: match != null;
+  startsWithNotUnderscore = name: !(matchToBool (builtins.match "(^_.*)" name));
   endsWithNix = name: matchToBool (builtins.match "(.+\.nix$)" name);
   attrToList =
     attrset:
@@ -13,13 +14,15 @@ let
       name,
       value,
     }:
-    name != "default.nix" && endsWithNix name && value == "regular";
+    name != "default.nix" && endsWithNix name && startsWithNotUnderscore name && value == "regular";
   isDirectoryWithDefaultNix =
     {
       name,
       value,
     }:
-    value == "directory" && builtins.pathExists "${path}/${name}/default.nix";
+    value == "directory"
+    && startsWithNotUnderscore name
+    && builtins.pathExists "${path}/${name}/default.nix";
 
   readDir = path: attrToList (builtins.readDir path);
   filter = builtins.filter (f: (isNotDefaultNixFile f) || (isDirectoryWithDefaultNix f));

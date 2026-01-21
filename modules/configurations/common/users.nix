@@ -1,0 +1,6 @@
+{ modules, ... }:
+{
+  imports = [
+    modules.users
+  ];
+}

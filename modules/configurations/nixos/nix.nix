@@ -1,5 +1,9 @@
 { inputs, ... }:
 {
+  imports = [
+    inputs.determinate.nixosModules.default
+  ];
+
   nix = {
     enable = true;
     nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
@@ -27,19 +31,5 @@
     extraOptions = ''
       experimental-features = nix-command flakes pipe-operators
     '';
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowBroken = true;
-      allowInsecure = false;
-      allowUnsupportedSystem = true;
-      android_sdk.accept_license = true;
-    };
-
-    overlays = [
-      inputs.nur.overlays.default
-    ];
   };
 }

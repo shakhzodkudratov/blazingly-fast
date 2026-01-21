@@ -1,15 +1,5 @@
+{ ... }:
 {
-  modules,
-  ...
-}:
-{
-  imports = [
-    modules.configurations.darwin
-    modules.nix.darwin
-    modules.users.shakhzod
-    modules.packages.darwin
-  ];
-
   # Turn off NIX_PATH warnings now that we're using flakes
   # system.checks.verifyNixPath = false;
 

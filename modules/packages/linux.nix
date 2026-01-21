@@ -1,27 +1,24 @@
-{ pkgs, ... }@args:
-let
-  shared = import ./shared.nix args;
-in
+{ pkgs, ... }:
 {
-  environment.systemPackages =
-    shared
-    + (with pkgs; [
-      _1password-gui
-      spotify
-      telegram-desktop
-      element-desktop
-      obsidian
-      floorp-bin
-      pinentry-all
-      android-studio
-      google-chrome
-      element-desktop
-      xclip
-      wl-clipboard
-      wpsoffice
-      obs-studio
-      guvcview
-      postman
-      vlc
-    ]);
+  imports = [
+    ./shared.nix
+  ];
+  environment.systemPackages = with pkgs; [
+    _1password-gui
+    android-studio
+    element-desktop
+    floorp-bin
+    google-chrome
+    guvcview
+    obs-studio
+    obsidian
+    pinentry-all
+    postman
+    spotify
+    telegram-desktop
+    vlc
+    wl-clipboard
+    wpsoffice
+    xclip
+  ];
 }
