@@ -3,7 +3,7 @@
   pkgs,
   isDarwin,
   ...
-}@args:
+}:
 {
   programs.zsh = {
     enable = true;
@@ -34,7 +34,9 @@
       }
     ];
 
-    shellAliases = import ./aliases.nix args;
+    shellAliases = {
+      ls = "eza";
+    };
 
     initContent = lib.mkAfter ''
       export BLAZINGLY_FAST="$HOME/blazingly-fast"

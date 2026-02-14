@@ -21,8 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nmacs = {
-      # url = "git+https://codeberg.org/shakhzodkudratov/nmacs.git?ref=main";
-      url = "path:/Users/shakhzod/dev/nmacs";
+      url = "git+https://codeberg.org/shakhzodkudratov/nmacs.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
