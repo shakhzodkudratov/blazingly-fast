@@ -1,16 +1,9 @@
 {
-  inputs,
-  globalib,
   pkgs,
   ...
 }:
-let
-  nmacs = globalib.getPackage pkgs inputs.nmacs "default";
-in
 {
   environment.systemPackages = with pkgs; [
-    nmacs
-
     # General packages
     alacritty
     aspell
@@ -59,7 +52,12 @@ in
     unzip
     zsh-powerlevel10k
     texliveFull
+    clipboard-jh
 
     wakatime-cli
+
+    nodejs
+    yarn
+    uv
   ];
 }

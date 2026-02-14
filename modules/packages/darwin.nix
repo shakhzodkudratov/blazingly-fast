@@ -25,6 +25,7 @@
       "proxyman"
       "utm"
       "little-snitch"
+      "figma"
 
       # Communication Tools
       "discord"
@@ -44,6 +45,8 @@
       "logi-options+"
       "piphero"
       "transmission"
+      "steam"
+      "claude"
 
       # Entertainment Tools
       "vlc"

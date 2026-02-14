@@ -1,10 +1,8 @@
-{
-  ...
-}:
+{ ... }:
 {
   # top = "btop";
   # htop = "btop";
-  cat = "bat";
+  # cat = "bat";
   ls = "eza";
   # sl = "eza";
   # ps = "procs";
