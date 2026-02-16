@@ -24,6 +24,7 @@
       gdu
       lazygit
       python3
+      djlint
 
       lua-language-server
       luarocks
