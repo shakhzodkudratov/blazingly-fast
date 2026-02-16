@@ -1,12 +1,11 @@
 {
-  pkgs,
   inputs,
-  globalib,
   ...
 }:
-let
-  nmacs = globalib.getPackage pkgs inputs.nmacs "default";
-in
 {
-  home.packages = [ nmacs ];
+  imports = [
+    inputs.nmacs.homeManagerModules.nmacs
+  ];
+
+  services.nmacs.enable = true;
 }
