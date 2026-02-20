@@ -59,5 +59,6 @@
     nodejs
     yarn
     uv
+    python3
   ];
 }

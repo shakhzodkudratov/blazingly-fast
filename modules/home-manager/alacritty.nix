@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   isDarwin,
   isLinux,
@@ -8,6 +9,8 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      terminal.shell.program = "${config.programs.zsh.package}/bin/zsh";
+
       cursor = {
         style = "Block";
       };

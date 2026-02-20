@@ -12,6 +12,7 @@
     brews = [
       "cocoapods"
       # "dart"
+      "gnupg"
     ];
     casks = [
       # Development Tools
@@ -26,6 +27,7 @@
       "utm"
       "little-snitch"
       "figma"
+      "flutter"
 
       # Communication Tools
       "discord"

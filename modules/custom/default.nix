@@ -1,0 +1,3 @@
+{
+  dock = ./dock.nix;
+}

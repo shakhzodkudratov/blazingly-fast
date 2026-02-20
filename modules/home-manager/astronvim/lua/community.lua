@@ -29,6 +29,7 @@ return {
   { import = "astrocommunity.utility.lua-json5" },
   -- js
   { import = "astrocommunity.pack.typescript-all-in-one" },
+  { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.prisma" },

@@ -31,6 +31,8 @@
       stylua
 
       tree-sitter
+      isort
+      black
     ];
   };
 }

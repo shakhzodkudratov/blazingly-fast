@@ -11,6 +11,15 @@
       url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lix = {
+      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
+      flake = false;
+    };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix.follows = "lix";
+    };
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0";
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0";
@@ -31,6 +40,7 @@
     };
     sops = {
       url = "git+ssh://git@codeberg.org/shakhzodkudratov/sops.git?ref=main";
+      # url = "path:/Users/shakhzod/dev/sops";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.sops-nix.follows = "sops-nix";
     };
@@ -63,9 +73,10 @@
       };
 
       supportedSystems = [
-        "x86_64-linux" # 64-bit Intel/AMD Linux
-        "aarch64-linux" # 64-bit ARM Linux
-        "aarch64-darwin" # 64-bit ARM macOS
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
       ];
 
       forEachSupportedSystem =
@@ -116,13 +127,25 @@
         ];
       };
 
-      darwinConfigurations.powerlaptop = nix-darwin.lib.darwinSystem {
-        specialArgs = darwinArgs;
-        system = "aarch64-darwin";
-        modules = [
-          modules.configurations.darwin
-          ./hosts/darwin/powerlaptop
-        ];
+      darwinConfigurations = {
+        powerlaptop = nix-darwin.lib.darwinSystem {
+          specialArgs = darwinArgs;
+          system = "aarch64-darwin";
+          modules = [
+            modules.configurations.darwin
+            ./hosts/darwin/powerlaptop
+          ];
+        };
+
+        workimac = nix-darwin.lib.darwinSystem {
+          specialArgs = darwinArgs;
+          system = "x86_64-darwin";
+          modules = [
+            modules.configurations.darwin
+            ./hosts/darwin/workimac
+          ];
+
+        };
       };
     };
 }
