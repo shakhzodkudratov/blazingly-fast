@@ -14,6 +14,8 @@
   determinateNix.customSettings = {
     eval-cores = 0;
     extra-experimental-features = [
+      "flakes"
+      "nix-command"
       "build-time-fetch-tree"
       "parallel-eval"
     ];
