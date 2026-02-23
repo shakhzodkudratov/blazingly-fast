@@ -28,6 +28,7 @@
       "little-snitch"
       "figma"
       "flutter"
+      "android-studio"
 
       # Communication Tools
       "discord"

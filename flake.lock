@@ -465,18 +465,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1771318469,
-        "narHash": "sha256-GjdRE8DUe72kqQNcKoLhkQi+6jhWPgGd40v/Jauu3GA=",
-        "ref": "main",
-        "rev": "fedfbb260e6dea079647e973b1f5bf0fb29ac433",
-        "revCount": 8,
-        "type": "git",
-        "url": "https://codeberg.org/shakhzodkudratov/nmacs.git"
+        "lastModified": 1771318510,
+        "narHash": "sha256-vbNKy3awqsIuAzfInE4zQZi10Tk5AIwjwsaJyqJj3mM=",
+        "path": "/Users/shakhzod/dev/nmacs",
+        "type": "path"
       },
       "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://codeberg.org/shakhzodkudratov/nmacs.git"
+        "path": "/Users/shakhzod/dev/nmacs",
+        "type": "path"
       }
     },
     "nur": {
