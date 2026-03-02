@@ -37,7 +37,7 @@
       };
 
       # Disable animation when switching screens or opening apps
-      universalaccess.reduceMotion = true;
+      # universalaccess.reduceMotion = true;
 
       # Whether to automatically rearrange spaces based on most recent use
       dock.mru-spaces = false;

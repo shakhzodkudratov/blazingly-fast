@@ -30,8 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nmacs = {
-      # url = "git+https://codeberg.org/shakhzodkudratov/nmacs.git?ref=main";
-      url = "path:/Users/shakhzod/dev/nmacs";
+      url = "git+https://codeberg.org/shakhzodkudratov/nmacs.git?ref=main";
+      # url = "path:/Users/shakhzod/dev/nmacs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -146,6 +146,15 @@
           ];
 
         };
+      };
+
+      # makes use of .nixd-expr.nix
+      nixd = {
+        nixpkgs = nixpkgs;
+        # options = {
+        #   nixos = self.nixosConfigurations.primary.options;
+        #   home-manager = self.nixosConfigurations.primary.options.home-manager.users.type.getSubOptions [ ];
+        # };
       };
     };
 }

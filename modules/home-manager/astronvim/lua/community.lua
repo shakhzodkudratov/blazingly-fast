@@ -13,6 +13,7 @@ return {
   -- { import = "astrocommunity.pack.java" },
   -- { import = "astrocommunity.pack.haskell" },
   { import = "astrocommunity.pack.dart" },
+  { import = "astrocommunity.pack.python" },
   -- shell
   { import = "astrocommunity.pack.nix" },
   -- { import = "astrocommunity.pack.docker" },
@@ -34,5 +35,5 @@ return {
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.prisma" },
   { import = "astrocommunity.pack.vue" },
-  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.svelte" },
 }

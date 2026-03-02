@@ -37,7 +37,7 @@ in
       };
     }
 
-    (lib.mkIf isDarwin {
+    (lib.optionalAttrs isDarwin {
       users = {
         knownUsers = [ user ];
         users.${user} = {
@@ -50,7 +50,7 @@ in
       };
     })
 
-    (lib.mkIf isLinux {
+    (lib.optionalAttrs isLinux {
       users.users.${user} = {
         isNormalUser = true;
         description = "Shakhzod";

@@ -1,4 +1,4 @@
-{  ...}:
+{ ... }:
 {
   # imports = [
   #   inputs.nmacs.homeManagerModules.nmacs

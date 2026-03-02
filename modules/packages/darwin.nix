@@ -64,6 +64,8 @@
       # Browsers
       "floorp"
       "google-chrome"
+
+      "obsidian"
     ];
 
     onActivation = {

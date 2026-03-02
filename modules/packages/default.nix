@@ -1,4 +1,4 @@
 {
-  linux = ./linux.nix;
+  nixos = ./nixos.nix;
   darwin = ./darwin.nix;
 }
