@@ -4,7 +4,13 @@
     inputs.lix-module.darwinModules.default
   ];
 
-  nix.settings.extra-deprecated-features = "broken-string-escape";
+  nix.settings = {
+    extra-experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
+    extra-deprecated-features = "broken-string-escape";
+  };
 
   system = {
     stateVersion = 6;

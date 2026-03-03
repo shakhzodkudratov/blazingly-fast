@@ -32,11 +32,12 @@
 
       # Communication Tools
       "discord"
-      "slack"
+      # "slack"
       "telegram"
-      "zoom"
+      # "zoom"
       "element"
-      "zulip"
+      # "zulip"
+      "microsoft-teams"
 
       # Utility Tools
       # "syncthing"
