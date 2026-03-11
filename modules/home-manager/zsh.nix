@@ -46,6 +46,8 @@
         source "$HOME/.zshrc_custom"
       fi
 
+      export PATH="$PATH:$HOME/.local/bin"
+
       ${lib.optionalString isDarwin ''
         eval "$(brew shellenv)"
       ''}

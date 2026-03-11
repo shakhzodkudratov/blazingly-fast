@@ -58,6 +58,7 @@
 
     nodejs
     yarn
+    pnpm
     uv
     python3
   ];
