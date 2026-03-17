@@ -24,12 +24,10 @@
   i1 (tap-hold 200 200 i rmet)
   i2 rmet
 
-  cxl (macro C-u left)
-  cxr (macro C-u right)
-  ml (macro M-left)
-  md (macro M-down)
-  mu (macro M-up)
-  mr (macro M-right)
+  ml A-left
+  md A-down
+  mu A-up
+  mr A-right
 )
 
 (defsrc
@@ -80,7 +78,7 @@
 (deflayer movement
   _ _   _   _   _   _  _    _    _    _     _  _  _  _ 
   _ XX  XX  XX  XX  XX XX   XX   XX   XX    XX XX XX _  _
-  _ XX  XX  XX  XX  XX XX   @cxl @cxr XX    XX XX XX XX _
+  _ XX  XX  XX  XX  XX XX   XX   XX   XX    XX XX XX XX _
   _ @n2 @r2 @t2 @s2 XX left down up   right XX XX _  _ 
   _ XX  XX  XX  XX  XX @ml  @md  @mu  @mr   XX _  _  _ 
   _ _   _   _   _   _  _    _    _   

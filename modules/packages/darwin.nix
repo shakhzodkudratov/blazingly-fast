@@ -23,12 +23,12 @@
       "termius"
       "mongodb-compass"
       "jetbrains-toolbox"
-      "proxyman"
-      "utm"
+      # "proxyman"
+      # "utm"
       "little-snitch"
       "figma"
       "flutter"
-      "android-studio"
+      # "android-studio"
 
       # Communication Tools
       "discord"
@@ -37,7 +37,7 @@
       # "zoom"
       "element"
       # "zulip"
-      "microsoft-teams"
+      # "microsoft-teams"
 
       # Utility Tools
       # "syncthing"
@@ -56,8 +56,8 @@
       "vlc"
       "spotify"
       "obs"
-      "krita"
-      "blender"
+      # "krita"
+      # "blender"
 
       # Productivity Tools
       "raycast"
