@@ -8,6 +8,7 @@
 {
   home-manager = {
     useGlobalPkgs = true;
+    backupFileExtension = "hm-backup";
     extraSpecialArgs = {
       inherit
         inputs
