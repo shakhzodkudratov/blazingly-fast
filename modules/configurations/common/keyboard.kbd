@@ -1,3 +1,8 @@
+(defcfg 
+  process-unmapped-keys yes
+  concurrent-tap-hold   yes
+)
+
 (defalias
   def (tap-hold 200 200 grv (layer-switch default))
   gal (tap-hold 200 200 grv (layer-switch gallium))
@@ -28,10 +33,18 @@
   md A-down
   mu A-up
   mr A-right
+
+  ;; thank you! https://github.com/niksingh710/ndots/blob/6d38ecab748bb8a9b812fe01628b53185f77567f/misc/kanata.macos.kbd
+  ;; macOS function key glyphs
+  mc C-up ;; Mission Control
+  sls M-spc ;; Spotlight Search
+  dtn S-C-A-M-f5 ;; Dictation
+  dnd S-C-A-M-f6 ;; Do Not Disturb
+  lp S-C-A-M-l ;; Launchpad
 )
 
 (defsrc
-  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9 f10 f11  f12 del 
+  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9 f10 f11  f12
   grv  1    2    3   4    5    6    7    8     9  0   -    =   bspc pgup
   tab  q    w    e   r    t    y    u    i     o  p   [    ]   \    pgdn
   caps a    s    d   f    g    h    j    k     l  ;   '    ret home
@@ -40,25 +53,25 @@
 )
 
 (deflayer default
-  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9 f10 f11  f12 del 
-  @gal 1    2    3   4    5    6    7    8     9  0   -    =   bspc pgup
-  tab  q    w    e   r    t    y    u    i     o  p   [    ]   \    pgdn
-  caps a    s    d   f    g    h    j    k     l  ;   '    ret home
-  lsft z    x    c   v    b    n    m    ,     .  /   rsft up  end 
+  esc  brdn brup @mc @sls @dtn @dnd prev pp    next mute vold volu
+  @gal 1    2    3   4    5    6    7    8     9    0    -    =   bspc pgup
+  tab  q    w    e   r    t    y    u    i     o    p    [    ]   \    pgdn
+  caps a    s    d   f    g    h    j    k     l    ;    '    ret home
+  lsft z    x    c   v    b    n    m    ,     .    /    rsft up  end 
   lctl lmet lalt spc ralt rctl left down right
 )
 
 (deflayer gallium
-  esc  f1   f2   f3  f4   f5   f6   f7   f8    f9  f10 f11  f12 del 
-  @def 1    2    3   4    5    6    7    8     9   0   -    =   bspc pgup
-  tab  b    l    d   c    v    z    y    o     u   ,   /    XX  XX   pgdn
-  esc  @n1  @r1  @t1 @s1  g    p    @h1  @a1   @e1 @i1 -    ret home
-  lsft q    x    @m  @w   j    k    @f   '     ;   .   rsft up  end 
+  esc  brdn brup @mc @sls @dtn @dnd prev pp    next mute vold volu
+  @def 1    2    3   4    5    6    7    8     9    0    -    =   bspc pgup
+  tab  b    l    d   c    v    z    y    o     u    ,    /    XX  XX   pgdn
+  esc  @n1  @r1  @t1 @s1  g    p    @h1  @a1   @e1  @i1  -    ret home
+  lsft q    x    @m  @w   j    k    @f   '     ;    .    rsft up  end 
   lctl lmet lalt spc ralt rctl left down right
 )
 
 (deflayer symbols
-  _ _   _   _   _   _  _     _   _   _   _   _   _  _ 
+  _ _   _   _   _   _  _     _   _   _   _   _   _
   _ XX  XX  XX  XX  XX S-grv S-, S-. S-6 grv \   XX _  _
   _ XX  XX  XX  XX  XX S-\   [   ]   S-2 S-1 S-/ XX XX _
   _ @n2 @r2 @t2 @s2 XX S-7   S-9 S-0 S-4 S-3 S-- _  _ 
@@ -67,7 +80,7 @@
 )
 
 (deflayer numbers
-  _ _   _  _  _  _   _  _   _   _   _   _  _  _ 
+  _ _   _  _  _  _   _  _   _   _   _   _  _
   _ XX  XX XX XX XX  XX XX  XX  XX  XX  XX XX _  _
   _ -   7  8  9  /   XX XX  XX  XX  XX  XX XX XX _
   _ S-= 4  5  6  S-8 XX @h2 @a2 @e2 @i2 XX _  _ 
@@ -76,7 +89,7 @@
 )
 
 (deflayer movement
-  _ _   _   _   _   _  _    _    _    _     _  _  _  _ 
+  _ _   _   _   _   _  _    _    _    _     _  _  _
   _ XX  XX  XX  XX  XX XX   XX   XX   XX    XX XX XX _  _
   _ XX  XX  XX  XX  XX XX   XX   XX   XX    XX XX XX XX _
   _ @n2 @r2 @t2 @s2 XX left down up   right XX XX _  _ 

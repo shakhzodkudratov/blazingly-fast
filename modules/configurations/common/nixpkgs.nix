@@ -3,10 +3,9 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowBroken = true;
+      allowBroken = false;
       allowInsecure = false;
-      allowUnsupportedSystem = true;
-      android_sdk.accept_license = true;
+      allowUnsupportedSystem = false;
     };
 
     overlays = [

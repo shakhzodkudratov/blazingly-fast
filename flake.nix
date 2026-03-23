@@ -7,11 +7,6 @@
       url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0";
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,7 +35,6 @@
     {
       self,
       nixpkgs,
-      nixos-hardware,
       home-manager,
       nix-darwin,
       ...
@@ -51,11 +45,6 @@
 
       specialArgs = {
         inherit inputs globalib modules;
-      };
-
-      nixosArgs = specialArgs // {
-        isLinux = true;
-        isDarwin = false;
       };
 
       darwinArgs = specialArgs // {

@@ -1,4 +1,0 @@
-{ ... }:
-{
-  powerManagement.powertop.enable = true;
-}

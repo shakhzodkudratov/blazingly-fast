@@ -17,6 +17,7 @@
     ];
     casks = [
       # Development Tools
+      "alacritty"
       "docker-desktop"
       "visual-studio-code"
       "zed"
@@ -38,7 +39,7 @@
       # "zoom"
       "element"
       # "zulip"
-      # "microsoft-teams"
+      "microsoft-teams"
 
       # Utility Tools
       # "syncthing"
@@ -50,7 +51,7 @@
       "logi-options+"
       "piphero"
       "transmission"
-      "steam"
+      # "steam"
       "claude"
       "claude-code"
 
