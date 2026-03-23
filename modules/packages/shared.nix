@@ -53,6 +53,7 @@
     zsh-powerlevel10k
     texliveFull
     clipboard-jh
+    tmatrix
 
     wakatime-cli
 
