@@ -2,7 +2,7 @@
   description = "blazingly fast nix config";
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
-    nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    # nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     nix-darwin = {
       url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -10,15 +10,6 @@
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lix = {
-      url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
-      flake = false;
-    };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.lix.follows = "lix";
     };
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0";
     home-manager = {
@@ -73,9 +64,9 @@
       };
 
       supportedSystems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
+        # "x86_64-linux"
+        # "aarch64-linux"
+        # "x86_64-darwin"
         "aarch64-darwin"
       ];
 
@@ -118,15 +109,6 @@
 
       formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
 
-      nixosConfigurations.dreampad = nixpkgs.lib.nixosSystem {
-        specialArgs = nixosArgs;
-        modules = [
-          modules.configurations.nixos
-          nixos-hardware.nixosModules.lenovo-thinkpad-t14-intel-gen6
-          ./hosts/linux/dreampad/configuration.nix
-        ];
-      };
-
       darwinConfigurations = {
         powerlaptop = nix-darwin.lib.darwinSystem {
           specialArgs = darwinArgs;
@@ -136,25 +118,6 @@
             ./hosts/darwin/powerlaptop
           ];
         };
-
-        workimac = nix-darwin.lib.darwinSystem {
-          specialArgs = darwinArgs;
-          system = "x86_64-darwin";
-          modules = [
-            modules.configurations.darwin
-            ./hosts/darwin/workimac
-          ];
-
-        };
-      };
-
-      # makes use of .nixd-expr.nix
-      nixd = {
-        nixpkgs = nixpkgs;
-        # options = {
-        #   nixos = self.nixosConfigurations.primary.options;
-        #   home-manager = self.nixosConfigurations.primary.options.home-manager.users.type.getSubOptions [ ];
-        # };
       };
     };
 }
