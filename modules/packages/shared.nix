@@ -56,9 +56,10 @@
 
     wakatime-cli
 
-    nodejs
-    yarn
-    pnpm
+    fnm
+    # nodejs
+    # yarn
+    # pnpm
     uv
     python3
   ];

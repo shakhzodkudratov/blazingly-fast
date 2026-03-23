@@ -51,6 +51,7 @@
       "transmission"
       "steam"
       "claude"
+      "claude-code"
 
       # Entertainment Tools
       "vlc"

@@ -15,7 +15,6 @@
         isDarwin
         isLinux
         ;
-
     };
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops

@@ -51,6 +51,8 @@
       ${lib.optionalString isDarwin ''
         eval "$(brew shellenv)"
       ''}
+
+      eval "$(fnm env)"
     '';
 
   };
