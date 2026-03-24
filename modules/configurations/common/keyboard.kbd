@@ -4,29 +4,29 @@
 )
 
 (defalias
-  def (tap-hold 200 200 grv (layer-switch default))
-  gal (tap-hold 200 200 grv (layer-switch gallium))
+  def (tap-hold 180 180 grv (layer-switch default))
+  gal (tap-hold 180 180 grv (layer-switch gallium))
 
-  m (multi f24 (tap-hold 200 200 m (layer-toggle movement)))
-  w (multi f24 (tap-hold 200 200 w (layer-toggle symbols)))
-  f (multi f24 (tap-hold 200 200 f (layer-toggle numbers)))
+  m (multi f24 (tap-hold 180 180 m (layer-toggle movement)))
+  w (multi f24 (tap-hold 180 180 w (layer-toggle symbols)))
+  f (multi f24 (tap-hold 180 180 f (layer-toggle numbers)))
 
-  n1 (tap-hold 200 200 n lmet)
+  n1 (tap-hold 180 180 n lmet)
   n2 lmet
-  r1 (tap-hold 200 200 r lalt)
+  r1 (tap-hold 180 180 r lalt)
   r2 lalt
-  t1 (tap-hold 200 200 t lctl)
+  t1 (tap-hold 180 180 t lctl)
   t2 lctl
-  s1 (tap-hold 200 200 s lsft)
+  s1 (tap-hold 180 180 s lsft)
   s2 lsft
 
-  h1 (tap-hold 200 200 h rsft)
+  h1 (tap-hold 180 180 h rsft)
   h2 rsft
-  a1 (tap-hold 200 200 a rctl)
+  a1 (tap-hold 180 180 a rctl)
   a2 rctl
-  e1 (tap-hold 200 200 e ralt)
+  e1 (tap-hold 180 180 e ralt)
   e2 ralt
-  i1 (tap-hold 200 200 i rmet)
+  i1 (tap-hold 180 180 i rmet)
   i2 rmet
 
   ml A-left

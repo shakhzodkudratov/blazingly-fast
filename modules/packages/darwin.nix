@@ -13,7 +13,8 @@
       "cocoapods"
       # "dart"
       "gnupg"
-      "openfortivpn"
+      "openconnect"
+      "vpn-slice"
     ];
     casks = [
       # Development Tools

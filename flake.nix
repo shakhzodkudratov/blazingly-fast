@@ -1,34 +1,46 @@
 {
   description = "blazingly fast nix config";
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0";
-    # nixpkgs-unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-darwin = {
-      url = "https://flakehub.com/f/nix-darwin/nix-darwin/0";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nmacs = {
-      url = "git+https://codeberg.org/shakhzodkudratov/nmacs.git?ref=main";
-      # url = "path:/Users/shakhzod/dev/nmacs";
+
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "";
+    };
+
+    opsops = {
+      url = "github:vst/opsops";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
-      url = "https://flakehub.com/f/Mic92/sops-nix/0";
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops = {
-      url = "git+ssh://git@codeberg.org/shakhzodkudratov/sops.git?ref=main";
-      # url = "path:/Users/shakhzod/dev/sops";
+
+    lix = {
+      # https://git.lix.systems/lix-project/lix/tags
+      url = "https://git.lix.systems/lix-project/lix/archive/2.95.1.tar.gz";
+      flake = false;
+    };
+
+    lix-module = {
+      # https://git.lix.systems/lix-project/nixos-module/tags
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.sops-nix.follows = "sops-nix";
+      inputs.lix.follows = "lix";
     };
   };
   outputs =
@@ -75,6 +87,16 @@
     {
       devShells = forEachSupportedSystem (
         { pkgs, system }:
+        let
+          inherit
+            (pkgs.callPackage ./modules/secrets/scripts.nix {
+              inherit pkgs;
+              inherit (inputs) opsops;
+            })
+            opsops-full
+            prepare-sops
+            ;
+        in
         {
           default = pkgs.mkShellNoCC {
             packages = with pkgs; [
@@ -86,6 +108,9 @@
               statix
 
               git
+
+              opsops-full
+              prepare-sops
             ];
 
             shellHook = ''

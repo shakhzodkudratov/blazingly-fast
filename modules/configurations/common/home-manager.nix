@@ -1,5 +1,6 @@
 {
   inputs,
+  modules,
   globalib,
   isDarwin,
   isLinux,
@@ -19,7 +20,7 @@
     };
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
-      inputs.sops.module
+      modules.secrets
     ];
   };
 }

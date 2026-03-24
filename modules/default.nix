@@ -3,5 +3,6 @@
   home-manager = import ./home-manager;
   packages = import ./packages;
   custom = import ./custom;
+  secrets = ./secrets;
   users = ./users;
 }
