@@ -1,7 +1,7 @@
-{ inputs, modules, ... }:
+{ inputs, m, ... }:
 {
   imports = [
     inputs.sops-nix.darwinModules.sops
-    modules.secrets
+    m.secrets
   ];
 }

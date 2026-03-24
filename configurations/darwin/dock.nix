@@ -1,11 +1,11 @@
-{  modules, ... }:
+{ m, ... }:
 {
   imports = [
-    modules.custom.dock
+    m.modules.dock
   ];
 
   local.dock = {
     enable = true;
-    entries = [];
+    entries = [ ];
   };
 }

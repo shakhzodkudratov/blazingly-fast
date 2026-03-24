@@ -1,4 +1,0 @@
-{ globalib, ... }:
-{
-  imports = globalib.folderNixList ./.;
-}

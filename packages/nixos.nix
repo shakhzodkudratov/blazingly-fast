@@ -1,8 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./shared.nix
-  ];
   environment.systemPackages = with pkgs; [
     _1password-gui
     android-studio

@@ -1,5 +1,20 @@
 {
   description = "blazingly fast nix config";
+
+  outputs =
+    inputs:
+    let
+      glib = import ./glib.nix inputs;
+      inherit (glib) forEachSupportedSystem m;
+    in
+    {
+      devShell = forEachSupportedSystem (
+        { pkgs, system }: pkgs.callPackage ./shell.nix { inherit inputs system pkgs; }
+      );
+      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt);
+      darwinConfigurations.powerlaptop = import ./hosts/powerlaptop.nix { inherit inputs glib m; };
+    };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,96 +57,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.lix.follows = "lix";
     };
-  };
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      nix-darwin,
-      ...
-    }@inputs:
-    let
-      globalib = nixpkgs.lib // home-manager.lib // (import ./lib);
-      modules = import ./modules;
 
-      specialArgs = {
-        inherit inputs globalib modules;
-      };
-
-      darwinArgs = specialArgs // {
-        isLinux = false;
-        isDarwin = true;
-      };
-
-      supportedSystems = [
-        # "x86_64-linux"
-        # "aarch64-linux"
-        # "x86_64-darwin"
-        "aarch64-darwin"
-      ];
-
-      forEachSupportedSystem =
-        f:
-        inputs.nixpkgs.lib.genAttrs supportedSystems (
-          system:
-          f {
-            inherit system;
-            pkgs = import inputs.nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          }
-        );
-    in
-    {
-      devShells = forEachSupportedSystem (
-        { pkgs, system }:
-        let
-          inherit
-            (pkgs.callPackage ./modules/secrets/scripts.nix {
-              inherit pkgs;
-              inherit (inputs) opsops;
-            })
-            opsops-full
-            prepare-sops
-            ;
-        in
-        {
-          default = pkgs.mkShellNoCC {
-            packages = with pkgs; [
-              self.formatter.${system}
-              nixfmt-tree
-
-              nixd
-              deadnix
-              statix
-
-              git
-
-              opsops-full
-              prepare-sops
-            ];
-
-            shellHook = ''
-              export EDITOR="nvim"
-              export FLAKE_ROOT="$(git rev-parse --show-toplevel)"
-            '';
-          };
-        }
-      );
-
-      formatter = forEachSupportedSystem ({ pkgs, ... }: pkgs.nixfmt-rfc-style);
-
-      darwinConfigurations = {
-        powerlaptop = nix-darwin.lib.darwinSystem {
-          specialArgs = darwinArgs;
-          system = "aarch64-darwin";
-          modules = [
-            modules.configurations.darwin
-            ./hosts/darwin/powerlaptop
-          ];
-        };
-      };
+    haumea = {
+      url = "github:nix-community/haumea/v0.2.2";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 }

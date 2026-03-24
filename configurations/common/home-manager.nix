@@ -1,7 +1,7 @@
 {
   inputs,
-  modules,
-  globalib,
+  glib,
+  m,
   isDarwin,
   isLinux,
   ...
@@ -13,14 +13,15 @@
     extraSpecialArgs = {
       inherit
         inputs
-        globalib
+        glib
+        m
         isDarwin
         isLinux
         ;
     };
     sharedModules = [
       inputs.sops-nix.homeManagerModules.sops
-      modules.secrets
+      m.secrets
     ];
   };
 }

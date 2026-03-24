@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  modules,
+  m,
   isLinux,
   isDarwin,
   ...
@@ -14,18 +14,8 @@ in
 {
   config = lib.mkMerge [
     {
-      sops.gnupg = {
-        home = if isDarwin then "/Users/${user}/.gnupg" else "/home/${user}/.gnupg";
-        sshKeyPaths = [ ];
-      };
-
       home-manager.users.${user} = {
-        imports = [ modules.home-manager ];
-
-        sops.gnupg = {
-          home = if isDarwin then "/Users/${user}/.gnupg" else "/home/${user}/.gnupg";
-          sshKeyPaths = [ ];
-        };
+        imports = m.home-manager.__all;
 
         programs.git = {
           settings.user = { inherit name email; };

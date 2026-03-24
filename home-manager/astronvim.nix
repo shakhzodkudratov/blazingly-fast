@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   xdg.configFile.astronvim = {
-    source = ./.;
+    source = ../astronvim;
     recursive = true;
   };
 

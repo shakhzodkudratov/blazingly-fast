@@ -1,6 +1,6 @@
 { ... }:
 let
-  # nmacs = pkgs.callPackage ./nmacs.nix { };
+  # nmacs = pkgs.callPackage ../nmacs.nix { };
 in
 {
   home.packages = [

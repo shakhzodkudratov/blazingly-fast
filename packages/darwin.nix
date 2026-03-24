@@ -1,9 +1,5 @@
 { ... }:
 {
-  imports = [
-    ./shared.nix
-  ];
-
   homebrew = {
     enable = true;
     taps = [
