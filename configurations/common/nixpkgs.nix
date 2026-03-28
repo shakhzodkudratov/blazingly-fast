@@ -11,6 +11,7 @@
     overlays = [
       inputs.nur.overlays.default
       inputs.nix-doom-emacs-unstraightened.overlays.default
+      inputs.lem.overlays.default
 
       # direnv: CGO needed for -linkmode=external on darwin
       (_final: prev: {

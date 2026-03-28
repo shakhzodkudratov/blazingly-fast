@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # General packages
@@ -54,7 +51,6 @@
     texliveFull
     clipboard-jh
     tmatrix
-
     wakatime-cli
 
     fnm
@@ -63,5 +59,6 @@
     # pnpm
     uv
     python3
+    android-tools
   ];
 }
