@@ -9,8 +9,8 @@
       "cocoapods"
       # "dart"
       "gnupg"
-      "openconnect"
-      "vpn-slice"
+      "roswell"
+      "llvm"
     ];
     casks = [
       # Development Tools
@@ -23,24 +23,23 @@
       "mongodb-compass"
       "jetbrains-toolbox"
       # "proxyman"
-      # "utm"
+      "utm"
       "little-snitch"
       "figma"
       "flutter"
       # "android-studio"
+      "racket"
 
       # Communication Tools
       "discord"
-      # "slack"
       "telegram"
-      # "zoom"
       "element"
       # "zulip"
       "microsoft-teams"
 
       # Utility Tools
-      # "syncthing"
-      "1password"
+      "syncthing-app"
+      "bitwarden"
       "keymapp"
       "wakatime"
       "balenaetcher"
@@ -48,16 +47,15 @@
       "logi-options+"
       "piphero"
       "transmission"
-      # "steam"
-      "claude"
-      "claude-code"
+      "claude-code@latest"
+      "tailscale-app"
+      "macs-fan-control"
 
       # Entertainment Tools
       "vlc"
       "spotify"
       "obs"
-      # "krita"
-      # "blender"
+      "obsidian"
 
       # Productivity Tools
       "raycast"
@@ -65,8 +63,7 @@
       # Browsers
       "floorp"
       "google-chrome"
-
-      "obsidian"
+      "thunderbird"
     ];
 
     onActivation = {
@@ -87,7 +84,6 @@
     # This message is safe to ignore. (https://github.com/dustinlyons/nixos-config/issues/83)
 
     masApps = {
-      # "1password" = 1333542190;
       # Xcode = 497799835;
       # RunCat = 1429033973;
     };

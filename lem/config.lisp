@@ -1,2 +1,2 @@
 
-(:COLOR-THEME "gruvbox-dark-pale")
+(:ISEARCH-PREVIOUS-STRING "quick" :COLOR-THEME "gruvbox-dark-pale")

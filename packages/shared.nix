@@ -33,7 +33,7 @@
     gnupg
     libfido2
     bundletool
-    _1password-cli
+    rbw
 
     # Media
     ffmpeg
@@ -60,5 +60,6 @@
     uv
     python3
     android-tools
+    exercism
   ];
 }

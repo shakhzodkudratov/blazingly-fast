@@ -3,16 +3,26 @@
   concurrent-tap-hold   yes
 )
 
+(defvar
+  combo-timeout 50
+)
+
 (defalias
   def (tap-hold 180 180 grv (layer-switch default))
   gal (tap-hold 180 180 grv (layer-switch gallium))
 
-  m (multi f24 (tap-hold 180 180 m (layer-toggle movement)))
-  w (multi f24 (tap-hold 180 180 w (layer-toggle symbols)))
-  f (multi f24 (tap-hold 180 180 f (layer-toggle numbers)))
+  sym (tap-dance-eager 200 (
+    (tap-hold 200 200 
+      (one-shot 500 (layer-toggle symbols)) 
+      (layer-toggle symbols))
+    esc
+  ))
+  num (tap-hold 200 200 tab (layer-toggle numbers))
+  mov (layer-toggle movement)
 
   n1 (tap-hold 180 180 n lmet)
   n2 lmet
+  n3 (tap-hold 180 180 esc lmet)
   r1 (tap-hold 180 180 r lalt)
   r2 lalt
   t1 (tap-hold 180 180 t lctl)
@@ -64,9 +74,9 @@
 (deflayer gallium
   esc  brdn brup @mc @sls @dtn @dnd prev pp    next mute vold volu
   @def 1    2    3   4    5    6    7    8     9    0    -    =   bspc pgup
-  tab  b    l    d   c    v    z    y    o     u    ,    /    XX  XX   pgdn
-  esc  @n1  @r1  @t1 @s1  g    p    @h1  @a1   @e1  @i1  -    ret home
-  lsft q    x    @m  @w   j    k    @f   '     ;    .    rsft up  end 
+  @num b    l    d   c    v    z    y    o     u    ,    /    XX  XX   pgdn
+  @sym @n1  @r1  @t1 @s1  g    p    @h1  @a1   @e1  @i1  -    ret home
+  @mov q    x    m   w    j    k    f    '     ;    .    rsft up  end 
   lctl lmet lalt spc ralt rctl left down right
 )
 
@@ -74,18 +84,18 @@
   _ _   _   _   _   _  _     _   _   _   _   _   _
   _ XX  XX  XX  XX  XX S-grv S-, S-. S-6 grv \   XX _  _
   _ XX  XX  XX  XX  XX S-\   [   ]   S-2 S-1 S-/ XX XX _
-  _ @n2 @r2 @t2 @s2 XX S-7   S-9 S-0 S-4 S-3 S-- _  _ 
+  _ @n3 @r2 @t2 @s2 XX S-7   S-9 S-0 S-4 S-3 S-- _  _ 
   _ XX  XX  XX  XX  XX =     S-[ S-] S-= S-8 S-5 _  _ 
   _ _   _   _   _   _  _     _   _  
 )
 
 (deflayer numbers
-  _ _   _  _  _  _   _  _   _   _   _   _  _
-  _ XX  XX XX XX XX  XX XX  XX  XX  XX  XX XX _  _
-  _ -   7  8  9  /   XX XX  XX  XX  XX  XX XX XX _
-  _ S-= 4  5  6  S-8 XX @h2 @a2 @e2 @i2 XX _  _ 
-  _ 0   1  2  3  =   XX XX  XX  XX  XX  _  _  _ 
-  _ _   _  _  _  _   _  _   _  
+  _ _   _   _   _   _  _  _   _  _  _  _   _
+  _ XX  XX  XX  XX  XX XX XX  XX XX XX XX  XX _  _
+  _ XX  XX  XX  XX  XX -   7  8  9  /   XX XX XX _
+  _ @n2 @r2 @t2 @s2 XX S-= 4  5  6  S-8 XX _  _ 
+  _ XX  XX  XX  XX  XX 0   1  2  3  =   XX _  _ 
+  _ _   _   _   _   _  _  _   _  
 )
 
 (deflayer movement

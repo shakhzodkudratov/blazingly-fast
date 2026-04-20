@@ -1,7 +1,6 @@
 { ... }:
 {
   # https://nix-darwin.github.io/nix-darwin/manual/
-
   system = {
     defaults = {
       NSGlobalDomain = {

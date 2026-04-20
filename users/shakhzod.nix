@@ -14,6 +14,7 @@ in
 {
   config = lib.mkMerge [
     {
+      nix.settings.trusted-users = [ user ];
       home-manager.users.${user} = {
         imports = m.home-manager.__all;
 

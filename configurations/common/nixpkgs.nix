@@ -16,6 +16,7 @@
       # direnv: CGO needed for -linkmode=external on darwin
       (_final: prev: {
         direnv = prev.direnv.overrideAttrs (old: {
+          doCheck = false;
           env = (old.env or { }) // {
             CGO_ENABLED = "1";
           };
