@@ -30,9 +30,12 @@ let
     attrs:
     builtins.concatMap (
       v:
-      if builtins.isAttrs v then collectPaths (builtins.attrValues v)
-      else if builtins.isPath v then [ v ]
-      else [ ]
+      if builtins.isAttrs v then
+        collectPaths (builtins.attrValues v)
+      else if builtins.isPath v then
+        [ v ]
+      else
+        [ ]
     ) (if builtins.isList attrs then attrs else builtins.attrValues attrs);
 
   loadDir =

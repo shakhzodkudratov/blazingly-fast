@@ -1,9 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
+let
+  kanata = pkgs-unstable.kanata;
+in
 {
   environment.systemPackages = [
-    pkgs.kanata
+    kanata
     (pkgs.writeScriptBin "kanata-gallium" ''
-      sudo ${pkgs.kanata}/bin/kanata -c ${./keyboard.kbd}
+      sudo ${kanata}/bin/kanata -c ${./keyboard.kbd}
     '')
   ];
 }
